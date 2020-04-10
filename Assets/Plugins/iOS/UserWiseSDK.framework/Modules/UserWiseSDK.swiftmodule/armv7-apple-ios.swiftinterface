@@ -1,0 +1,92 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
+// swift-module-flags: -target armv7-apple-ios9.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserWiseSDK
+import AdSupport
+import CoreTelephony
+import Foundation
+import Swift
+import UIKit
+import WebKit
+@_inheritsConvenienceInitializers @objc public class SurveyWebViewController : UIKit.UIViewController {
+  @objc public static func loadController(surveyUrl: Swift.String, styleConfiguration: UserWiseSDK.UserWiseStyleConfiguration)
+  @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @objc override dynamic public func loadView()
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  public func closeModal()
+  public func showWebView()
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@_hasMissingDesignatedInitializers @objc(UserWise) public class UserWise : ObjectiveC.NSObject {
+  @objc(styleConfiguration) public var styleConfiguration: UserWiseSDK.UserWiseStyleConfiguration
+  @objc(isTakingSurvey) public var isTakingSurvey: Swift.Bool
+  @objc(sdkVersion) final public let sdkVersion: Swift.String
+  @objc(debugMode) open var debugMode: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc(surveyDelegate) open var surveyDelegate: UserWiseSDK.UserWiseSurveyDelegate? {
+    @objc get
+    @objc set(value)
+  }
+  @objc(apiKey) open var apiKey: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc(userId) open var userId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc public static let sharedInstance: UserWiseSDK.UserWise
+  @objc open func initialize(apiKey: Swift.String, userId: Swift.String)
+  @objc open func setColors(primaryColor: UIKit.UIColor?, splashScreenBackgroundColor: UIKit.UIColor?)
+  @objc open func setSplashScreenLogo(_ logo: UIKit.UIImage)
+  @objc open func isInitialized() -> Swift.Bool
+  @objc open func hasSurveysAvailable() -> Swift.Bool
+  @objc open func refreshHasAvailableSurveys()
+  @objc open func takeNextSurvey()
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension UIDevice {
+  public static let modelName: Swift.String
+}
+@_inheritsConvenienceInitializers @objc public class UserWiseStyleConfiguration : ObjectiveC.NSObject {
+  @objc public var primaryColor: UIKit.UIColor? {
+    @objc get
+    @objc set(value)
+  }
+  @objc public var splashScreenBackgroundColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc public var logo: UIKit.UIImage? {
+    @objc get
+    @objc set(value)
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UserWiseSurveyDelegate) public protocol UserWiseSurveyDelegate {
+  @objc func onSurveyAvailable()
+  @objc func onSurveysUnavailable()
+  @objc func onSurveyEntered()
+  @objc func onSurveyEnterFailed()
+  @objc func onSurveyClosed()
+  @objc func onSurveyCompleted()
+}
+@_inheritsConvenienceInitializers @objc(UserWiseUtility) public class UserWiseUtility : ObjectiveC.NSObject {
+  @objc public static func getCountry() -> Swift.String?
+  @objc public static func getOsVersion() -> Swift.String?
+  @objc public static func getPhoneCarrier() -> Swift.String?
+  @objc public static func getDeviceType() -> Swift.String
+  @objc public static func getIDFA() -> Swift.String?
+  @objc public static func getLanguage() -> Swift.String
+  @objc public static func getConnectionType() -> Swift.String?
+  @objc deinit
+  @objc override dynamic public init()
+}
