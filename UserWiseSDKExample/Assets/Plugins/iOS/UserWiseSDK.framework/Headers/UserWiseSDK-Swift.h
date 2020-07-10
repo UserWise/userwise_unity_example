@@ -230,6 +230,7 @@ SWIFT_CLASS("_TtC11UserWiseSDK23SurveyWebViewController")
 
 @protocol UserWiseSurveyDelegate;
 @class UIImage;
+@protocol UserWiseSurveyInviteDelegate;
 
 SWIFT_CLASS_NAMED("UserWise")
 @interface UserWise : NSObject
@@ -243,12 +244,17 @@ SWIFT_CLASS_NAMED("UserWise")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UserWise * _Nonnull sharedInstance;)
 + (UserWise * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initializeWithApiKey:(NSString * _Nonnull)apiKey userId:(NSString * _Nonnull)userId;
-- (void)setColorsWithPrimaryColor:(UIColor * _Nullable)primaryColor splashScreenBackgroundColor:(UIColor * _Nullable)splashScreenBackgroundColor;
-- (void)setSplashScreenLogo:(UIImage * _Nonnull)logo;
+- (void)onStart;
+- (void)onStop;
 - (BOOL)isInitialized SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasSurveysAvailable SWIFT_WARN_UNUSED_RESULT;
+- (void)setColorsWithPrimaryColor:(UIColor * _Nullable)primaryColor splashScreenBackgroundColor:(UIColor * _Nullable)splashScreenBackgroundColor;
+- (void)setSplashScreenLogo:(UIImage * _Nonnull)logo;
+- (void)assignEvent:(NSString * _Nonnull)eventName attributes:(NSDictionary<NSString *, id> * _Nullable)attributes;
+- (void)setAttributes:(NSDictionary<NSString *, id> * _Nonnull)attributes;
 - (void)refreshHasAvailableSurveys;
-- (void)takeNextSurvey;
+- (void)initializeSurveyInviteWithDelegate:(id <UserWiseSurveyInviteDelegate> _Nonnull)delegate;
+- (void)setSurveyInviteResponse:(BOOL)surveyInviteResponse;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -273,6 +279,12 @@ SWIFT_PROTOCOL_NAMED("UserWiseSurveyDelegate")
 - (void)onSurveyEnterFailed;
 - (void)onSurveyClosed;
 - (void)onSurveyCompleted;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("UserWiseSurveyInviteDelegate")
+@protocol UserWiseSurveyInviteDelegate
+- (void)onSurveyInviteInitialized:(BOOL)wasSuccessfullyInitialized;
 @end
 
 
@@ -524,6 +536,7 @@ SWIFT_CLASS("_TtC11UserWiseSDK23SurveyWebViewController")
 
 @protocol UserWiseSurveyDelegate;
 @class UIImage;
+@protocol UserWiseSurveyInviteDelegate;
 
 SWIFT_CLASS_NAMED("UserWise")
 @interface UserWise : NSObject
@@ -537,12 +550,17 @@ SWIFT_CLASS_NAMED("UserWise")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UserWise * _Nonnull sharedInstance;)
 + (UserWise * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initializeWithApiKey:(NSString * _Nonnull)apiKey userId:(NSString * _Nonnull)userId;
-- (void)setColorsWithPrimaryColor:(UIColor * _Nullable)primaryColor splashScreenBackgroundColor:(UIColor * _Nullable)splashScreenBackgroundColor;
-- (void)setSplashScreenLogo:(UIImage * _Nonnull)logo;
+- (void)onStart;
+- (void)onStop;
 - (BOOL)isInitialized SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasSurveysAvailable SWIFT_WARN_UNUSED_RESULT;
+- (void)setColorsWithPrimaryColor:(UIColor * _Nullable)primaryColor splashScreenBackgroundColor:(UIColor * _Nullable)splashScreenBackgroundColor;
+- (void)setSplashScreenLogo:(UIImage * _Nonnull)logo;
+- (void)assignEvent:(NSString * _Nonnull)eventName attributes:(NSDictionary<NSString *, id> * _Nullable)attributes;
+- (void)setAttributes:(NSDictionary<NSString *, id> * _Nonnull)attributes;
 - (void)refreshHasAvailableSurveys;
-- (void)takeNextSurvey;
+- (void)initializeSurveyInviteWithDelegate:(id <UserWiseSurveyInviteDelegate> _Nonnull)delegate;
+- (void)setSurveyInviteResponse:(BOOL)surveyInviteResponse;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -567,6 +585,12 @@ SWIFT_PROTOCOL_NAMED("UserWiseSurveyDelegate")
 - (void)onSurveyEnterFailed;
 - (void)onSurveyClosed;
 - (void)onSurveyCompleted;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("UserWiseSurveyInviteDelegate")
+@protocol UserWiseSurveyInviteDelegate
+- (void)onSurveyInviteInitialized:(BOOL)wasSuccessfullyInitialized;
 @end
 
 
