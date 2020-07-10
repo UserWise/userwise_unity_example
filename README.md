@@ -7,7 +7,14 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise Android SDK](https://github.com/UserWise/userwise_android_example)
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
-## Versions
+## SDK Version Changelog
+### v1.2.0
+- Brings the Unity SDK inline with the Android and iOS SDKs (was lagging behind)
+- Added support for assigning events and event attributes an app user in-game.
+- Added new'-ish' survey invite / entry flow (released in 1.1.0 of iOS and Android / server-side sdk api)
+- Added OnStart and OnStop lifecycle methods so you can now better control the flow of the UserWise SDK
+- Added better survey polling performance through intervaled coroutines
+
 ### v1.0.0
 - Initial Live-Ready Release
 
