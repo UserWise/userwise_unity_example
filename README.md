@@ -8,6 +8,10 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v1.2.1
+- Improved the iOS post process building by auto-embedding the UserWise SDK
+- Updated to the v1.2.1 iOS SDK
+
 ### v1.2.0
 - Brings the Unity SDK inline with the Android and iOS SDKs (was lagging behind)
 - Added support for assigning events and event attributes an app user in-game.

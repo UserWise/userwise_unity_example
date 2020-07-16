@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditor.iOS.Xcode;
+using UnityEditor.iOS.Xcode.Extensions;
 using System.IO;
 
 public class UserWisePostBuildProcessor
@@ -23,6 +24,12 @@ public class UserWisePostBuildProcessor
         project.ReadFromString(File.ReadAllText(projectPath));
 
         string targetId = project.GetUnityFrameworkTargetGuid();
+
+        string sdkPath = "Frameworks/Plugins/iOS/";
+        string frameworkName = "UserWiseSDK.framework";
+
+        string frameworkGuid = project.AddFile(sdkPath + "/" + frameworkName, frameworkName);
+        PBXProjectExtensions.AddFileToEmbedFrameworks(project, targetId, frameworkGuid);
 
         // Required Other Linker Flags
         project.AddBuildProperty(targetId, "OTHER_LDFLAGS", "-ObjC");
