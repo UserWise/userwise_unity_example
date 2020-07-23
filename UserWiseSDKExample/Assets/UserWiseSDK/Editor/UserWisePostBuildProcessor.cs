@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using System.IO;
+
+#if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 using UnityEditor.iOS.Xcode.Extensions;
-using System.IO;
 
 public class UserWisePostBuildProcessor
 {
@@ -53,3 +55,4 @@ public class UserWisePostBuildProcessor
         File.WriteAllText(plistPath + ".new", plist.WriteToString());
     }
 }
+#endif
