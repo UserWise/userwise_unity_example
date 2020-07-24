@@ -1,0 +1,175 @@
+﻿#include "il2cpp-config.h"
+
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+IL2CPP_EXTERN_C_BEGIN
+IL2CPP_EXTERN_C_END
+
+
+
+
+// 0x00000001 System.Void SurveyEventHandler::OnSurveyAvailable(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveyAvailable_m695FED029939DA5748C61DF76BC644042F408EFB ();
+// 0x00000002 System.Void SurveyEventHandler::OnSurveysUnavailable(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveysUnavailable_m4BEA2325506D3FFCCFF0D28A58745ADC31EB1E4C ();
+// 0x00000003 System.Void SurveyEventHandler::OnSurveyEntered(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveyEntered_m3092454ACEAEE990F26693FB2BA3023EA07D5F1A ();
+// 0x00000004 System.Void SurveyEventHandler::OnSurveyEnterFailed(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveyEnterFailed_mBE72334E02E9CCE8FCB947023CAE35D8078A923B ();
+// 0x00000005 System.Void SurveyEventHandler::OnSurveyClosed(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveyClosed_mF3F60A2B8F3A1B2A3B2B5F23AC902FEFE7141FB2 ();
+// 0x00000006 System.Void SurveyEventHandler::OnSurveyCompleted(System.Object,System.EventArgs)
+extern void SurveyEventHandler_OnSurveyCompleted_mE69CCE3154FC735E45BCE9C6D2DA90300719EEA0 ();
+// 0x00000007 System.Void SurveyInviteComponent::Start()
+extern void SurveyInviteComponent_Start_m09D9B2D7A165400ECF867B24A3CDAA7BFDDF65CF ();
+// 0x00000008 System.Boolean SurveyInviteComponent::IsInviteActive()
+extern void SurveyInviteComponent_IsInviteActive_mBBC7F6F617E1A41A4E10723CB61709F15A212AEB ();
+// 0x00000009 System.Void SurveyInviteComponent::ShowInviteDialog()
+extern void SurveyInviteComponent_ShowInviteDialog_m712833966206226941EFF1E581DE83030124168D ();
+// 0x0000000A System.Void SurveyInviteComponent::HideInviteDialog()
+extern void SurveyInviteComponent_HideInviteDialog_mBF7AC0A61732370A7F23207E0ADCFFD1C46BA30E ();
+// 0x0000000B System.Void SurveyInviteComponent::AcceptSurveyInvite()
+extern void SurveyInviteComponent_AcceptSurveyInvite_mDDB471AD4A6CEB3B7CBF2C731EC4ACA629C3C546 ();
+// 0x0000000C System.Void SurveyInviteComponent::DeclineSurveyInvite()
+extern void SurveyInviteComponent_DeclineSurveyInvite_mDB28A4B72705F1D2C39BB6550D135625C26150A6 ();
+// 0x0000000D System.Void SurveyInviteComponent::.ctor()
+extern void SurveyInviteComponent__ctor_mE65F6E2ACCED645FC02080144A90289B17967CE5 ();
+// 0x0000000E System.Void UserWiseDemoComponent::Start()
+extern void UserWiseDemoComponent_Start_m7873473841DBDFBD3BCF0D9D9896730459F6367F ();
+// 0x0000000F System.Void UserWiseDemoComponent::InitializeUserWiseSDK()
+extern void UserWiseDemoComponent_InitializeUserWiseSDK_m63F1242BE7F01901AA7D11F1D20F45B9DDD66274 ();
+// 0x00000010 System.Void UserWiseDemoComponent::AssignEvent()
+extern void UserWiseDemoComponent_AssignEvent_m6239D5576A1736BECE1CE603A472B039D2B87465 ();
+// 0x00000011 System.Void UserWiseDemoComponent::AssignAttribute()
+extern void UserWiseDemoComponent_AssignAttribute_mE48FC1A296B60308195F4AF6AC861CC8288BC337 ();
+// 0x00000012 System.Void UserWiseDemoComponent::InitializeSurveyInvite()
+extern void UserWiseDemoComponent_InitializeSurveyInvite_mE3CB9E0603799A8D35DB8F74BAB5A86930B77E4A ();
+// 0x00000013 System.Void UserWiseDemoComponent::ForcefullyRefreshSurveys()
+extern void UserWiseDemoComponent_ForcefullyRefreshSurveys_mF6C7E6F9A6F0B7870510F7D7FF1093FA7BA565EF ();
+// 0x00000014 System.Void UserWiseDemoComponent::.ctor()
+extern void UserWiseDemoComponent__ctor_mDA9A6833E9C918702BE7403372FC9CF069C272CB ();
+// 0x00000015 System.Void UserWiseDemoComponent::<InitializeSurveyInvite>b__8_0(System.Boolean)
+extern void UserWiseDemoComponent_U3CInitializeSurveyInviteU3Eb__8_0_mFF0DFCD99464E966DC87F20772F3AC963EE59451 ();
+// 0x00000016 System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_setUserWiseiOSEventListener(System.String)
+extern void iOSNativePlatformProxyExtensions__setUserWiseiOSEventListener_m92730B352E1ADF853E1FE927C230F751F5345BE2 ();
+// 0x00000017 System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_unsetUserWiseiOSEventListener()
+extern void iOSNativePlatformProxyExtensions__unsetUserWiseiOSEventListener_mC6043FBD99A54E3813422A5F1A57797A10EE7E45 ();
+// 0x00000018 System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_loadTakeSurveyPage(System.String)
+extern void iOSNativePlatformProxyExtensions__loadTakeSurveyPage_mDC8C7AF22BD64E35A1693E9DA3E2DF1ADD69C2AE ();
+// 0x00000019 System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_setColors(System.String,System.String)
+extern void iOSNativePlatformProxyExtensions__setColors_m89E745E5F9D0BC1F38A4F8AC84B1C680349074A7 ();
+// 0x0000001A System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_setSplashScreenLogo(System.String)
+extern void iOSNativePlatformProxyExtensions__setSplashScreenLogo_m8FB27DD701DE6627F17CE8B3917777F407489B7F ();
+// 0x0000001B System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getCarrier()
+extern void iOSNativePlatformProxyExtensions__getCarrier_m4F20E65748783D51D8BF99BAAF19A57BFBAC6A7E ();
+// 0x0000001C System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getOsVersion()
+extern void iOSNativePlatformProxyExtensions__getOsVersion_mD3503A688A27FD6863CC1886D0E5DFCE4140BF00 ();
+// 0x0000001D System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getDeviceType()
+extern void iOSNativePlatformProxyExtensions__getDeviceType_mDCC8811666BDD6919F71919146D40589A132C4D1 ();
+// 0x0000001E System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getConnectionType()
+extern void iOSNativePlatformProxyExtensions__getConnectionType_m90390B88BBBDDCC0108B569BF7F5E1E5668642F1 ();
+// 0x0000001F System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getLanguage()
+extern void iOSNativePlatformProxyExtensions__getLanguage_m597E2818E4CC08FC880C85CD3CCB59FBC382338A ();
+// 0x00000020 System.IntPtr UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::_getCountry()
+extern void iOSNativePlatformProxyExtensions__getCountry_m27D6263D153C7E0B921BBA1E6843EBB9E6CE9E3E ();
+// 0x00000021 System.Void UserWiseSDK.Platforms.iOSNativePlatformProxyExtensions::SetNativeiOSFunctions()
+extern void iOSNativePlatformProxyExtensions_SetNativeiOSFunctions_m215FB9DD4B11BB2A377DB2AF288217B2B22C9166 ();
+static Il2CppMethodPointer s_methodPointers[33] = 
+{
+	SurveyEventHandler_OnSurveyAvailable_m695FED029939DA5748C61DF76BC644042F408EFB,
+	SurveyEventHandler_OnSurveysUnavailable_m4BEA2325506D3FFCCFF0D28A58745ADC31EB1E4C,
+	SurveyEventHandler_OnSurveyEntered_m3092454ACEAEE990F26693FB2BA3023EA07D5F1A,
+	SurveyEventHandler_OnSurveyEnterFailed_mBE72334E02E9CCE8FCB947023CAE35D8078A923B,
+	SurveyEventHandler_OnSurveyClosed_mF3F60A2B8F3A1B2A3B2B5F23AC902FEFE7141FB2,
+	SurveyEventHandler_OnSurveyCompleted_mE69CCE3154FC735E45BCE9C6D2DA90300719EEA0,
+	SurveyInviteComponent_Start_m09D9B2D7A165400ECF867B24A3CDAA7BFDDF65CF,
+	SurveyInviteComponent_IsInviteActive_mBBC7F6F617E1A41A4E10723CB61709F15A212AEB,
+	SurveyInviteComponent_ShowInviteDialog_m712833966206226941EFF1E581DE83030124168D,
+	SurveyInviteComponent_HideInviteDialog_mBF7AC0A61732370A7F23207E0ADCFFD1C46BA30E,
+	SurveyInviteComponent_AcceptSurveyInvite_mDDB471AD4A6CEB3B7CBF2C731EC4ACA629C3C546,
+	SurveyInviteComponent_DeclineSurveyInvite_mDB28A4B72705F1D2C39BB6550D135625C26150A6,
+	SurveyInviteComponent__ctor_mE65F6E2ACCED645FC02080144A90289B17967CE5,
+	UserWiseDemoComponent_Start_m7873473841DBDFBD3BCF0D9D9896730459F6367F,
+	UserWiseDemoComponent_InitializeUserWiseSDK_m63F1242BE7F01901AA7D11F1D20F45B9DDD66274,
+	UserWiseDemoComponent_AssignEvent_m6239D5576A1736BECE1CE603A472B039D2B87465,
+	UserWiseDemoComponent_AssignAttribute_mE48FC1A296B60308195F4AF6AC861CC8288BC337,
+	UserWiseDemoComponent_InitializeSurveyInvite_mE3CB9E0603799A8D35DB8F74BAB5A86930B77E4A,
+	UserWiseDemoComponent_ForcefullyRefreshSurveys_mF6C7E6F9A6F0B7870510F7D7FF1093FA7BA565EF,
+	UserWiseDemoComponent__ctor_mDA9A6833E9C918702BE7403372FC9CF069C272CB,
+	UserWiseDemoComponent_U3CInitializeSurveyInviteU3Eb__8_0_mFF0DFCD99464E966DC87F20772F3AC963EE59451,
+	iOSNativePlatformProxyExtensions__setUserWiseiOSEventListener_m92730B352E1ADF853E1FE927C230F751F5345BE2,
+	iOSNativePlatformProxyExtensions__unsetUserWiseiOSEventListener_mC6043FBD99A54E3813422A5F1A57797A10EE7E45,
+	iOSNativePlatformProxyExtensions__loadTakeSurveyPage_mDC8C7AF22BD64E35A1693E9DA3E2DF1ADD69C2AE,
+	iOSNativePlatformProxyExtensions__setColors_m89E745E5F9D0BC1F38A4F8AC84B1C680349074A7,
+	iOSNativePlatformProxyExtensions__setSplashScreenLogo_m8FB27DD701DE6627F17CE8B3917777F407489B7F,
+	iOSNativePlatformProxyExtensions__getCarrier_m4F20E65748783D51D8BF99BAAF19A57BFBAC6A7E,
+	iOSNativePlatformProxyExtensions__getOsVersion_mD3503A688A27FD6863CC1886D0E5DFCE4140BF00,
+	iOSNativePlatformProxyExtensions__getDeviceType_mDCC8811666BDD6919F71919146D40589A132C4D1,
+	iOSNativePlatformProxyExtensions__getConnectionType_m90390B88BBBDDCC0108B569BF7F5E1E5668642F1,
+	iOSNativePlatformProxyExtensions__getLanguage_m597E2818E4CC08FC880C85CD3CCB59FBC382338A,
+	iOSNativePlatformProxyExtensions__getCountry_m27D6263D153C7E0B921BBA1E6843EBB9E6CE9E3E,
+	iOSNativePlatformProxyExtensions_SetNativeiOSFunctions_m215FB9DD4B11BB2A377DB2AF288217B2B22C9166,
+};
+static const int32_t s_InvokerIndices[33] = 
+{
+	134,
+	134,
+	134,
+	134,
+	134,
+	134,
+	23,
+	114,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	31,
+	122,
+	3,
+	122,
+	134,
+	122,
+	709,
+	709,
+	709,
+	709,
+	709,
+	709,
+	3,
+};
+extern const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	33,
+	s_methodPointers,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+};
