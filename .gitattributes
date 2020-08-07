@@ -476,4 +476,5 @@
 /UserWiseSDKExample/Temp/il2cppOutput/il2cppOutput/mscorlib_CodeGen.c filter=lfs diff=lfs merge=lfs -text
 /userwise-1.2.1.unitypackage filter=lfs diff=lfs merge=lfs -text
 /userwise-1.2.2.unitypackage filter=lfs diff=lfs merge=lfs -text
+/userwise-1.2.3.unitypackage filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text

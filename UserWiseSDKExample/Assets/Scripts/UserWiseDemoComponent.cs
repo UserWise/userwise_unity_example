@@ -63,7 +63,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwiseInstance = UserWise.INSTANCE;
         this.userwiseInstance.debugMode = true;
         this.userwiseInstance.apiKey = b64EncodedApiKey;
-        this.userwiseInstance.userId = "userwise-unity-example";
+        this.userwiseInstance.userId = "userwise-unity-exampleasdfasdfzxcvzxcv";
     }
 
     void AssignEvent()
@@ -82,7 +82,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwiseInstance.SetAttributes(new List<UWAttribute> {
             new UWAttribute("unity_player_level", "100", UWAttributeDataType.Integer),
             new UWAttribute("unity_player_coins", "25.50", UWAttributeDataType.Float),
-            new UWAttribute("unity_player_login_date12345", DateTime.UtcNow.ToString("o"), UWAttributeDataType.DateTime),
+            new UWAttribute("unity_player_login_date", DateTime.UtcNow.ToString("o"), UWAttributeDataType.DateTime),
             new UWAttribute("unity_player_is_whale", "true", UWAttributeDataType.Boolean),
             new UWAttribute("unity_player_name", "JenkinsDev", UWAttributeDataType.String)
         });
