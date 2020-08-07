@@ -92,7 +92,7 @@ extension UIDevice {
   @objc public static func getOsVersion() -> Swift.String?
   @objc public static func getPhoneCarrier() -> Swift.String?
   @objc public static func getDeviceType() -> Swift.String
-  @objc public static func getIDFA() -> Swift.String?
+  @objc public static func getIDFA() -> Swift.String
   @objc public static func getLanguage() -> Swift.String
   @objc public static func getConnectionType() -> Swift.String?
   @objc deinit

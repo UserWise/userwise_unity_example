@@ -50,23 +50,23 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11192}
+      Script: {instanceID: 11268}
     - Class: 114
-      Script: {instanceID: 11478}
+      Script: {instanceID: 11566}
     - Class: 114
-      Script: {instanceID: 11532}
+      Script: {instanceID: 11622}
     - Class: 114
-      Script: {instanceID: 12198}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 12900}
+      Script: {instanceID: 12302}
     - Class: 114
-      Script: {instanceID: 13668}
+      Script: {instanceID: 13022}
     - Class: 114
-      Script: {instanceID: 14294}
+      Script: {instanceID: 13810}
     - Class: 114
-      Script: {instanceID: 18788}
+      Script: {instanceID: 14230}
     - Class: 114
-      Script: {instanceID: 18806}
+      Script: {instanceID: 14450}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -174,6 +174,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 7a227329e0ba16b8ab96cde973b24d57
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserWiseDemoComponent
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -464,6 +470,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: 2f9bd31ab1b77c1b13719f180b1b11b1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SurveyInviteComponent
+  - hash:
+      serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -558,19 +570,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 2f9bd31ab1b77c1b13719f180b1b11b1
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SurveyInviteComponent
-  - hash:
-      serializedVersion: 2
-      Hash: 7a227329e0ba16b8ab96cde973b24d57
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UserWiseDemoComponent
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/android_test.apk
+  playerPath: /Users/jenkinsdev/Desktop/UnityAndroidSDK
