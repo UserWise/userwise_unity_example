@@ -573,4 +573,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/jenkinsdev/Desktop/UnityAndroidSDK
+  playerPath: /Users/jenkinsdev/UWTestingUnity

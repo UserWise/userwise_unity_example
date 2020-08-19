@@ -477,4 +477,12 @@
 /userwise-1.2.1.unitypackage filter=lfs diff=lfs merge=lfs -text
 /userwise-1.2.2.unitypackage filter=lfs diff=lfs merge=lfs -text
 /userwise-1.2.3.unitypackage filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Assets/UserWiseSDK/Plugins/Android/userwise_sdk-1.2.2.aar filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/Unity.2D.Animation.Triangle.Runtime.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/Unity.Mathematics.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/Unity.TextMeshPro.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UnityEngine.CoreModule.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UnityEngine.UI.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UnityEngine.UIElementsModule.pdb filter=lfs diff=lfs merge=lfs -text
+/userwise-1.2.4.unitypackage filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
