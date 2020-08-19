@@ -63,7 +63,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwiseInstance = UserWise.INSTANCE;
         this.userwiseInstance.debugMode = true;
         this.userwiseInstance.apiKey = b64EncodedApiKey;
-        this.userwiseInstance.userId = "userwise-unity-example-userasdfasdfasdfasdfasdfasd";
+        this.userwiseInstance.userId = "userwise-unity-example-userzvzxcvzxcvd";
     }
 
     void AssignEvent()

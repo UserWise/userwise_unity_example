@@ -485,4 +485,7 @@
 /UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UnityEngine.UI.pdb filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UnityEngine.UIElementsModule.pdb filter=lfs diff=lfs merge=lfs -text
 /userwise-1.2.4.unitypackage filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/iOS/Data/Managed/Unity.2D.Animation.Triangle.Runtime.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/iOS/Data/Managed/UnityEngine.UI.pdb filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/obj/Debug/Assembly-CSharp-Editor.csprojAssemblyReference.cache filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
