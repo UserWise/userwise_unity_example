@@ -8,6 +8,10 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v1.2.4
+- Updated to v1.2.3 Android SDK release
+- Updated platform signature
+
 ### v1.2.2
 - Updated to the v1.2.2 iOS SDK release
 
