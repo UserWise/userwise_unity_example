@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{36924CEB-4911-4B7A-725A-C4088106DA13}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoComponent.cs">
     <Files>
-      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="66" Column="93" />
+      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="66" Column="78" />
       <File FileName="Assets/Scripts/SurveyEventHandler.cs" />
     </Files>
     <Pads>
