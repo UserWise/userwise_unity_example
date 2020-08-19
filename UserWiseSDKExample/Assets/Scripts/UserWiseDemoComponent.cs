@@ -24,7 +24,6 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwiseInstance.OnStart();
 
         //this.userwiseInstance.SetColors("#FFFFFF", "#361688");
-
         //string logoName = "userwise_hero_wars_logo.png";
         //string logoPath = Path.Combine(Application.streamingAssetsPath, logoName);
 
@@ -63,7 +62,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwiseInstance = UserWise.INSTANCE;
         this.userwiseInstance.debugMode = true;
         this.userwiseInstance.apiKey = b64EncodedApiKey;
-        this.userwiseInstance.userId = "userwise-unity-example-userzvzxcvzxcvd";
+        this.userwiseInstance.userId = "userwise-unity-example-user";
     }
 
     void AssignEvent()
