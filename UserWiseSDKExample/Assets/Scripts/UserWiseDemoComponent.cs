@@ -56,14 +56,14 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         this.userwiseInstance = UserWise.INSTANCE;
 
-        string apiKey = "6b6552ebc324a570262deb6bdd4e";
+        string apiKey = "f0d040021dcb9f26765e25da6b57";
         byte[] apiKeyBytes = Encoding.UTF8.GetBytes(apiKey);
         string b64EncodedApiKey = Convert.ToBase64String(apiKeyBytes);
 
         this.userwiseInstance = UserWise.INSTANCE;
         this.userwiseInstance.debugMode = true;
         this.userwiseInstance.apiKey = b64EncodedApiKey;
-        this.userwiseInstance.userId = "userwise-unity-exampleasdfasdfzxcvzxcv";
+        this.userwiseInstance.userId = "userwise-unity-example-userasdfasdfasdfasdfasdfasd";
     }
 
     void AssignEvent()
