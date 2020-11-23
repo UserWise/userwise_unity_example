@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UserWiseSDK;
-using UserWiseSDK.API.Structs;
-using System.Text;
-using System.IO;
-using System.Collections.Generic;
 using System;
+using System.Text;
+using System.Collections.Generic;
+using UserWiseSDK;
+using UserWiseSDK.Surveys;
+using UserWiseSDK.Offers;
+using UserWiseSDK.API.Structs;
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -17,13 +18,57 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     void Start()
     {
+        // Step 1
+        // Initialize the UserWise SDK, and confirm that the poller is
+        // running. Initialization will occur after the first OnStart call.
+        if (!UserWise.INSTANCE.IsInitialized())
+        {
+            ConfigureUserWiseSDK();
+        }
+
+        // Step 2
+        // You must configure any modules that you plan to use within your game.
+        // Currently, there exists both a SurveysModule and an OffersModule.
+        ConfigureSurveysModule();
+        ConfigureOffersModule();
+
+        userwiseInstance.OnStart();
+
+        AssignEvent();
+        AssignAttribute();
+    }
+
+    private void SetupScene()
+    { 
         surveyInviteComponent = surveyInviteDialog.GetComponent<SurveyInviteComponent>();
         this.forcefullyRefreshSurveysButton.onClick.AddListener(ForcefullyRefreshSurveys);
+    }
 
-        InitializeUserWiseSDK();
-        this.userwiseInstance.OnStart();
+    private void ConfigureUserWiseSDK()
+    {
+        this.userwiseInstance = UserWise.INSTANCE;
 
-        //this.userwiseInstance.SetColors("#FFFFFF", "#361688");
+        string apiKey = "f0d040021dcb9f26765e25da6b57";
+        byte[] apiKeyBytes = Encoding.UTF8.GetBytes(apiKey);
+        string b64EncodedApiKey = Convert.ToBase64String(apiKeyBytes);
+
+        this.userwiseInstance = UserWise.INSTANCE;
+        this.userwiseInstance.debugMode = true;
+        this.userwiseInstance.SetApiKey(b64EncodedApiKey);
+        this.userwiseInstance.userId = "userwise-unity-example-user";
+    }
+
+    private void ConfigureSurveysModule()
+    { 
+        SurveysModule surveysModule = this.userwiseInstance.surveysModule;
+
+        // The splash screen can be configured by setting a primary and background
+        // color, as well as the logo that displays (defaults to the UserWise logo).
+
+        // Update Splash Screen Colors
+        //surveysModule.SetColors("#FFFFFF", "#361688");
+
+        // Update Splash Screen Logo
         //string logoName = "userwise_hero_wars_logo.png";
         //string logoPath = Path.Combine(Application.streamingAssetsPath, logoName);
 
@@ -40,32 +85,31 @@ public class UserWiseDemoComponent : MonoBehaviour
         //this.userwiseInstance.SetSplashScreenLogo(logoPath);
 #endif
 
-        this.userwiseInstance.surveyEvents.SurveyAvailable += SurveyEventHandler.OnSurveyAvailable;
-        this.userwiseInstance.surveyEvents.SurveysUnavailable += SurveyEventHandler.OnSurveysUnavailable;
-        this.userwiseInstance.surveyEvents.SurveyEntered += SurveyEventHandler.OnSurveyEntered;
-        this.userwiseInstance.surveyEvents.SurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
-        this.userwiseInstance.surveyEvents.SurveyClosed += SurveyEventHandler.OnSurveyClosed;
-        this.userwiseInstance.surveyEvents.SurveyCompleted += SurveyEventHandler.OnSurveyCompleted;
-
-        AssignEvent();
-        AssignAttribute();
+        // Finally, you have to listen on any events you'd like to manage.
+        surveysModule.SurveyEvents.OnSurveyAvailable += SurveyEventHandler.OnSurveyAvailable;
+        surveysModule.SurveyEvents.OnSurveysUnavailable += SurveyEventHandler.OnSurveysUnavailable;
+        surveysModule.SurveyEvents.OnSurveyInviteInitialized += SurveyEventHandler.OnSurveyInviteInitialized;
+        surveysModule.SurveyEvents.OnSurveyEntered += SurveyEventHandler.OnSurveyEntered;
+        surveysModule.SurveyEvents.OnSurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
+        surveysModule.SurveyEvents.OnSurveyClosed += SurveyEventHandler.OnSurveyClosed;
+        surveysModule.SurveyEvents.OnSurveyCompleted += SurveyEventHandler.OnSurveyCompleted;
     }
 
-    void InitializeUserWiseSDK()
+    private void ConfigureOffersModule()
     {
-        this.userwiseInstance = UserWise.INSTANCE;
+        OffersModule offersModule = this.userwiseInstance.offersModule;
 
-        string apiKey = "f0d040021dcb9f26765e25da6b57";
-        byte[] apiKeyBytes = Encoding.UTF8.GetBytes(apiKey);
-        string b64EncodedApiKey = Convert.ToBase64String(apiKeyBytes);
-
-        this.userwiseInstance = UserWise.INSTANCE;
-        this.userwiseInstance.debugMode = true;
-        this.userwiseInstance.apiKey = b64EncodedApiKey;
-        this.userwiseInstance.userId = "userwise-unity-example-user";
+        offersModule.OffersEvents.OnOffersUnavailable += OfferEventHandler.OnOffersUnavailable;
+        offersModule.OffersEvents.OnOfferAvailable += OfferEventHandler.OnOfferAvailable;
+        offersModule.OffersEvents.OnOfferImpressionInitialized += OfferEventHandler.OnOfferImpressionInitialized;
+        offersModule.OffersEvents.OnOfferImpressionInitializationFailed += OfferEventHandler.OnOfferImpressionInitializationFailed;
+        offersModule.OffersEvents.OnOfferViewed += OfferEventHandler.OnOfferViewed;
+        offersModule.OffersEvents.OnOfferViewAttemptFailed += OfferEventHandler.OnOfferViewAttemptFailed;
+        offersModule.OffersEvents.OnOfferAccepted += OfferEventHandler.OnOfferAccepted;
+        offersModule.OffersEvents.OnOfferDismissed += OfferEventHandler.OnOfferDismissed;
     }
 
-    void AssignEvent()
+    private void AssignEvent()
     {
         // this.userwiseInstance.AssignEvent(new UWEvent("event_without_attrs"));
 
@@ -76,7 +120,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         );
     }
 
-    void AssignAttribute()
+    private void AssignAttribute()
     {
         this.userwiseInstance.SetAttributes(new List<UWAttribute> {
             new UWAttribute("unity_player_level", "100", UWAttributeDataType.Integer),
@@ -87,31 +131,25 @@ public class UserWiseDemoComponent : MonoBehaviour
         });
     }
 
-    public void InitializeSurveyInvite()
+    public void InitializeSurveyInvite(string responseId)
     {
-        if (!this.userwiseInstance.isTakingSurvey && !surveyInviteComponent.IsInviteActive())
-        {
-            Debug.Log("Initializaing survey invite");
+        SurveysModule surveysModule = this.userwiseInstance.surveysModule;
 
-            this.userwiseInstance.InitializeSurveyInvite((bool successfulInit) =>
-            {
-                if (successfulInit)
-                {
-                    surveyInviteComponent.ShowInviteDialog();
-                }
-                else
-                {
-                    Debug.LogWarning("Survey invite failed to initialize!");
-                }
-            });
+        if (surveysModule.IsTakingSurvey || surveyInviteComponent.IsInviteActive())
+        {
+            Debug.Log("Can't initialize survey invite... Another survey is in progress.");
+            return;
         }
+
+        Debug.Log("Initializaing survey invite");
+        surveysModule.InitializeSurveyInvite(responseId);
     }
 
     public void ForcefullyRefreshSurveys()
     {
         if (this.userwiseInstance.IsInitialized())
         {
-            this.userwiseInstance.RefreshHasAvailableSurveys();
+            this.userwiseInstance.ForcePollRequest();
         }
     }
 }

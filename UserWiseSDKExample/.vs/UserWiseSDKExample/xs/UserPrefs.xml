@@ -1,8 +1,9 @@
-﻿<Properties StartupConfiguration="{36924CEB-4911-4B7A-725A-C4088106DA13}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoComponent.cs">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{36924CEB-4911-4B7A-725A-C4088106DA13}|">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="65" Column="68" />
-      <File FileName="Assets/Scripts/SurveyEventHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="98" Column="41" />
+      <File FileName="Assets/Scripts/NewClass.cs" Line="69" Column="10" />
+      <File FileName="Assets/Scripts/SurveyEventHandler.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +11,10 @@
           <Node name="UserWiseSDKExample" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="UserWiseDemoComponent.cs" selected="True" />
+                <Node name="OfferEventHandler.cs" selected="True" />
+              </Node>
+              <Node name="UserWiseSDK" expanded="True">
+                <Node name="Plugins" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -20,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="06339d8f-87f3-49ee-94f8-d15967d47e13" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="381174f3-6e7c-483e-ade4-8be13791cbfe" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
