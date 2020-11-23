@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UserWiseSDK;
+using UserWiseSDK.Surveys;
 
 public class SurveyInviteComponent : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class SurveyInviteComponent : MonoBehaviour
     public Button surveyInviteDeclineButton;
 
     private bool isActive;
-    private UserWise userWise;
+    private SurveysModule surveysModule;
+
+    private string responseId;
+    private string inviteId;
 
     void Start()
     {
-        userWise = UserWise.INSTANCE;
+        surveysModule = UserWise.INSTANCE.surveysModule;
 
         surveyInviteAcceptButton.onClick.AddListener(AcceptSurveyInvite);
         surveyInviteDeclineButton.onClick.AddListener(DeclineSurveyInvite);
@@ -25,27 +29,38 @@ public class SurveyInviteComponent : MonoBehaviour
         return isActive;
     }
 
-    public void ShowInviteDialog()
+    public void ShowInviteDialog(string responseId, string inviteId)
     {
+        if (IsInviteActive())
+        {
+            HideInviteDialog();
+        }
+
+        this.responseId = responseId;
+        this.inviteId = inviteId;
+
         isActive = true;
         gameObject.SetActive(true);
     }
 
     public void HideInviteDialog()
     {
+        this.responseId = null;
+        this.inviteId = null;
+
         isActive = false;
         gameObject.SetActive(false);
     }
 
     void AcceptSurveyInvite()
     {
-        userWise.SetSurveyInviteResponse(true);
+        surveysModule.SetSurveyInviteResponse(responseId, inviteId, true);
         HideInviteDialog();
     }
 
     void DeclineSurveyInvite()
     {
-        userWise.SetSurveyInviteResponse(false);
+        surveysModule.SetSurveyInviteResponse(responseId, inviteId, false);
         HideInviteDialog();
     }
 }

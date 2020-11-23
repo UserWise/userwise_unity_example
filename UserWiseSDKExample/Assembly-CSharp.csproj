@@ -47,6 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.8.3.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>iOS:9</UnityBuildTarget>
     <UnityVersion>2019.3.8f1</UnityVersion>
@@ -63,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\OfferEventHandler.cs" />
     <Compile Include="Assets\Scripts\SurveyEventHandler.cs" />
     <Compile Include="Assets\Scripts\SurveyInviteComponent.cs" />
     <Compile Include="Assets\Scripts\UserWiseDemoComponent.cs" />
