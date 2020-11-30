@@ -7,4 +7,8 @@
 @property (strong, nonatomic) NSString *gameObjectName;
 @end
 
+@interface iOSToUnityOfferListener : NSObject <UserWiseOfferDelegate>
+@property (strong, nonatomic) NSString *gameObjectName;
+@end
+
 #endif

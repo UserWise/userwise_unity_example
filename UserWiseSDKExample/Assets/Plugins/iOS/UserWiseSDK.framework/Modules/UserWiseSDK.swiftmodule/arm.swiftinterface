@@ -1,69 +1,143 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
-// swift-module-flags: -target armv7-apple-ios9.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserWiseSDK
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserWiseSDK
 import AdSupport
+import AppTrackingTransparency
 import CoreTelephony
 import Foundation
 import Swift
 import UIKit
 import WebKit
+public typealias UserWiseSDKResponseData = Swift.Codable
 @_inheritsConvenienceInitializers @objc public class SurveyWebViewController : UIKit.UIViewController {
-  @objc public static func loadController(surveyUrl: Swift.String, styleConfiguration: UserWiseSDK.UserWiseStyleConfiguration)
+  @objc public static func loadController(surveyUrl: Swift.String, splashScreenStyles: UserWiseSDK.SurveySplashScreenStyles, responseId: Swift.String)
   @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
     @objc get
   }
   @objc override dynamic public func loadView()
   @objc override dynamic public func viewDidLoad()
   @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
-  public func closeModal()
+  public func closeView()
   public func showWebView()
   @objc deinit
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
-@_hasMissingDesignatedInitializers @objc(UserWise) public class UserWise : ObjectiveC.NSObject {
-  @objc(styleConfiguration) public var styleConfiguration: UserWiseSDK.UserWiseStyleConfiguration
-  @objc(isTakingSurvey) public var isTakingSurvey: Swift.Bool
+@_inheritsConvenienceInitializers @objc(UserWise) public class UserWise : ObjectiveC.NSObject {
   @objc(sdkVersion) final public let sdkVersion: Swift.String
-  @objc(debugMode) open var debugMode: Swift.Bool {
+  @objc(surveysModule) public var surveysModule: UserWiseSDK.SurveysModule?
+  @objc(offersModule) public var offersModule: UserWiseSDK.OffersModule?
+  @objc(hostOverride) public var hostOverride: Foundation.URL? {
     @objc get
     @objc set(value)
   }
-  @objc(surveyDelegate) open var surveyDelegate: UserWiseSDK.UserWiseSurveyDelegate? {
+  @objc(debugMode) public var debugMode: Swift.Bool {
     @objc get
     @objc set(value)
   }
-  @objc(apiKey) open var apiKey: Swift.String? {
-    @objc get
-    @objc set(value)
-  }
-  @objc(userId) open var userId: Swift.String? {
+  @objc public func setApiKey(_ apiKey: Swift.String)
+  @objc(userId) public var userId: Swift.String? {
     @objc get
     @objc set(value)
   }
   @objc public static let sharedInstance: UserWiseSDK.UserWise
-  @objc open func initialize(apiKey: Swift.String, userId: Swift.String)
-  @objc open func onStart()
-  @objc open func onStop()
-  @objc open func isInitialized() -> Swift.Bool
-  @objc open func hasSurveysAvailable() -> Swift.Bool
-  @objc open func setColors(primaryColor: UIKit.UIColor?, splashScreenBackgroundColor: UIKit.UIColor?)
-  @objc open func setSplashScreenLogo(_ logo: UIKit.UIImage)
-  @objc open func assignEvent(_ eventName: Swift.String, attributes: [Swift.String : Any]?)
-  @objc open func setAttributes(_ attributes: [Swift.String : Any])
-  @objc open func refreshHasAvailableSurveys()
-  @objc open func initializeSurveyInvite(delegate: UserWiseSDK.UserWiseSurveyInviteDelegate)
-  @objc open func setSurveyInviteResponse(_ surveyInviteResponse: Swift.Bool)
+  @objc public func initialize(apiKey: Swift.String, userId: Swift.String) -> UserWiseSDK.UserWise
+  @objc public func onStart()
+  @objc public func onStop()
+  @objc public func isInitialized() -> Swift.Bool
+  @objc public func forcePollRequest()
+  @objc public func isAnyContentActive() -> Swift.Bool
+  @objc public func assignEvent(_ eventName: Swift.String, attributes: [Swift.String : Any]?)
+  @objc public func setAttributes(_ attributes: [Swift.String : Any])
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(OfferImpressionState) public enum OfferImpressionState : Swift.Int, Swift.RawRepresentable {
+  case Initialized = 0
+  case Viewed = 1
+  case Dismissed = 2
+  case Accepted = 3
+  case PurchaseFailed = 4
+  case Purchased = 5
+  case Unknown = 6
+  public typealias RawValue = Swift.String
+  public var rawValue: UserWiseSDK.OfferImpressionState.RawValue {
+    get
+  }
+  public init?(rawValue: UserWiseSDK.OfferImpressionState.RawValue)
+}
+@objc(Offer) public class Offer : ObjectiveC.NSObject {
+  @objc(id) final public let id: Swift.String
+  @objc(cost) final public let cost: Swift.Double
+  @objc(iOSProductId) final public let iOSProductId: Swift.String
+  @objc(currencies) final public let currencies: [Swift.String : Swift.Int]
+  public init(id: Swift.String, cost: Swift.Double, iOSProductId: Swift.String, currencies: [Swift.String : Swift.Int])
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(OfferImpression) public class OfferImpression : ObjectiveC.NSObject {
+  @objc(id) final public let id: Swift.String
+  @objc(state) final public let state: UserWiseSDK.OfferImpressionState
+  @objc(offer) final public let offer: UserWiseSDK.Offer
+  public init(id: Swift.String, state: UserWiseSDK.OfferImpressionState, offer: UserWiseSDK.Offer)
+  @objc public func updateState(_ state: UserWiseSDK.OfferImpressionState)
   @objc deinit
   @objc override dynamic public init()
 }
 extension UIDevice {
   public static let modelName: Swift.String
 }
-@objc(UserWiseSurveyInviteDelegate) public protocol UserWiseSurveyInviteDelegate {
-  @objc func onSurveyInviteInitialized(_ wasSuccessfullyInitialized: Swift.Bool)
+@_inheritsConvenienceInitializers @objc public class OfferPopupController : UIKit.UIViewController {
+  @objc public static func loadController(offerImpression: UserWiseSDK.OfferImpression, offerUrl: Swift.String) -> UserWiseSDK.OfferPopupController
+  @objc override dynamic public func loadView()
+  @objc override dynamic public func viewDidLoad()
+  public func dismiss()
+  public func showWebView()
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
-@_inheritsConvenienceInitializers @objc public class UserWiseStyleConfiguration : ObjectiveC.NSObject {
+@objc(OfferViewAttemptFailedReason) public enum OfferViewAttemptFailedReason : Swift.Int {
+  case OfferAlreadyActive = 0
+  case ServerError = 1
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UserWiseOfferDelegate) public protocol UserWiseOfferDelegate {
+  @objc func onOfferUnavailable()
+  @objc func onOfferAvailable(offerId: Swift.String)
+  @objc func onOfferImpressionInitializationFailed(offerId: Swift.String)
+  @objc func onOfferImpressionInitialized(_ offerImpression: UserWiseSDK.OfferImpression)
+  @objc func onOfferViewed(offerImpression: UserWiseSDK.OfferImpression)
+  @objc func onOfferViewAttemptFailed(offerImpression: UserWiseSDK.OfferImpression, reason: UserWiseSDK.OfferViewAttemptFailedReason)
+  @objc func onOfferDismissed(offerImpression: UserWiseSDK.OfferImpression)
+  @objc func onOfferAccepted(offerImpression: UserWiseSDK.OfferImpression)
+}
+@_hasMissingDesignatedInitializers @objc public class OffersModule : ObjectiveC.NSObject {
+  @objc(offerDelegate) public var offerDelegate: UserWiseSDK.UserWiseOfferDelegate?
+  @objc public func isAnOfferActive() -> Swift.Bool
+  @objc public func initializeOfferImpression(offerId: Swift.String)
+  @objc public func updateOfferImpressionState(offerImpression: UserWiseSDK.OfferImpression, newState: UserWiseSDK.OfferImpressionState)
+  @objc public func showOffer(offerImpression: UserWiseSDK.OfferImpression)
+  @objc public func dismissOffer(offerImpression: UserWiseSDK.OfferImpression)
+  @objc public func acceptOffer(offerImpression: UserWiseSDK.OfferImpression)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SurveysModule) public class SurveysModule : ObjectiveC.NSObject {
+  @objc(surveyDelegate) public var surveyDelegate: UserWiseSDK.UserWiseSurveyDelegate?
+  @objc(isTakingSurvey) public var isTakingSurvey: Swift.Bool
+  @objc public func setSplashScreenLogo(_ logo: UIKit.UIImage)
+  @objc public func setColors(primaryColor: UIKit.UIColor?, splashScreenBackgroundColor: UIKit.UIColor?)
+  @objc public func initializeSurveyInvite(responseId: Swift.String)
+  @objc public func setSurveyInviteResponse(responseId: Swift.String, inviteId: Swift.String, wasAccepted: Swift.Bool)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class SurveySplashScreenStyles : ObjectiveC.NSObject {
   @objc public var primaryColor: UIKit.UIColor? {
     @objc get
     @objc set(value)
@@ -80,12 +154,13 @@ extension UIDevice {
   @objc deinit
 }
 @objc(UserWiseSurveyDelegate) public protocol UserWiseSurveyDelegate {
-  @objc func onSurveyAvailable()
+  @objc func onSurveyAvailable(responseId: Swift.String)
   @objc func onSurveysUnavailable()
-  @objc func onSurveyEntered()
-  @objc func onSurveyEnterFailed()
-  @objc func onSurveyClosed()
-  @objc func onSurveyCompleted()
+  @objc func onSurveyInviteInitialized(wasInitialized: Swift.Bool, responseId: Swift.String?, inviteId: Swift.String?)
+  @objc func onSurveyEntered(responseId: Swift.String)
+  @objc func onSurveyEnterFailed(responseId: Swift.String)
+  @objc func onSurveyClosed(responseId: Swift.String)
+  @objc func onSurveyCompleted(responseId: Swift.String)
 }
 @_inheritsConvenienceInitializers @objc(UserWiseUtility) public class UserWiseUtility : ObjectiveC.NSObject {
   @objc public static func getCountry() -> Swift.String?
@@ -98,3 +173,11 @@ extension UIDevice {
   @objc deinit
   @objc override dynamic public init()
 }
+@_hasMissingDesignatedInitializers public class OfferPopupManager {
+  @objc deinit
+}
+extension UserWiseSDK.OfferImpressionState : Swift.Equatable {}
+extension UserWiseSDK.OfferImpressionState : Swift.Hashable {}
+extension UserWiseSDK.OfferViewAttemptFailedReason : Swift.Equatable {}
+extension UserWiseSDK.OfferViewAttemptFailedReason : Swift.Hashable {}
+extension UserWiseSDK.OfferViewAttemptFailedReason : Swift.RawRepresentable {}

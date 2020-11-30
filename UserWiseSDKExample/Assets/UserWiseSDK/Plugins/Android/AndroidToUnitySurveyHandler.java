@@ -4,30 +4,31 @@ import com.unity3d.player.UnityPlayer;
 import io.userwise.userwise_sdk.UserWiseSurveyListener;
 
 class AndroidToUnitySurveyHandler implements UserWiseSurveyListener {
-	public String gameObjectName = "";
+    public String gameObjectName = "";
 
-	public AndroidToUnitySurveyHandler(String gameObjectName) {
-		this.gameObjectName  = gameObjectName;
-	}
+    public AndroidToUnitySurveyHandler(String gameObjectName) {
+        this.gameObjectName  = gameObjectName;
+    }
 
-	// onSurveyAvailable and onSurveysUnavailable are handled within "native" C#
-	// and should not be used
-	public void onSurveyAvailable() {}
-	public void onSurveysUnavailable() {}
+    // onSurveyAvailable and onSurveysUnavailable are handled within "native" C#
+    // and should not be used
+    public void onSurveyAvailable(String responseId) {}
+    public void onSurveysUnavailable() {}
+    public void onSurveyInviteInitialized(Boolean wasInitialized, String surveyResponseId, String surveyInviteId) {}
 
-	public void onSurveyEntered() {
-        UnityPlayer.UnitySendMessage(this.gameObjectName, "onSurveyEntered", "");
-	}
+    public void onSurveyEnterFailed(String responseId) {
+        UnityPlayer.UnitySendMessage(this.gameObjectName, "OnSurveyEnterFailed", responseId);
+    }
 
-	public void onSurveyEnterFailed() {
-        UnityPlayer.UnitySendMessage(this.gameObjectName, "onSurveyEnterFailed", "");
-	}
+    public void onSurveyEntered(String responseId) {
+        UnityPlayer.UnitySendMessage(this.gameObjectName, "OnSurveyEntered", responseId);
+    }
 
-	public void onSurveyClosed() {
-        UnityPlayer.UnitySendMessage(this.gameObjectName, "onSurveyClosed", "");
-	}
+    public void onSurveyClosed(String responseId) {
+        UnityPlayer.UnitySendMessage(this.gameObjectName, "OnSurveyClosed", responseId);
+    }
 
-	public void onSurveyCompleted() {
-        UnityPlayer.UnitySendMessage(this.gameObjectName, "onSurveyCompleted", "");
-	}
+    public void onSurveyCompleted(String responseId) {
+        UnityPlayer.UnitySendMessage(this.gameObjectName, "OnSurveyCompleted", responseId);
+    }
 }

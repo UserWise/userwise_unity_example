@@ -18,6 +18,8 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     void Start()
     {
+        SetupScene();
+
         // Step 1
         // Initialize the UserWise SDK, and confirm that the poller is
         // running. Initialization will occur after the first OnStart call.
@@ -48,14 +50,15 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         this.userwiseInstance = UserWise.INSTANCE;
 
-        string apiKey = "f0d040021dcb9f26765e25da6b57";
+        string apiKey = "6b6552ebc324a570262deb6bdd4e";
+        //string apiKey = "f0d040021dcb9f26765e25da6b57";
         byte[] apiKeyBytes = Encoding.UTF8.GetBytes(apiKey);
         string b64EncodedApiKey = Convert.ToBase64String(apiKeyBytes);
 
         this.userwiseInstance = UserWise.INSTANCE;
-        this.userwiseInstance.debugMode = true;
+        this.userwiseInstance.DebugMode = true;
         this.userwiseInstance.SetApiKey(b64EncodedApiKey);
-        this.userwiseInstance.userId = "userwise-unity-example-user";
+        this.userwiseInstance.UserId = "userwise-example-unity-something";
     }
 
     private void ConfigureSurveysModule()
