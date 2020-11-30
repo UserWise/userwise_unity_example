@@ -24,13 +24,13 @@ public static class OfferEventHandler
 
     public static void OnOfferImpressionInitialized(object sender, OfferImpressionEventArgs args)
     { 
-        Debug.Log("[UW Example]: Offer impression initialization failed. offer_impression_id=" + args.OfferImpression.id);
+        Debug.Log("[UW Example]: Offer impression initialization succeded. offer_impression_id=" + args.OfferImpression.id);
         UserWise.INSTANCE.offersModule.ShowOffer(args.OfferImpression);
     }
 
     public static void OnOfferViewAttemptFailed(object sender, OfferViewAttemptFailedEventArgs args)
     {
-        Debug.Log("[UW Example]: Offer failed to load properly. ");
+        Debug.Log("[UW Example]: Offer failed to load properly. reason=" + args.Reason.ToString());
     }
 
     public static void OnOfferViewed(object sender, OfferImpressionEventArgs args)

@@ -1,34 +1,5 @@
 #import "./iOSToUnityBridge.h"
 
-@implementation iOSToUnitySurveyListener
-
-// onSurveyAvailable and onSurveysUnavailable are handled within "native" C#
-// and should not be used.
--(void)onSurveyAvailable {}
--(void)onSurveysUnavailable {}
-
--(void)onSurveyEntered {
-    NSLog(@"Entering Survey");
-    UnitySendMessage([self.gameObjectName UTF8String], "onSurveyEntered", "");
-}
-
--(void)onSurveyClosed {
-    NSLog(@"Closing Survey");
-    UnitySendMessage([self.gameObjectName UTF8String], "onSurveyClosed", "");
-}
-
--(void)onSurveyCompleted {
-    NSLog(@"Completed Survey");
-    UnitySendMessage([self.gameObjectName UTF8String], "onSurveyCompleted", "");
-}
-
-- (void)onSurveyEnterFailed {
-    NSLog(@"Survey Enter Failed");
-    UnitySendMessage([self.gameObjectName UTF8String], "onSurveyEnterFailed", "");
-}
-
-@end
-
 NSString* nsStringFromCString(const char *str) {
     if (str) return [NSString stringWithUTF8String:str];
     else return [NSString stringWithUTF8String:""];
@@ -46,21 +17,98 @@ UIColor* colorFromHexString(NSString *hexString) {
             alpha:1.0];
 }
 
-void _setUserWiseiOSEventListener(const char *gameObjectName) {
-    iOSToUnitySurveyListener *listener = [iOSToUnitySurveyListener alloc];
-    [listener setGameObjectName:nsStringFromCString(gameObjectName)];
-    [[UserWise sharedInstance] setSurveyDelegate:listener];
+
+
+/// MARK: UserWise Native Listeners
+@implementation iOSToUnitySurveyListener
+// onSurveyAvailable and onSurveysUnavailable are handled within "native" C#
+// and should not be used.
+- (void)onSurveyAvailableWithResponseId:(NSString * _Nonnull)responseId {}
+
+
+- (void)onSurveyInviteInitializedWithWasInitialized:(BOOL)wasInitialized
+                                         responseId:(NSString * _Nullable)responseId
+                                           inviteId:(NSString * _Nullable)inviteId {}
+-(void)onSurveysUnavailable {}
+
+-(void)onSurveyEnteredWithResponseId:(NSString *)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEntered", "");
 }
 
-void _unsetUserWiseiOSEventListener() {
-    [[UserWise sharedInstance] setSurveyDelegate:nil];
+-(void)onSurveyClosedWithResponseId:(NSString *)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyClosed", "");
+}
+
+-(void)onSurveyCompletedWithResponseId:(NSString *)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyCompleted", "");
+}
+
+- (void)onSurveyEnterFailedWithResponseId:(NSString *)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEnterFailed", "");
+}
+@end
+
+NSString * const OfferViewAttemptFailedReason_ToString[] = {
+    [OfferViewAttemptFailedReasonServerError] = @"server",
+    [OfferViewAttemptFailedReasonOfferAlreadyActive] = @"already_active"
+};
+
+@implementation iOSToUnityOfferListener
+- (void)onOfferAvailableWithOfferId:(NSString *)offerId {}
+
+- (void)onOfferImpressionInitializationFailedWithOfferId:(NSString *)offerId {}
+
+- (void)onOfferImpressionInitialized:(OfferImpression *)offerImpression {}
+
+- (void)onOfferUnavailable {}
+
+- (void)onOfferAcceptedWithOfferImpression:(OfferImpression *)offerImpression {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferAccepted", "");
+}
+
+- (void)onOfferDismissedWithOfferImpression:(OfferImpression *)offerImpression {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferDismissed", "");
+}
+
+- (void)onOfferViewAttemptFailedWithOfferImpression:(OfferImpression *)offerImpression
+                                             reason:(enum OfferViewAttemptFailedReason)reason {
+    UnitySendMessage([self.gameObjectName UTF8String],
+                     "OnOfferViewAttemptFailed",
+                     [OfferViewAttemptFailedReason_ToString[reason] UTF8String]);
+}
+
+- (void)onOfferViewedWithOfferImpression:(OfferImpression *)offerImpression {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferViewed", "");
+}
+@end
+
+
+
+
+/// MARK: Surveys Native Control
+SurveysModule* getSurveysModule() {
+    UserWise *userWise = [UserWise sharedInstance];
+    if (userWise.surveysModule == nil) {
+        userWise.surveysModule = [SurveysModule alloc];
+    }
+    return userWise.surveysModule;
+}
+
+void _setSurveysNativeEventListener(const char *gameObjectName) {
+    iOSToUnitySurveyListener *listener = [iOSToUnitySurveyListener alloc];
+    [listener setGameObjectName:nsStringFromCString(gameObjectName)];
+    [getSurveysModule() setSurveyDelegate:listener];
+}
+
+void _unsetSurveysNativeEventListener() {
+    [getSurveysModule() setSurveyDelegate:nil];
 }
 
 void _setColors(const char *primaryColorHex, const char *splashScreenBgColorHex) {
     UIColor *primaryColor = colorFromHexString(nsStringFromCString(primaryColorHex));
     UIColor *splashScreenBgColor = colorFromHexString(nsStringFromCString(splashScreenBgColorHex));
     
-    [[UserWise sharedInstance]
+    [[UserWise sharedInstance].surveysModule
       setColorsWithPrimaryColor:primaryColor
       splashScreenBackgroundColor:splashScreenBgColor];
 }
@@ -68,17 +116,50 @@ void _setColors(const char *primaryColorHex, const char *splashScreenBgColorHex)
 void _setSplashScreenLogo(const char *logoAppPath) {
     if (!logoAppPath) return;
     UIImage *logo = [UIImage imageWithContentsOfFile:nsStringFromCString(logoAppPath)];
-    [[UserWise sharedInstance] setSplashScreenLogo:logo];
+    [[UserWise sharedInstance].surveysModule setSplashScreenLogo:logo];
 }
 
-void _loadTakeSurveyPage(const char *surveyUrl) {
+void _loadTakeSurveyPage(const char *surveyUrl, const char *responseId) {
     UserWise *userWise = [UserWise sharedInstance];
     
     [SurveyWebViewController
         loadControllerWithSurveyUrl:nsStringFromCString(surveyUrl)
-        styleConfiguration:[userWise styleConfiguration]];
+        splashScreenStyles:[userWise.surveysModule styleConfiguration]
+        responseId:nsStringFromCString(responseId)];
 }
 
+
+
+
+/// MARK: Offers Native Control
+OfferPopupController *activeController;
+OffersModule *getOffersModule() {
+    UserWise *userWise = [UserWise sharedInstance];
+    if (userWise.offersModule == nil) {
+        userWise.offersModule = [OffersModule alloc];
+    }
+    return userWise.offersModule;
+}
+
+void _setOffersNativeEventListener(const char *gameObjectName) {
+    iOSToUnityOfferListener *listener = [iOSToUnityOfferListener alloc];
+    [listener setGameObjectName:nsStringFromCString(gameObjectName)];
+    [getOffersModule() setOfferDelegate:listener];
+}
+
+void _unsetOffersNativeEventListener() {
+    [getOffersModule() setOfferDelegate:nil];
+}
+
+void _loadShowOfferView(const char *offerUrl) {
+    if (![OfferPopupManager isAnOfferDisplayed]) { return; }
+    
+    [OfferPopupManager showOfferWithImpression:nil offerUrl:nsStringFromCString(offerUrl)];
+}
+
+
+
+/// MARK: Utility Native Functions
 const char* _getCarrier() {
     return [[UserWiseUtility getPhoneCarrier] UTF8String];
 }

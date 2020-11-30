@@ -16,13 +16,13 @@ public static class SurveyEventHandler
         component.InitializeSurveyInvite(args.ResponseId);
     }
 
-
     public static void OnSurveyInviteInitialized(object sender, SurveyInviteInitializedEventArgs args)
     {
         if (args.WasInitialized)
         {
-            SurveyInviteComponent component = GameObject.Find("GameControllerObject").GetComponent<SurveyInviteComponent>();
-            component.ShowInviteDialog(args.ResponseId, args.InviteId);
+            UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
+            SurveyInviteComponent surveyInviteComponent = component.surveyInviteDialog.GetComponent<SurveyInviteComponent>();
+            surveyInviteComponent.ShowInviteDialog(args.ResponseId, args.InviteId);
         }
         else
         {
