@@ -590,4 +590,5 @@
 /UserWiseSDKExample/Library/PlayerDataCache/iOS/Data/Managed/Unity.2D.SpriteShape.Runtime.dll filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/obj/Release/Assembly-CSharp-Editor.csprojAssemblyReference.cache filter=lfs diff=lfs merge=lfs -text
+/userwise-1.3.0.unitypackage filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
