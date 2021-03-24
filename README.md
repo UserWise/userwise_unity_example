@@ -9,14 +9,14 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 
 ## SDK Version Changelog
 ### v2.0.0
-- Updated to v2.0.1 of the UserWise Android SDK
-- Updated to v2.0.1 of the UserWise iOS SDK
+- Updated to v2.0.1 of the UserWise Android SDK; for WebView layers
+- Updated to v2.0.1 of the UserWise iOS SDK; for WebView layers
 - Feature parity with v2.0.1 of both SDKs
   - Added EventsModule
   - Added VariablesModule
   - Added MessagesModule
-  - Updated OffersModule
-  - Updated SurveysModule
+  - Updated OffersModule, bringing feature parity inline with Android & iOS
+  - Updated SurveysModule, bringing feature parity inline with Android & iOS
 
 ### v1.2.4
 - Updated to v1.2.3 Android SDK release
