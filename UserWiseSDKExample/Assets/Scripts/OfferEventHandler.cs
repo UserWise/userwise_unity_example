@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UserWiseSDK;
@@ -6,66 +7,63 @@ using UserWiseSDK.Offers;
 
 public static class OfferEventHandler
 {
-    public static void OnOffersUnavailable(object sender, EventArgs args)
+    public static void OnOffersLoaded(object sender, EventArgs args)
     {
-        Debug.Log("[UW Example]: No offers are currently available to take.");
+        Debug.Log(String.Format("Offers have been loaded from the API!  {0} Offers Available", UserWise.INSTANCE.OffersModule.ActiveOffers.Count));
     }
 
-    public static void OnOfferAvailable(object sender, OfferIdEventArgs args)
+    public static void OnOfferAvailable(object sender, OfferEventArgs args)
     {
-        Debug.Log("[UW Example]: An offer is available! offer_id=" + args.OfferId);
-        UserWise.INSTANCE.offersModule.InitializeOfferImpression(args.OfferId);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine("An offer is ready for impression initialization!");
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Offer.Id));
+        stringBuilder.AppendLine(String.Format("| Title: {0}", args.Offer.Title));
+        stringBuilder.AppendLine(String.Format("| Body: {0}", args.Offer.Body));
+        stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Offer.PortraitImageId));
+        stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Offer.LandscapeImageId));
+        stringBuilder.AppendLine(String.Format("| Cost: {0}", args.Offer.Cost));
+        stringBuilder.AppendLine(String.Format("| Android Product ID: {0}", args.Offer.AndroidProductId));
+        stringBuilder.AppendLine(String.Format("| iOS Product ID: {0}", args.Offer.IOSProductId));
+
+        StringBuilder itemString = new StringBuilder();
+        foreach (KeyValuePair<string, long> entry in args.Offer.Items)
+        {
+            itemString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
+        }
+        stringBuilder.AppendLine(String.Format("| {0} Items:\n{1}", args.Offer.Items.Count, itemString.ToString()));
+
+        StringBuilder currenciesString = new StringBuilder();
+        foreach (KeyValuePair<string, long> entry in args.Offer.Currencies)
+        {
+            currenciesString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
+        }
+        stringBuilder.AppendLine(String.Format("| {0} Currencies: \n{1}", args.Offer.Currencies.Count, currenciesString.ToString()));
+
+        Debug.Log(stringBuilder.ToString());
+        UserWise.INSTANCE.OffersModule.InitializeOfferImpression(args.Offer);
     }
 
-    public static void OnOfferImpressionInitializationFailed(object sender, OfferIdEventArgs args)
+    public static void OnOfferImpressionInitializationFailed(object sender, OfferEventArgs args)
     {
-        Debug.Log("[UW Example]: Offer impression initialization failed. offer_id=" + args.OfferId);
+        Debug.Log(String.Format("Offer impression initialization failed. offer_id={0}", args.Offer.Id));
     }
 
     public static void OnOfferImpressionInitialized(object sender, OfferImpressionEventArgs args)
-    { 
-        Debug.Log("[UW Example]: Offer impression initialization succeded. offer_impression_id=" + args.OfferImpression.id);
-        UserWise.INSTANCE.offersModule.ShowOffer(args.OfferImpression);
-    }
-
-    public static void OnOfferViewAttemptFailed(object sender, OfferViewAttemptFailedEventArgs args)
     {
-        Debug.Log("[UW Example]: Offer failed to load properly. reason=" + args.Reason.ToString());
-    }
+        Offer offer = args.OfferImpression.Offer;
 
-    public static void OnOfferViewed(object sender, OfferImpressionEventArgs args)
-    {
-        Debug.Log("[UW Example]: Offer has loaded and is actively visible! offer_impression_id=" + args.OfferImpression.id);
-    }
+        Debug.Log(String.Format("Offer impression initialization succeded. offer_impression_id={0} offer_id={1}", args.OfferImpression.Id, offer.Id));
+        // IDictSerializable allows you to serialize (or even deserialize, directly into the instance)
+        // data in UserWise data objects.
+        // Debug.Log(String.Format("Offer Data: {0}", (offer as IDictSerializable<Offer>).Serialize()));
 
-    public static void OnOfferDismissed(object sender, OfferImpressionEventArgs args)
-    {
-        Debug.Log("[UW Example]: Offer has been dismissed by the user! offer_impression_id=" + args.OfferImpression.id);
-    }
-
-    public static void OnOfferAccepted(object sender, OfferImpressionEventArgs args)
-    {
-        Debug.Log("[UW Example]: Offer was accepted! offer_impression_id=" + args.OfferImpression.id);
-
-        OfferImpression offerImpression = args.OfferImpression;
-
-        string androidId = offerImpression.offer.androidProductId;
-        string iOSId = offerImpression.offer.iOSProductId;
-        Dictionary<string, int> bundleContent = offerImpression.offer.currencies;
-
-        // Once an offer has been accepted the itself impression will stay in a state of "accepted"
-        // on the UserWise servers.  There are currently two possible states beyond "accepted":
-        //   - PURCHASED
-        //   - PURCHASE_FAILED
+        // All impressions start at the state "initialized". You can find all possible states
+        // through the OfferImpression.ImpressionState enum. 
         //
-        // You can update to these states through the OfferImpression#updateState() method.
-        //
-        // Examples:
+        // You can Update the state of an impression through the use of:
+        // UserWise.INSTANCE.OffersModule.UpdateOfferImpressionState(OfferImpression impression, OfferImpression.ImpressionState state);
 
-        // 1. You display the buy screen. User purchases. You call:
-        offerImpression.UpdateState(OfferImpressionState.purchased);
-
-        // 2. The purchase process fails in any form. You'd call:
-        //offerImpression.UpdateState(OfferImpressionState.purchase_failed);
+        // Mark as "viewed" (previously, "initialized")
+        UserWise.INSTANCE.OffersModule.UpdateOfferImpressionState(args.OfferImpression, OfferImpression.ImpressionState.viewed);
     }
 }

@@ -21,76 +21,41 @@ UIColor* colorFromHexString(NSString *hexString) {
 
 /// MARK: UserWise Native Listeners
 @implementation iOSToUnitySurveyListener
-// onSurveyAvailable and onSurveysUnavailable are handled within "native" C#
-// and should not be used.
-- (void)onSurveyAvailableWithResponseId:(NSString * _Nonnull)responseId {}
-
-
-- (void)onSurveyInviteInitializedWithWasInitialized:(BOOL)wasInitialized
-                                         responseId:(NSString * _Nullable)responseId
-                                           inviteId:(NSString * _Nullable)inviteId {}
--(void)onSurveysUnavailable {}
-
--(void)onSurveyEnteredWithResponseId:(NSString *)responseId {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEntered", "");
+-(void)onSurveyCompletedWithResponseId:(NSString *)responseId {
 }
+- (void)onSurveyAvailableWithSurvey:(Survey * _Nonnull)survey {}
 
--(void)onSurveyClosedWithResponseId:(NSString *)responseId {
+- (void)onSurveyClosedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyClosed", "");
 }
 
--(void)onSurveyCompletedWithResponseId:(NSString *)responseId {
+- (void)onSurveyCompletedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyCompleted", "");
+
 }
 
-- (void)onSurveyEnterFailedWithResponseId:(NSString *)responseId {
+- (void)onSurveyEnterFailedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEnterFailed", "");
 }
+
+- (void)onSurveyEnteredWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEntered", "");
+}
+
+- (void)onSurveyInviteInitializedWithSurvey:(Survey * _Nonnull)survey wasInitialized:(BOOL)wasInitialized responseId:(NSString * _Nullable)responseId inviteId:(NSString * _Nullable)inviteId {
+}
+
+- (void)onSurveysLoaded {
+
+}
+
 @end
-
-NSString * const OfferViewAttemptFailedReason_ToString[] = {
-    [OfferViewAttemptFailedReasonServerError] = @"server",
-    [OfferViewAttemptFailedReasonOfferAlreadyActive] = @"already_active"
-};
-
-@implementation iOSToUnityOfferListener
-- (void)onOfferAvailableWithOfferId:(NSString *)offerId {}
-
-- (void)onOfferImpressionInitializationFailedWithOfferId:(NSString *)offerId {}
-
-- (void)onOfferImpressionInitialized:(OfferImpression *)offerImpression {}
-
-- (void)onOfferUnavailable {}
-
-- (void)onOfferAcceptedWithOfferImpression:(OfferImpression *)offerImpression {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferAccepted", "");
-}
-
-- (void)onOfferDismissedWithOfferImpression:(OfferImpression *)offerImpression {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferDismissed", "");
-}
-
-- (void)onOfferViewAttemptFailedWithOfferImpression:(OfferImpression *)offerImpression
-                                             reason:(enum OfferViewAttemptFailedReason)reason {
-    UnitySendMessage([self.gameObjectName UTF8String],
-                     "OnOfferViewAttemptFailed",
-                     [OfferViewAttemptFailedReason_ToString[reason] UTF8String]);
-}
-
-- (void)onOfferViewedWithOfferImpression:(OfferImpression *)offerImpression {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnOfferViewed", "");
-}
-@end
-
 
 
 
 /// MARK: Surveys Native Control
 SurveysModule* getSurveysModule() {
     UserWise *userWise = [UserWise sharedInstance];
-    if (userWise.surveysModule == nil) {
-        userWise.surveysModule = [SurveysModule alloc];
-    }
     return userWise.surveysModule;
 }
 
@@ -121,40 +86,12 @@ void _setSplashScreenLogo(const char *logoAppPath) {
 
 void _loadTakeSurveyPage(const char *surveyUrl, const char *responseId) {
     UserWise *userWise = [UserWise sharedInstance];
-    
+
     [SurveyWebViewController
-        loadControllerWithSurveyUrl:nsStringFromCString(surveyUrl)
+        loadControllerWithSurvey:[Survey alloc]
+        surveyUrl:nsStringFromCString(surveyUrl)
         splashScreenStyles:[userWise.surveysModule styleConfiguration]
         responseId:nsStringFromCString(responseId)];
-}
-
-
-
-
-/// MARK: Offers Native Control
-OfferPopupController *activeController;
-OffersModule *getOffersModule() {
-    UserWise *userWise = [UserWise sharedInstance];
-    if (userWise.offersModule == nil) {
-        userWise.offersModule = [OffersModule alloc];
-    }
-    return userWise.offersModule;
-}
-
-void _setOffersNativeEventListener(const char *gameObjectName) {
-    iOSToUnityOfferListener *listener = [iOSToUnityOfferListener alloc];
-    [listener setGameObjectName:nsStringFromCString(gameObjectName)];
-    [getOffersModule() setOfferDelegate:listener];
-}
-
-void _unsetOffersNativeEventListener() {
-    [getOffersModule() setOfferDelegate:nil];
-}
-
-void _loadShowOfferView(const char *offerUrl) {
-    if (![OfferPopupManager isAnOfferDisplayed]) { return; }
-    
-    [OfferPopupManager showOfferWithImpression:nil offerUrl:nsStringFromCString(offerUrl)];
 }
 
 

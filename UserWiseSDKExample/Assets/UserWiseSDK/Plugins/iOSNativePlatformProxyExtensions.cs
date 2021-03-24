@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
-using UserWiseSDK.Offers;
 
-namespace UserWiseSDK.Platforms
+namespace UserWiseSDK.Internal.Platforms
 {
     static class iOSNativePlatformProxyExtensions
     {
 #if UNITY_IOS
         [DllImport("__Internal")]
-        private static extern void _setUserWiseiOSEventListener(string gameObjName);
+        private static extern void _setSurveysNativeEventListener(string gameObjName);
         [DllImport("__Internal")]
-        private static extern void _unsetUserWiseiOSEventListener();
+        private static extern void _unsetSurveysNativeEventListener();
 
         [DllImport("__Internal")]
-        private static extern bool _isAnOfferActive();
-        [DllImport("__Internal")]
-        private static extern void _launchShowOfferView(OfferImpression offerImpression, string offerUrl);
-
-        [DllImport("__Internal")]
-        private static extern void _loadTakeSurveyPage(string surveyUrl);
+        private static extern void _loadTakeSurveyPage(string surveyUrl, string responseId);
         [DllImport("__Internal")]
         private static extern void _setColors(string primaryColorHex, string splashScreenBackgroundColorHex);
         [DllImport("__Internal")]
@@ -43,11 +37,8 @@ namespace UserWiseSDK.Platforms
         {
             Logger.Log("Setting Native iOS Functions");
             iOSNativePlatformProxy proxy = (iOSNativePlatformProxy)NativePlatformProxyFactory.GetNativePlatformProxy();
-            proxy.setEventListenerNativeFunction += _setUserWiseiOSEventListener;
-            proxy.unsetEventListenerNativeFunction += _unsetUserWiseiOSEventListener;
-
-            proxy.isAnOfferActiveNativeFunction += _isAnOfferActive;
-            proxy.launchShowOfferViewNativeFunction += _launchShowOfferView;
+            proxy.setEventListenerNativeFunction += _setSurveysNativeEventListener;
+            proxy.unsetEventListenerNativeFunction += _unsetSurveysNativeEventListener;
 
             proxy.loadTakeSurveyPageNativeFunction += _loadTakeSurveyPage;
             proxy.setColorsNativeFunction += _setColors;
