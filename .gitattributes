@@ -826,4 +826,5 @@
 /UserWiseSDKExample/Logs/AssetImportWorker0.log filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Logs/shadercompiler-UnityShaderCompiler0.log filter=lfs diff=lfs merge=lfs -text
 /userwise-2.0.0.unitypackage filter=lfs diff=lfs merge=lfs -text
+/userwise-2.0.1.unitypackage filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
