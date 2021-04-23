@@ -1,10 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{36924CEB-4911-4B7A-725A-C4088106DA13}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoComponent.cs">
     <Files>
+      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="52" Column="41" />
       <File FileName="Assets/Scripts/SurveyEventHandler.cs" Line="30" Column="26" />
-      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="196" Column="35" />
-      <File FileName="Assets/Scripts/OfferEventHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SurveyInviteComponent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/OfferEventHandler.cs" />
+      <File FileName="Assets/Scripts/SurveyInviteComponent.cs" />
+      <File FileName="Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,6 +15,9 @@
               <Node name="Scripts" expanded="True">
                 <Node name="UserWiseDemoComponent.cs" selected="True" />
               </Node>
+              <Node name="UserWiseSDK" expanded="True">
+                <Node name="Plugins" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -22,7 +26,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="28c69ece-b535-4042-8014-e3a965c91ab4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d184e3ac-a1c8-4e90-b7ab-03d788f6f2a5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

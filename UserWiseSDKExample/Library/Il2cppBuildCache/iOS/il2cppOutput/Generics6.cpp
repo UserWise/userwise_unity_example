@@ -25615,55 +25615,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1__ctor_m01785A70425854FF40C8D0
 // System.String UserWiseSDK.Variables.Types.Variable`1<System.Boolean>::GetName()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetName_mC9A7FADBCE837108BE254BC0279AD073236162F6_gshared (Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 * __this, const RuntimeMethod* method)
 {
-	String_t* V_0 = NULL;
 	{
 		String_t* L_0 = (String_t*)__this->get_Name_1();
-		V_0 = (String_t*)L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		String_t* L_1 = V_0;
-		return (String_t*)L_1;
+		return (String_t*)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Boolean>::GetDefaultValue()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetDefaultValue_m6D80EC96BFE1EF8A5FC6D28FAEB40B5C665EFFBD_gshared (Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		bool L_0 = (bool)__this->get_DefaultValue_2();
 		bool L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Boolean>::GetValueForCache()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetValueForCache_m8E8763E3DF4316FEB3E861EAEA4D05E49A347D97_gshared (Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		NullCheck((Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 *)__this);
 		bool L_0;
 		L_0 = ((  bool (*) (Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 *, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1)->methodPointer)((Variable_1_t91DA6FF2F74742DD5CC089B96ACEC679B9080AA7 *)__this, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1));
 		bool L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Boolean>::SetValueFromCache(System.Object)
@@ -25713,14 +25689,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_SetCurrentValue_mDE02CC41CCDE
 		if (L_3)
 		{
 			G_B2_0 = L_3;
-			goto IL_001c;
+			goto IL_0019;
 		}
 	}
 	{
-		goto IL_0034;
+		return;
 	}
 
-IL_001c:
+IL_0019:
 	{
 		bool L_4 = V_0;
 		bool L_5 = L_4;
@@ -25732,10 +25708,6 @@ IL_001c:
 		OnValueChangeEventArgs__ctor_mD22CC0753E4CB6AE7953F3A0E24869D98447DDC0(L_10, (RuntimeObject *)L_6, (RuntimeObject *)L_9, /*hidden argument*/NULL);
 		NullCheck((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0);
 		EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0, (RuntimeObject *)__this, (OnValueChangeEventArgs_tF4744B9AE7D112C7FB79E9E8FC321B2629D06CD9 *)L_10, /*hidden argument*/EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E_RuntimeMethod_var);
-	}
-
-IL_0034:
-	{
 		return;
 	}
 }
@@ -25749,7 +25721,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2B9B6C84CC15492CCB290C4B79418FA6D7DD24C1);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
 		int32_t L_0 = (int32_t)__this->get_Type_3();
 		int32_t L_1 = L_0;
@@ -25760,14 +25731,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		NullCheck((String_t*)L_3);
 		String_t* L_4;
 		L_4 = String_ToLower_m7875A49FE166D0A68F3F6B6E70C0C056EBEFD31D((String_t*)L_3, /*hidden argument*/NULL);
-		V_0 = (String_t*)L_4;
-		goto IL_001e;
-	}
-
-IL_001e:
-	{
-		String_t* L_5 = V_0;
-		return (String_t*)L_5;
+		return (String_t*)L_4;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Boolean>::RunUpdateSafely(System.Action)
@@ -25776,28 +25740,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_RunUpdateSafely_mEE04F3BF917A
 	Exception_t * V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
-	{
-	}
 
-IL_0001:
+IL_0000:
 	try
 	{ // begin try (depth: 1)
 		Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 * L_0 = ___handler0;
 		NullCheck((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0);
 		Action_Invoke_m3FFA5BE3D64F0FF8E1E1CB6F953913FADB5EB89E((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0, /*hidden argument*/NULL);
-		goto IL_002e;
+		goto IL_0027;
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
 	{
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_000c;
+			goto CATCH_0008;
 		}
 		throw e;
 	}
 
-CATCH_000c:
+CATCH_0008:
 	{ // begin catch(System.Exception)
 		V_0 = (Exception_t *)((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		String_t* L_1 = (String_t*)__this->get_Name_1();
@@ -25809,10 +25771,10 @@ CATCH_000c:
 		L_4 = String_Format_m8D1CB0410C35E052A53AE957C914C841E54BAB66((String_t*)((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral301FCCA82CCDE2F709036A8E6B5E4CB239942013)), (RuntimeObject *)L_1, (RuntimeObject *)L_3, /*hidden argument*/NULL);
 		Logger_Log_mD812E8836FE8B23379FCD434AD8A984B2CAA1B19((String_t*)L_4, (bool)0, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_002e;
+		goto IL_0027;
 	} // end catch (depth: 1)
 
-IL_002e:
+IL_0027:
 	{
 		return;
 	}
@@ -25946,55 +25908,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1__ctor_mC6E105A83C57F04EB8F0CF
 // System.String UserWiseSDK.Variables.Types.Variable`1<System.DateTime>::GetName()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetName_mF753B3C83428339C8130D55337EBB69E824DC461_gshared (Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E * __this, const RuntimeMethod* method)
 {
-	String_t* V_0 = NULL;
 	{
 		String_t* L_0 = (String_t*)__this->get_Name_1();
-		V_0 = (String_t*)L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		String_t* L_1 = V_0;
-		return (String_t*)L_1;
+		return (String_t*)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.DateTime>::GetDefaultValue()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetDefaultValue_mD2F7E2EFA70B8C730A64460B80D38F5E5D4B2F94_gshared (Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_0 = (DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405 )__this->get_DefaultValue_2();
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.DateTime>::GetValueForCache()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetValueForCache_m15517611E60310048A5EBC134D9254CBF6965EE6_gshared (Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		NullCheck((Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E *)__this);
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_0;
 		L_0 = ((  DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  (*) (Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E *, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1)->methodPointer)((Variable_1_t06A66B877EE80107FE9DC72A3EB3B40E041D164E *)__this, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1));
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.DateTime>::SetValueFromCache(System.Object)
@@ -26045,14 +25983,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_SetCurrentValue_m9F1B26F9291C
 		if (L_3)
 		{
 			G_B2_0 = L_3;
-			goto IL_001c;
+			goto IL_0019;
 		}
 	}
 	{
-		goto IL_0034;
+		return;
 	}
 
-IL_001c:
+IL_0019:
 	{
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_4 = V_0;
 		DateTime_tEAF2CD16E071DF5441F40822E4CFE880E5245405  L_5 = L_4;
@@ -26064,10 +26002,6 @@ IL_001c:
 		OnValueChangeEventArgs__ctor_mD22CC0753E4CB6AE7953F3A0E24869D98447DDC0(L_10, (RuntimeObject *)L_6, (RuntimeObject *)L_9, /*hidden argument*/NULL);
 		NullCheck((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0);
 		EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0, (RuntimeObject *)__this, (OnValueChangeEventArgs_tF4744B9AE7D112C7FB79E9E8FC321B2629D06CD9 *)L_10, /*hidden argument*/EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E_RuntimeMethod_var);
-	}
-
-IL_0034:
-	{
 		return;
 	}
 }
@@ -26081,7 +26015,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2B9B6C84CC15492CCB290C4B79418FA6D7DD24C1);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
 		int32_t L_0 = (int32_t)__this->get_Type_3();
 		int32_t L_1 = L_0;
@@ -26092,14 +26025,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		NullCheck((String_t*)L_3);
 		String_t* L_4;
 		L_4 = String_ToLower_m7875A49FE166D0A68F3F6B6E70C0C056EBEFD31D((String_t*)L_3, /*hidden argument*/NULL);
-		V_0 = (String_t*)L_4;
-		goto IL_001e;
-	}
-
-IL_001e:
-	{
-		String_t* L_5 = V_0;
-		return (String_t*)L_5;
+		return (String_t*)L_4;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.DateTime>::RunUpdateSafely(System.Action)
@@ -26108,28 +26034,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_RunUpdateSafely_m7F4FD35024F7
 	Exception_t * V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
-	{
-	}
 
-IL_0001:
+IL_0000:
 	try
 	{ // begin try (depth: 1)
 		Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 * L_0 = ___handler0;
 		NullCheck((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0);
 		Action_Invoke_m3FFA5BE3D64F0FF8E1E1CB6F953913FADB5EB89E((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0, /*hidden argument*/NULL);
-		goto IL_002e;
+		goto IL_0027;
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
 	{
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_000c;
+			goto CATCH_0008;
 		}
 		throw e;
 	}
 
-CATCH_000c:
+CATCH_0008:
 	{ // begin catch(System.Exception)
 		V_0 = (Exception_t *)((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		String_t* L_1 = (String_t*)__this->get_Name_1();
@@ -26141,10 +26065,10 @@ CATCH_000c:
 		L_4 = String_Format_m8D1CB0410C35E052A53AE957C914C841E54BAB66((String_t*)((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral301FCCA82CCDE2F709036A8E6B5E4CB239942013)), (RuntimeObject *)L_1, (RuntimeObject *)L_3, /*hidden argument*/NULL);
 		Logger_Log_mD812E8836FE8B23379FCD434AD8A984B2CAA1B19((String_t*)L_4, (bool)0, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_002e;
+		goto IL_0027;
 	} // end catch (depth: 1)
 
-IL_002e:
+IL_0027:
 	{
 		return;
 	}
@@ -26278,55 +26202,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1__ctor_m7D38F37847A5A6A28BE4E7
 // System.String UserWiseSDK.Variables.Types.Variable`1<System.Double>::GetName()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetName_mC4E9744EBE8C91B563A2740EBD10C092E48AD4D1_gshared (Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 * __this, const RuntimeMethod* method)
 {
-	String_t* V_0 = NULL;
 	{
 		String_t* L_0 = (String_t*)__this->get_Name_1();
-		V_0 = (String_t*)L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		String_t* L_1 = V_0;
-		return (String_t*)L_1;
+		return (String_t*)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Double>::GetDefaultValue()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetDefaultValue_mF67D49F106A6D6F8FAE7717143FF79F609F87784_gshared (Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		double L_0 = (double)__this->get_DefaultValue_2();
 		double L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Double>::GetValueForCache()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetValueForCache_mC8DCBD116780793C4ED23BDDCB59FC0FB46C5788_gshared (Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		NullCheck((Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 *)__this);
 		double L_0;
 		L_0 = ((  double (*) (Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 *, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1)->methodPointer)((Variable_1_tEDC44025FE0FA413219CCFD87E419FCCE5214825 *)__this, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1));
 		double L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Double>::SetValueFromCache(System.Object)
@@ -26376,14 +26276,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_SetCurrentValue_m0B7C777A6B18
 		if (L_3)
 		{
 			G_B2_0 = L_3;
-			goto IL_001c;
+			goto IL_0019;
 		}
 	}
 	{
-		goto IL_0034;
+		return;
 	}
 
-IL_001c:
+IL_0019:
 	{
 		double L_4 = V_0;
 		double L_5 = L_4;
@@ -26395,10 +26295,6 @@ IL_001c:
 		OnValueChangeEventArgs__ctor_mD22CC0753E4CB6AE7953F3A0E24869D98447DDC0(L_10, (RuntimeObject *)L_6, (RuntimeObject *)L_9, /*hidden argument*/NULL);
 		NullCheck((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0);
 		EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0, (RuntimeObject *)__this, (OnValueChangeEventArgs_tF4744B9AE7D112C7FB79E9E8FC321B2629D06CD9 *)L_10, /*hidden argument*/EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E_RuntimeMethod_var);
-	}
-
-IL_0034:
-	{
 		return;
 	}
 }
@@ -26412,7 +26308,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2B9B6C84CC15492CCB290C4B79418FA6D7DD24C1);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
 		int32_t L_0 = (int32_t)__this->get_Type_3();
 		int32_t L_1 = L_0;
@@ -26423,14 +26318,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		NullCheck((String_t*)L_3);
 		String_t* L_4;
 		L_4 = String_ToLower_m7875A49FE166D0A68F3F6B6E70C0C056EBEFD31D((String_t*)L_3, /*hidden argument*/NULL);
-		V_0 = (String_t*)L_4;
-		goto IL_001e;
-	}
-
-IL_001e:
-	{
-		String_t* L_5 = V_0;
-		return (String_t*)L_5;
+		return (String_t*)L_4;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Double>::RunUpdateSafely(System.Action)
@@ -26439,28 +26327,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_RunUpdateSafely_m8ABCF5DBBD72
 	Exception_t * V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
-	{
-	}
 
-IL_0001:
+IL_0000:
 	try
 	{ // begin try (depth: 1)
 		Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 * L_0 = ___handler0;
 		NullCheck((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0);
 		Action_Invoke_m3FFA5BE3D64F0FF8E1E1CB6F953913FADB5EB89E((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0, /*hidden argument*/NULL);
-		goto IL_002e;
+		goto IL_0027;
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
 	{
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_000c;
+			goto CATCH_0008;
 		}
 		throw e;
 	}
 
-CATCH_000c:
+CATCH_0008:
 	{ // begin catch(System.Exception)
 		V_0 = (Exception_t *)((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		String_t* L_1 = (String_t*)__this->get_Name_1();
@@ -26472,10 +26358,10 @@ CATCH_000c:
 		L_4 = String_Format_m8D1CB0410C35E052A53AE957C914C841E54BAB66((String_t*)((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral301FCCA82CCDE2F709036A8E6B5E4CB239942013)), (RuntimeObject *)L_1, (RuntimeObject *)L_3, /*hidden argument*/NULL);
 		Logger_Log_mD812E8836FE8B23379FCD434AD8A984B2CAA1B19((String_t*)L_4, (bool)0, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_002e;
+		goto IL_0027;
 	} // end catch (depth: 1)
 
-IL_002e:
+IL_0027:
 	{
 		return;
 	}
@@ -26609,55 +26495,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1__ctor_m01B7A96B13C5F4868CF71C
 // System.String UserWiseSDK.Variables.Types.Variable`1<System.Int64>::GetName()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetName_m28C013B1DDEC0A292A62584016E5F54D9C5FEA3A_gshared (Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A * __this, const RuntimeMethod* method)
 {
-	String_t* V_0 = NULL;
 	{
 		String_t* L_0 = (String_t*)__this->get_Name_1();
-		V_0 = (String_t*)L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		String_t* L_1 = V_0;
-		return (String_t*)L_1;
+		return (String_t*)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Int64>::GetDefaultValue()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetDefaultValue_mA168C6E919BD5BFA905F3938042520C745AAA3D7_gshared (Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		int64_t L_0 = (int64_t)__this->get_DefaultValue_2();
 		int64_t L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Int64>::GetValueForCache()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetValueForCache_mD6806A09CD38A93046232FFA2A43043185E0D4B8_gshared (Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		NullCheck((Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A *)__this);
 		int64_t L_0;
 		L_0 = ((  int64_t (*) (Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A *, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1)->methodPointer)((Variable_1_tE9ABE3A8F482524D2F714CCC96D51987F9A40E7A *)__this, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1));
 		int64_t L_1 = L_0;
 		RuntimeObject * L_2 = Box(IL2CPP_RGCTX_DATA(method->klass->rgctx_data, 0), &L_1);
-		V_0 = (RuntimeObject *)L_2;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_3 = V_0;
-		return (RuntimeObject *)L_3;
+		return (RuntimeObject *)L_2;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Int64>::SetValueFromCache(System.Object)
@@ -26707,14 +26569,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_SetCurrentValue_m500F915B13D7
 		if (L_3)
 		{
 			G_B2_0 = L_3;
-			goto IL_001c;
+			goto IL_0019;
 		}
 	}
 	{
-		goto IL_0034;
+		return;
 	}
 
-IL_001c:
+IL_0019:
 	{
 		int64_t L_4 = V_0;
 		int64_t L_5 = L_4;
@@ -26726,10 +26588,6 @@ IL_001c:
 		OnValueChangeEventArgs__ctor_mD22CC0753E4CB6AE7953F3A0E24869D98447DDC0(L_10, (RuntimeObject *)L_6, (RuntimeObject *)L_9, /*hidden argument*/NULL);
 		NullCheck((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0);
 		EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0, (RuntimeObject *)__this, (OnValueChangeEventArgs_tF4744B9AE7D112C7FB79E9E8FC321B2629D06CD9 *)L_10, /*hidden argument*/EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E_RuntimeMethod_var);
-	}
-
-IL_0034:
-	{
 		return;
 	}
 }
@@ -26743,7 +26601,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2B9B6C84CC15492CCB290C4B79418FA6D7DD24C1);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
 		int32_t L_0 = (int32_t)__this->get_Type_3();
 		int32_t L_1 = L_0;
@@ -26754,14 +26611,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		NullCheck((String_t*)L_3);
 		String_t* L_4;
 		L_4 = String_ToLower_m7875A49FE166D0A68F3F6B6E70C0C056EBEFD31D((String_t*)L_3, /*hidden argument*/NULL);
-		V_0 = (String_t*)L_4;
-		goto IL_001e;
-	}
-
-IL_001e:
-	{
-		String_t* L_5 = V_0;
-		return (String_t*)L_5;
+		return (String_t*)L_4;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Int64>::RunUpdateSafely(System.Action)
@@ -26770,28 +26620,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_RunUpdateSafely_m9F1FFB7EF2A6
 	Exception_t * V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
-	{
-	}
 
-IL_0001:
+IL_0000:
 	try
 	{ // begin try (depth: 1)
 		Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 * L_0 = ___handler0;
 		NullCheck((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0);
 		Action_Invoke_m3FFA5BE3D64F0FF8E1E1CB6F953913FADB5EB89E((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0, /*hidden argument*/NULL);
-		goto IL_002e;
+		goto IL_0027;
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
 	{
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_000c;
+			goto CATCH_0008;
 		}
 		throw e;
 	}
 
-CATCH_000c:
+CATCH_0008:
 	{ // begin catch(System.Exception)
 		V_0 = (Exception_t *)((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		String_t* L_1 = (String_t*)__this->get_Name_1();
@@ -26803,10 +26651,10 @@ CATCH_000c:
 		L_4 = String_Format_m8D1CB0410C35E052A53AE957C914C841E54BAB66((String_t*)((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral301FCCA82CCDE2F709036A8E6B5E4CB239942013)), (RuntimeObject *)L_1, (RuntimeObject *)L_3, /*hidden argument*/NULL);
 		Logger_Log_mD812E8836FE8B23379FCD434AD8A984B2CAA1B19((String_t*)L_4, (bool)0, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_002e;
+		goto IL_0027;
 	} // end catch (depth: 1)
 
-IL_002e:
+IL_0027:
 	{
 		return;
 	}
@@ -26940,51 +26788,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1__ctor_mE8C1A5ABF8E0B47ADBB5AD
 // System.String UserWiseSDK.Variables.Types.Variable`1<System.Object>::GetName()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetName_mC911B3D342C6D643CC9C4B1715B55A0E513B3634_gshared (Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 * __this, const RuntimeMethod* method)
 {
-	String_t* V_0 = NULL;
 	{
 		String_t* L_0 = (String_t*)__this->get_Name_1();
-		V_0 = (String_t*)L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		String_t* L_1 = V_0;
-		return (String_t*)L_1;
+		return (String_t*)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Object>::GetDefaultValue()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetDefaultValue_mBA3DEC7E0129BC875FA8F7AFB97EEE6CC84F5702_gshared (Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		RuntimeObject * L_0 = (RuntimeObject *)__this->get_DefaultValue_2();
-		V_0 = (RuntimeObject *)L_0;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_1 = V_0;
-		return (RuntimeObject *)L_1;
+		return (RuntimeObject *)L_0;
 	}
 }
 // System.Object UserWiseSDK.Variables.Types.Variable`1<System.Object>::GetValueForCache()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject * Variable_1_GetValueForCache_m7D4D1C26C0B2FFF6CB94CAA4D464C0603FB5E0E8_gshared (Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 * __this, const RuntimeMethod* method)
 {
-	RuntimeObject * V_0 = NULL;
 	{
 		NullCheck((Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 *)__this);
 		RuntimeObject * L_0;
 		L_0 = ((  RuntimeObject * (*) (Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 *, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1)->methodPointer)((Variable_1_t5EC5F7553D41F631E59F07E69F8AD3D773497278 *)__this, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->klass->rgctx_data, 1));
-		V_0 = (RuntimeObject *)L_0;
-		goto IL_000f;
-	}
-
-IL_000f:
-	{
-		RuntimeObject * L_1 = V_0;
-		return (RuntimeObject *)L_1;
+		return (RuntimeObject *)L_0;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Object>::SetValueFromCache(System.Object)
@@ -27034,14 +26858,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_SetCurrentValue_m51979A37993B
 		if (L_3)
 		{
 			G_B2_0 = L_3;
-			goto IL_001c;
+			goto IL_0019;
 		}
 	}
 	{
-		goto IL_0034;
+		return;
 	}
 
-IL_001c:
+IL_0019:
 	{
 		RuntimeObject * L_4 = V_0;
 		RuntimeObject * L_5 = ___newValue0;
@@ -27049,10 +26873,6 @@ IL_001c:
 		OnValueChangeEventArgs__ctor_mD22CC0753E4CB6AE7953F3A0E24869D98447DDC0(L_6, (RuntimeObject *)L_4, (RuntimeObject *)L_5, /*hidden argument*/NULL);
 		NullCheck((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0);
 		EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E((EventHandler_1_t8BA7C98495FFAC2626F102D680E05F7066D6E69C *)G_B2_0, (RuntimeObject *)__this, (OnValueChangeEventArgs_tF4744B9AE7D112C7FB79E9E8FC321B2629D06CD9 *)L_6, /*hidden argument*/EventHandler_1_Invoke_m0A9AAF48B2BA85FC4902D504FA1DD3635D1D7C4E_RuntimeMethod_var);
-	}
-
-IL_0034:
-	{
 		return;
 	}
 }
@@ -27066,7 +26886,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2B9B6C84CC15492CCB290C4B79418FA6D7DD24C1);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
 		int32_t L_0 = (int32_t)__this->get_Type_3();
 		int32_t L_1 = L_0;
@@ -27077,14 +26896,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Variable_1_GetLowercaseVariableType
 		NullCheck((String_t*)L_3);
 		String_t* L_4;
 		L_4 = String_ToLower_m7875A49FE166D0A68F3F6B6E70C0C056EBEFD31D((String_t*)L_3, /*hidden argument*/NULL);
-		V_0 = (String_t*)L_4;
-		goto IL_001e;
-	}
-
-IL_001e:
-	{
-		String_t* L_5 = V_0;
-		return (String_t*)L_5;
+		return (String_t*)L_4;
 	}
 }
 // System.Void UserWiseSDK.Variables.Types.Variable`1<System.Object>::RunUpdateSafely(System.Action)
@@ -27093,28 +26905,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Variable_1_RunUpdateSafely_m3FB0150B08DF
 	Exception_t * V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
-	{
-	}
 
-IL_0001:
+IL_0000:
 	try
 	{ // begin try (depth: 1)
 		Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 * L_0 = ___handler0;
 		NullCheck((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0);
 		Action_Invoke_m3FFA5BE3D64F0FF8E1E1CB6F953913FADB5EB89E((Action_tAF41423D285AE0862865348CF6CE51CD085ABBA6 *)L_0, /*hidden argument*/NULL);
-		goto IL_002e;
+		goto IL_0027;
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
 	{
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_000c;
+			goto CATCH_0008;
 		}
 		throw e;
 	}
 
-CATCH_000c:
+CATCH_0008:
 	{ // begin catch(System.Exception)
 		V_0 = (Exception_t *)((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		String_t* L_1 = (String_t*)__this->get_Name_1();
@@ -27126,10 +26936,10 @@ CATCH_000c:
 		L_4 = String_Format_m8D1CB0410C35E052A53AE957C914C841E54BAB66((String_t*)((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral301FCCA82CCDE2F709036A8E6B5E4CB239942013)), (RuntimeObject *)L_1, (RuntimeObject *)L_3, /*hidden argument*/NULL);
 		Logger_Log_mD812E8836FE8B23379FCD434AD8A984B2CAA1B19((String_t*)L_4, (bool)0, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_002e;
+		goto IL_0027;
 	} // end catch (depth: 1)
 
-IL_002e:
+IL_0027:
 	{
 		return;
 	}
