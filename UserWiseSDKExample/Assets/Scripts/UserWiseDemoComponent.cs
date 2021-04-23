@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System;
 using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UserWiseSDK;
 using UserWiseSDK.Surveys;
@@ -18,7 +18,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     public InputField playerIdInput;
     public Button changePlayerButton;
 
-    private string DEFAULT_USER_ID = "userwise-example-unity-something";
+    private string DEFAULT_USER_ID = "userwise-example-unity";
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
@@ -46,13 +46,12 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         this.userwise = UserWise.INSTANCE;
 
-        string apiKey = "0abf3c41d9bf0d15b514870d9742";
-        //string apiKey = "f0d040021dcb9f26765e25da6b57";
+        string apiKey = "";
 
         this.userwise = UserWise.INSTANCE;
-        this.userwise.DebugMode = true;
+        this.userwise.DebugMode = false;
         this.userwise.UserId = DEFAULT_USER_ID;
-        this.userwise.HostOverride = "http://192.168.1.163:3000";
+        this.userwise.HostOverride = "https://staging.userwise.io";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
@@ -166,27 +165,35 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void Userwise_OnSessionInitialized(object sender, OnSessionInitializedEventArgs e)
     {
+        StartCoroutine(AssignLoginData());
+    }
+
+    private IEnumerator AssignLoginData()
+    {
+        yield return new WaitForSeconds(5);
         AssignEvent();
         AssignAttribute();
     }
 
     private void AssignEvent()
     {
+        Debug.Log("Assigning Events");
         this.userwise.AssignEvent(
-            new PlayerEvent("tutorial_completed", new List<PlayerAttribute> {
-                new PlayerAttribute("first_time", "false", PlayerAttribute.DataTypeType.Boolean)
+            new PlayerEvent("event_logged_in", new List<PlayerEventAttribute> {
+                new PlayerEventAttribute("new_player", false, AttributableDataType.BOOLEAN),
             })
         );
     }
 
     private void AssignAttribute()
     {
+        Debug.Log("Assigning Attributes");
         this.userwise.SetAttributes(new List<PlayerAttribute> {
-            new PlayerAttribute("unity_player_level", "100", PlayerAttribute.DataTypeType.Integer),
-            new PlayerAttribute("unity_player_coins", "25.50", PlayerAttribute.DataTypeType.Float),
-            new PlayerAttribute("unity_player_login_date", DateTime.UtcNow.ToString("o"), PlayerAttribute.DataTypeType.DateTime),
-            new PlayerAttribute("unity_player_is_whale", "true", PlayerAttribute.DataTypeType.Boolean),
-            new PlayerAttribute("unity_player_name", "awesome_hero_you", PlayerAttribute.DataTypeType.String)
+            new PlayerAttribute("coins", 1000, AttributableDataType.INTEGER),
+            new PlayerAttribute("ltv", 125.50, AttributableDataType.FLOAT),
+            new PlayerAttribute("login_datetime", DateTime.UtcNow.ToString("o"), AttributableDataType.DATETIME),
+            new PlayerAttribute("season_spring_2021_passholder", true, AttributableDataType.BOOLEAN),
+            new PlayerAttribute("guild_name", "My Guild", AttributableDataType.STRING)
         });
     }
 
