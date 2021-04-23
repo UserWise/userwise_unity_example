@@ -12,80 +12,51 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53615
+55379
 Successfully changed project path to: /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample
 /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 51.03 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 49.65 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Assets
 GfxDevice: creating device client; threaded=0
-2021-04-23 15:33:15.024 Unity[21938:4747453] Color LCD preferred device: AMD Radeon Pro 555X (high power)
-2021-04-23 15:33:15.025 Unity[21938:4747453] Metal devices available: 2
-2021-04-23 15:33:15.025 Unity[21938:4747453] 0: AMD Radeon Pro 555X (high power)
-2021-04-23 15:33:15.025 Unity[21938:4747453] 1: Intel(R) UHD Graphics 630 (low power)
-2021-04-23 15:33:15.025 Unity[21938:4747453] Using device AMD Radeon Pro 555X (high power)
+2021-04-23 16:17:16.260 Unity[27782:4789346] Color LCD preferred device: AMD Radeon Pro 555X (high power)
+2021-04-23 16:17:16.260 Unity[27782:4789346] Metal devices available: 2
+2021-04-23 16:17:16.261 Unity[27782:4789346] 0: AMD Radeon Pro 555X (high power)
+2021-04-23 16:17:16.261 Unity[27782:4789346] 1: Intel(R) UHD Graphics 630 (low power)
+2021-04-23 16:17:16.261 Unity[27782:4789346] Using device AMD Radeon Pro 555X (high power)
 Initializing Metal device caps: AMD Radeon Pro 555X
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56938
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56782
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000608 seconds.
+Registered in 0.000569 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 51.19 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 45.39 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.010 seconds
+- Completed reload, in  2.974 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002288 seconds.
+Registered in 0.001609 seconds.
 Begin MonoManager ReloadAssembly
-Failed while parsing XML file ProjectSettings/GvhProjectSettings.xml
-System.Xml.XmlException: Root element is missing.
-  at System.Xml.XmlTextReaderImpl.Throw (System.Exception e) [0x00027] in <1d98d70bb7d8453b80c25aa561fdecd1>:0 
-  at System.Xml.XmlTextReaderImpl.ThrowWithoutLineInfo (System.String res) [0x00017] in <1d98d70bb7d8453b80c25aa561fdecd1>:0 
-  at System.Xml.XmlTextReaderImpl.ParseDocumentContent () [0x0035d] in <1d98d70bb7d8453b80c25aa561fdecd1>:0 
-  at System.Xml.XmlTextReaderImpl.Read () [0x0008c] in <1d98d70bb7d8453b80c25aa561fdecd1>:0 
-  at System.Xml.XmlTextReader.Read () [0x00000] in <1d98d70bb7d8453b80c25aa561fdecd1>:0 
-  at Google.XmlUtilities+Reader..ctor (System.Xml.XmlTextReader xmlReader) [0x0001b] in Z:\tmp\tmp.zHMt0MAu9G\third_party\unity\unity_jar_resolver\source\VersionHandlerImpl\src\XmlUtilities.cs:69 
-  at Google.XmlUtilities.ParseXmlTextFileElements (System.String filename, Google.Logger logger, Google.XmlUtilities+ParseElement parseElement) [0x00039] in Z:\tmp\tmp.zHMt0MAu9G\third_party\unity\unity_jar_resolver\source\VersionHandlerImpl\src\XmlUtilities.cs:108 
-UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-Google.Logger:Log (string,Google.LogLevel) (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/Logger.cs:136)
-Google.XmlUtilities:ParseXmlTextFileElements (string,Google.Logger,Google.XmlUtilities/ParseElement) (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/XmlUtilities.cs:149)
-Google.ProjectSettings:Load () (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/ProjectSettings.cs:776)
-Google.ProjectSettings:LoadIfEmpty () (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/ProjectSettings.cs:557)
-Google.ProjectSettings:GetBool (string,bool,Google.SettingsLocation) (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/ProjectSettings.cs:605)
-Google.ProjectSettings:GetBool (string,bool) (at Z:/tmp/tmp.zHMt0MAu9G/third_party/unity/unity_jar_resolver/source/VersionHandlerImpl/src/ProjectSettings.cs:618)
-Google.IOSResolver:get_VerboseLoggingEnabled () (at Z:/tmp/tmp.JRghDQdeye/third_party/unity/unity_jar_resolver/source/IOSResolver/src/IOSResolver.cs:984)
-Google.IOSResolver:.cctor () (at Z:/tmp/tmp.JRghDQdeye/third_party/unity/unity_jar_resolver/source/IOSResolver/src/IOSResolver.cs:689)
-System.Reflection.MonoCMethod:InternalInvoke (object,object[])
-System.RuntimeType:CreateInstanceMono (bool)
-System.RuntimeType:CreateInstanceSlow (bool,bool,bool,System.Threading.StackCrawlMark&)
-System.RuntimeType:CreateInstanceDefaultCtor (bool,bool,bool,System.Threading.StackCrawlMark&)
-System.Activator:CreateInstance (System.Type,bool)
-System.Activator:CreateInstance (System.Type)
-UnityEditor.AssetPostprocessingInternal:GetMeshProcessorsHashString () (at /Users/bokken/buildslave/unity/build/Editor/Mono/AssetPostprocessor.cs:381)
-
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 46.57 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 44.86 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.574 seconds
+- Completed reload, in  1.375 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -94,16 +65,50 @@ Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
 Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1921 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 156.4 MB.
-System memory in use after: 126.1 MB.
+System memory in use before: 156.1 MB.
+System memory in use after: 125.9 MB.
 
 Unloading 68 unused Assets to reduce memory usage. Loaded Objects now: 2328.
-Total: 5.008316 ms (FindLiveObjects: 0.402829 ms CreateObjectMapping: 0.138256 ms MarkObjects: 4.389253 ms  DeleteObjects: 0.076873 ms)
+Total: 4.459273 ms (FindLiveObjects: 0.263345 ms CreateObjectMapping: 0.152007 ms MarkObjects: 3.967456 ms  DeleteObjects: 0.075425 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/UserWiseDemoComponent.cs
-  artifactKey: Guid(dbbcb132fb53245b0b59ae2a7629eac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UserWiseDemoComponent.cs using Guid(dbbcb132fb53245b0b59ae2a7629eac4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe982fed5308c81285586cc4745cf531') in 0.649351 seconds
-  Import took 0.652928 seconds .
+  path: Assets/Scripts/GameEventHandler.cs
+  artifactKey: Guid(425bcd1998a154fdf972d7a90ce19513) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameEventHandler.cs using Guid(425bcd1998a154fdf972d7a90ce19513) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9e54227ab935afed96b9ac7b226512d') in 0.586876 seconds
+  Import took 0.590023 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001817 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.159 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(9) subTarget(16777218) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.71 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1915 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 160.4 MB.
+System memory in use after: 160.5 MB.
+
+Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 2331.
+Total: 2.220961 ms (FindLiveObjects: 0.224489 ms CreateObjectMapping: 0.068837 ms MarkObjects: 1.900760 ms  DeleteObjects: 0.025944 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 1624.797036 seconds.
+  path: Assets/Scripts/GameEventHandler.cs
+  artifactKey: Guid(425bcd1998a154fdf972d7a90ce19513) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameEventHandler.cs using Guid(425bcd1998a154fdf972d7a90ce19513) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '072871b780a2f760f663aade65cb4384') in 0.004611 seconds
+  Import took 0.007701 seconds .
 
