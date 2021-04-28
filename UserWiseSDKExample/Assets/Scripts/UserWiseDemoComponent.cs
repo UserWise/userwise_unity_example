@@ -173,6 +173,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         yield return new WaitForSeconds(5);
         AssignEvent();
         AssignAttribute();
+        TransitionToRegion();
     }
 
     private void AssignEvent()
@@ -195,6 +196,17 @@ public class UserWiseDemoComponent : MonoBehaviour
             new PlayerAttribute("season_spring_2021_passholder", true, AttributableDataType.BOOLEAN),
             new PlayerAttribute("guild_name", "My Guild", AttributableDataType.STRING)
         });
+    }
+
+    private void TransitionToRegion()
+    {
+        Debug.Log("Transitioning To Region");
+        this.userwise.TransitionToRegion(
+            new Region("team_battle", new List<RegionMetadata> {
+                new RegionMetadata("team_one_power", 115, AttributableDataType.INTEGER),
+                new RegionMetadata("team_two_power", 258, AttributableDataType.INTEGER)
+            })
+        ); ;
     }
 
     public void InitializeSurveyInvite(Survey survey)
