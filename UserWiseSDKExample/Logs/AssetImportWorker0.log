@@ -1,0 +1,80 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+64198
+Successfully changed project path to: /Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample
+/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 82.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.0f1 (c7b5465681fb)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets
+GfxDevice: creating device client; threaded=0
+2021-05-10 16:33:34.667 Unity[9288:7380206] Color LCD preferred device: AMD Radeon Pro 5300M (high power)
+2021-05-10 16:33:34.667 Unity[9288:7380206] Metal devices available: 2
+2021-05-10 16:33:34.667 Unity[9288:7380206] 0: AMD Radeon Pro 5300M (high power)
+2021-05-10 16:33:34.667 Unity[9288:7380206] 1: Intel(R) UHD Graphics 630 (low power)
+2021-05-10 16:33:34.667 Unity[9288:7380206] Using device AMD Radeon Pro 5300M (high power)
+Initializing Metal device caps: AMD Radeon Pro 5300M
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.000591 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 43.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.416 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001905 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 46.38 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.380 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1921 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 155.0 MB.
+System memory in use after: 125.4 MB.
+
+Unloading 68 unused Assets to reduce memory usage. Loaded Objects now: 2328.
+Total: 4.157788 ms (FindLiveObjects: 0.239106 ms CreateObjectMapping: 0.079770 ms MarkObjects: 3.758078 ms  DeleteObjects: 0.079848 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Firebase
+  artifactKey: Guid(dac03cad624894b42bc2aac0fccb52f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Firebase using Guid(dac03cad624894b42bc2aac0fccb52f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bf24c6dd010ad853122fdc5b8ad902f') in 0.004391 seconds
+  Import took 0.009042 seconds .
+
