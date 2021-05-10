@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\UserWiseDemoComponent.cs" />
      <Compile Include="Assets\Scripts\SurveyInviteComponent.cs" />
      <Compile Include="Assets\Scripts\SurveyEventHandler.cs" />
+     <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
+     <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-messaging-unity\maven-metadata.xml" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -269,6 +271,27 @@
  </Reference>
  <Reference Include="UserWiseSDK">
  <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/UserWiseSDK/UserWiseSDK.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Messaging">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.App">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Tasks">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.TaskExtension">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.TaskExtension.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.MiniJson">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Platform">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Compat">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.0f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

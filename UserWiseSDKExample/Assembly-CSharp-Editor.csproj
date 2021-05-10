@@ -48,7 +48,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\UserWiseSDK\Editor\UserWisePostBuildProcessor.cs" />
+     <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.165_manifest.txt" />
      <None Include="Assets\UserWiseSDK\Editor\UserWiseSDKDependencies.xml" />
+     <None Include="Assets\Firebase\Editor\FirebaseMessaging_version-7.2.0_manifest.txt" />
+     <None Include="Assets\Firebase\Editor\MessagingDependencies.xml" />
+     <None Include="Assets\Firebase\Editor\AppDependencies.xml" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -300,6 +304,45 @@
  </Reference>
  <Reference Include="UserWiseSDK">
  <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/UserWiseSDK/UserWiseSDK.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.PackageManagerResolver_v1.2.165">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Messaging">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Messaging.Editor">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Editor/Firebase.Messaging.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.App">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Editor">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Editor/Firebase.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.165">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Tasks">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.TaskExtension">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.TaskExtension.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.MiniJson">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.165">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Firebase.Platform">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.165">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Compat">
+ <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
