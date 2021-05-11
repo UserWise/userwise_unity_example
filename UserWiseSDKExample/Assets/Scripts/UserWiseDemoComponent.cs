@@ -11,6 +11,15 @@ using UserWiseSDK.Messages;
 using UserWiseSDK.Variables;
 using UserWiseSDK.Events;
 using UserWiseSDK.Variables.Types;
+using System.Collections;
+#if UNITY_IOS
+using Unity.Notifications.iOS;
+#endif
+#if UNITY_ANDROID
+using Unity.Notifications.Android;
+#endif
+
+using System.Linq;
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -22,6 +31,9 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
+#if UNITY_ANDROID
+    private Firebase.FirebaseApp app;
+#endif
 
     private readonly BooleanVariable myBoolVar = new BooleanVariable("my_bool_var", true);
     private readonly IntegerVariable myIntVar = new IntegerVariable("my_int_var", 100);
@@ -40,19 +52,125 @@ public class UserWiseDemoComponent : MonoBehaviour
         }
 
         userwise.Start();
+
+#if UNITY_ANDROID
+        var channel = new AndroidNotificationChannel()
+        {
+            Id = "Default",
+            Name = "Default Channel",
+            Importance = Importance.High,
+            Description = "Generic notifications",
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(channel);
+
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                app = Firebase.FirebaseApp.DefaultInstance;
+
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+            }
+            else
+            {
+                Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+#endif
+
+#if UNITY_IOS
+        StartCoroutine(RequestAuthorization());
+
+        iOSNotificationCenter.OnRemoteNotificationReceived += OnRemoteNotificationReceived;
+#endif
     }
+
+#if UNITY_IOS
+    public IEnumerator RequestAuthorization()
+    {
+        using (var req = new AuthorizationRequest(AuthorizationOption.Alert | AuthorizationOption.Badge, true))
+        {
+            while (!req.IsFinished)
+            {
+                yield return null;
+            };
+
+            string res = "\n RequestAuthorization: \n";
+            res += "\n finished: " + req.IsFinished;
+            res += "\n granted :  " + req.Granted;
+            res += "\n error:  " + req.Error;
+            res += "\n deviceToken:  " + req.DeviceToken;
+            Debug.Log(res);
+
+            if (req.DeviceToken != null)
+            {
+                userwise.RegisterDeviceToken(req.DeviceToken);
+            }
+        }
+    }
+
+    public void OnRemoteNotificationReceived(iOSNotification remoteNotification)
+    {
+        // When a remote notification is received, modify its contents and show it after 1 second.
+        var timeTrigger = new iOSNotificationTimeIntervalTrigger()
+        {
+            TimeInterval = new TimeSpan(0, 0, 0),
+            Repeats = false
+        };
+
+        Debug.Log("Notification Received");
+        Debug.Log(remoteNotification.ToString());
+
+        iOSNotification notification = new iOSNotification()
+        {
+            Title = "Remote: " + remoteNotification.Title,
+            Body = "Remote: " + remoteNotification.Body,
+            ShowInForeground = true,
+            ForegroundPresentationOption = PresentationOption.Sound | PresentationOption.Alert,
+            CategoryIdentifier = remoteNotification.CategoryIdentifier,
+            Trigger = timeTrigger,
+        };
+        iOSNotificationCenter.ScheduleNotification(notification);
+    }
+#endif
+
+#if UNITY_ANDROID
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
+    {
+        Debug.Log("Received Registration Token: " + token.Token);
+        userwise.RegisterDeviceToken(token.Token);
+    }
+
+    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)
+    {
+        Debug.Log("Received a new message: " + "{" + string.Join(",", e.Message.Data.Select(kv => kv.Key + "=" + kv.Value).ToArray()) + "}");
+
+        var notification = new AndroidNotification();
+        notification.Title = e.Message.Data["title"];
+        notification.Text = e.Message.Data["body"];
+        notification.FireTime = System.DateTime.Now;
+
+        AndroidNotificationCenter.SendNotification(notification, e.Message.Data["channelId"]);
+    }
+#endif
 
     private void ConfigureUserWiseSDK()
     {
         this.userwise = UserWise.INSTANCE;
 
-        string apiKey = "0abf3c41d9bf0d15b514870d9742";
-        //string apiKey = "f0d040021dcb9f26765e25da6b57";
+        //string apiKey = "0abf3c41d9bf0d15b514870d9742";
+        string apiKey = "f1535363ad9ab340ebc9786337b0";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID;
-        this.userwise.HostOverride = "http://192.168.1.163:3000";
+        this.userwise.HostOverride = "https://staging.userwise.io";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
@@ -117,7 +235,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     }
 
     private void SetupScene()
-    { 
+    {
         surveyInviteComponent = surveyInviteDialog.GetComponent<SurveyInviteComponent>();
 
         GameObject playerIdFieldObject = GameObject.Find("player_id_input");
@@ -152,11 +270,11 @@ public class UserWiseDemoComponent : MonoBehaviour
         if (this.myFileVar.CurrentValue != null)
         {
             this.myFileVar.GetRawFileData((successful, bytes) =>
-                    {
-                        string numBytesStr = (successful) ? bytes.Length.ToString() : "unknown";
-                        stringBuilder.AppendLine(String.Format("|  - {0} Bytes", numBytesStr));
-                        Debug.Log(stringBuilder.ToString());
-                    });
+            {
+                string numBytesStr = (successful) ? bytes.Length.ToString() : "unknown";
+                stringBuilder.AppendLine(String.Format("|  - {0} Bytes", numBytesStr));
+                Debug.Log(stringBuilder.ToString());
+            });
         }
         else
         {

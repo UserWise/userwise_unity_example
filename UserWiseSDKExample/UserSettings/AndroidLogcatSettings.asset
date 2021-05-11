@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R52N607W0LK",
+    "m_SelectedDeviceId": "09281FDD4006B4",
     "m_SelectedPackage": {
-        "deviceId": "R52N607W0LK",
-        "name": "com.DefaultCompany.UserWiseExample",
-        "processId": 21307,
+        "deviceId": "09281FDD4006B4",
+        "name": "com.UserWise.UserWiseExample",
+        "processId": 30304,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,42 @@
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
             "processId": 21307,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 22060,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 26584,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 27004,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 29738,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 30041,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 30304,
             "exited": false
         }
     ],

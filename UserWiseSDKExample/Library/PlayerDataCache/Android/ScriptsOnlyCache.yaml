@@ -7,7 +7,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -61,25 +60,25 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1606}
+      Script: {instanceID: 1608}
     - Class: 114
-      Script: {instanceID: 2234}
+      Script: {instanceID: 2236}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2628}
     - Class: 114
-      Script: {instanceID: 2786}
+      Script: {instanceID: 2788}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3028}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3194}
+      Script: {instanceID: 3196}
     - Class: 114
-      Script: {instanceID: 3302}
+      Script: {instanceID: 3304}
     - Class: 114
-      Script: {instanceID: 3706}
+      Script: {instanceID: 3708}
     - Class: 114
-      Script: {instanceID: 3936}
+      Script: {instanceID: 3938}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -627,7 +626,25 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Notifications.Android.dll
+    namespaceName: Unity.Notifications.Android
+    className: AndroidReceivedNotificationMainThreadDispatcher
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Notifications.iOS.dll
+    namespaceName: Unity.Notifications.iOS
+    className: iOSNotificationsWrapper
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Firebase.Platform.dll
+    namespaceName: Firebase.Platform
+    className: FirebaseMonoBehaviour
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/jenkinsdev/Code/unity/userwise-unity-android-example-biuld
+  playerPath: /Users/andykeller/Code/UnityUserWiseExampleAndroid
