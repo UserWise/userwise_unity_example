@@ -18,7 +18,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     public InputField playerIdInput;
     public Button changePlayerButton;
 
-    private string DEFAULT_USER_ID = "userwise-example-unity-new";
+    private string DEFAULT_USER_ID = "userwise-example-unity";
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
@@ -44,12 +44,12 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "e57656c13e8eb14e190203f92d75";
+        string apiKey = "";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        this.userwise.HostOverride = "http://lvh.me:3000";
+        //this.userwise.HostOverride = "http://lvh.me:3000";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
