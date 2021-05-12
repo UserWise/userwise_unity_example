@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521067590000000
-    m_Hash: 3523105458
+      ticks: 637560156180000000
+    m_Hash: 31324722
   m_LockFileStatus:
     m_FilePath: /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521067600000000
-    m_Hash: 1959587380
+      ticks: 637560156190000000
+    m_Hash: 287452132
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -35,10 +35,14 @@ m_PackageAssets:
         url: 
       category: 
       type: 
-      description: External Dependency Manager for Unity (EDM4U) can be used by any
-        Unity plugin that requires Android specific libraries (e.g. AARs), iOS CocoaPods,
-        version management of transitive dependencies, and/or management of Unity
-        Package Manager registries.
+      description: "IMPORTANT NOTICE: Starting May 19, 2021, we'll no longer serve
+        packages from the Game Package Registry (GPR) by Google\u2014a scoped registry
+        for Unity's Package Manager. After this date, you won't be able to acquire
+        or upgrade Google packages from GPR.\nFor migration instructions, please
+        follow this link.\n\nhttps://developers.google.com/unity/instructions#migrate\n\nExternal
+        Dependency Manager for Unity (EDM4U) can be used by any Unity plugin that
+        requires Android specific libraries (e.g. AARs), iOS CocoaPods, version management
+        of transitive dependencies, and/or management of Unity Package Manager registries."
       status: 4
       errors: []
       versions:
@@ -63,6 +67,7 @@ m_PackageAssets:
         - 1.2.162
         - 1.2.163
         - 1.2.164
+        - 1.2.165
         compatible:
         - 1.2.143
         - 1.2.144
@@ -84,6 +89,7 @@ m_PackageAssets:
         - 1.2.162
         - 1.2.163
         - 1.2.164
+        - 1.2.165
         verified: 
       dependencies: []
       resolvedDependencies: []
@@ -194,6 +200,7 @@ m_PackageAssets:
         - 5.0.4
         - 6.0.0-pre.1
         - 6.0.0-pre.2
+        - 6.0.1
         compatible:
         - 5.0.4
         verified: 5.0.4
@@ -293,6 +300,7 @@ m_PackageAssets:
         - 4.0.1
         - 5.0.0-pre.1
         - 5.0.0-pre.2
+        - 5.0.0
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -377,6 +385,7 @@ m_PackageAssets:
         - 4.0.2
         - 5.0.0-pre.1
         - 5.0.0-pre.2
+        - 5.0.1
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -552,6 +561,7 @@ m_PackageAssets:
         - 5.1.1
         - 6.0.0-pre.1
         - 6.0.0-pre.2
+        - 6.0.0
         compatible:
         - 5.1.1
         verified: 5.1.1
@@ -701,6 +711,7 @@ m_PackageAssets:
         - 1.3.7
         - 1.3.8
         - 1.3.9
+        - 1.5.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -713,6 +724,7 @@ m_PackageAssets:
         - 2.1.0-preview.6
         compatible:
         - 1.3.9
+        - 1.5.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -802,6 +814,7 @@ m_PackageAssets:
         - 3.0.3
         - 3.0.4
         - 3.0.5
+        - 3.0.6
         compatible:
         - 1.0.2
         - 1.0.6
@@ -826,6 +839,7 @@ m_PackageAssets:
         - 3.0.3
         - 3.0.4
         - 3.0.5
+        - 3.0.6
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -1084,6 +1098,122 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/com.unity.mobile.logcat.git
         revision: 1bb3d0b67733fc73fbd6c88358cfd882d64cc428
         path: 
+    - packageId: com.unity.mobile.notifications@1.3.2
+      testable: 0
+      isDirectDependency: 1
+      version: 1.3.2
+      source: 1
+      resolvedPath: /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/PackageCache/com.unity.mobile.notifications@1.3.2
+      assetPath: Packages/com.unity.mobile.notifications
+      name: com.unity.mobile.notifications
+      displayName: Mobile Notifications
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'Mobile Notifications package adds support for scheduling local
+        repeatable or one-time notifications on iOS and Android.
+
+
+        Requires
+        iOS 10 and Android 4.4 or above.'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.0.0-preview.4
+        - 1.0.0-preview.5
+        - 1.0.0-preview.7
+        - 1.0.0-preview.8
+        - 1.0.0-preview.9
+        - 1.0.0-preview.10
+        - 1.0.0-preview.13
+        - 1.0.0-preview.17
+        - 1.0.0-preview.21
+        - 1.0.0-preview.23
+        - 1.0.2
+        - 1.0.3-preview
+        - 1.0.3-preview.3
+        - 1.0.3-preview.4
+        - 1.0.3-preview.5
+        - 1.0.3-preview.6
+        - 1.0.3
+        - 1.0.4-preview.1
+        - 1.0.4-preview.2
+        - 1.0.4-preview.3
+        - 1.0.4-preview.4
+        - 1.0.4-preview.5
+        - 1.0.4-preview.6
+        - 1.0.4-preview.9
+        - 1.1.0-preview
+        - 1.2.0-preview
+        - 1.2.1-preview
+        - 1.3.0
+        - 1.3.2
+        compatible:
+        - 1.0.0-preview.4
+        - 1.0.0-preview.5
+        - 1.0.0-preview.7
+        - 1.0.0-preview.8
+        - 1.0.0-preview.9
+        - 1.0.0-preview.10
+        - 1.0.0-preview.13
+        - 1.0.0-preview.17
+        - 1.0.0-preview.21
+        - 1.0.0-preview.23
+        - 1.0.2
+        - 1.0.3-preview
+        - 1.0.3-preview.3
+        - 1.0.3-preview.4
+        - 1.0.3-preview.5
+        - 1.0.3-preview.6
+        - 1.0.3
+        - 1.0.4-preview.1
+        - 1.0.4-preview.2
+        - 1.0.4-preview.3
+        - 1.0.4-preview.4
+        - 1.0.4-preview.5
+        - 1.0.4-preview.6
+        - 1.0.4-preview.9
+        - 1.1.0-preview
+        - 1.2.0-preview
+        - 1.2.1-preview
+        - 1.3.0
+        - 1.3.2
+        verified: 1.3.2
+      dependencies:
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
+      keywords:
+      - Android
+      - iOS
+      - Notifications
+      - Mobile
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637411581370000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.mobile.notifications.git
+        revision: 2829196ea1779d64c68c36b0a95a19d3945889fd
+        path: 
     - packageId: com.unity.test-framework@1.1.24
       testable: 0
       isDirectDependency: 1
@@ -1249,6 +1379,8 @@ m_PackageAssets:
         - 1.5.1
         - 1.5.3
         - 1.5.4
+        - 1.5.5
+        - 1.5.6
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.1
@@ -1268,6 +1400,8 @@ m_PackageAssets:
         - 2.1.1
         - 2.1.3
         - 2.1.4
+        - 2.1.5
+        - 2.1.6
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -1283,11 +1417,15 @@ m_PackageAssets:
         - 3.0.1
         - 3.0.3
         - 3.0.4
+        - 3.0.5
+        - 3.0.6
         compatible:
         - 3.0.1
         - 3.0.3
         - 3.0.4
-        verified: 3.0.4
+        - 3.0.5
+        - 3.0.6
+        verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -1390,6 +1528,7 @@ m_PackageAssets:
         - 1.4.5
         - 1.4.6
         - 1.4.7
+        - 1.4.8
         - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
@@ -1401,11 +1540,14 @@ m_PackageAssets:
         - 1.5.1-pre.3
         - 1.5.2
         - 1.5.4
+        - 1.5.5
         - 1.6.0-pre.1
         - 1.6.0-pre.3
+        - 1.6.0-pre.4
         compatible:
         - 1.4.6
         - 1.4.7
+        - 1.4.8
         - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
@@ -1417,9 +1559,11 @@ m_PackageAssets:
         - 1.5.1-pre.3
         - 1.5.2
         - 1.5.4
+        - 1.5.5
         - 1.6.0-pre.1
         - 1.6.0-pre.3
-        verified: 1.4.7
+        - 1.6.0-pre.4
+        verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
         version: 1.0.0
@@ -3444,6 +3588,7 @@ m_PackageAssets:
         - 4.0.3
         - 5.0.0-pre.1
         - 5.0.0-pre.2
+        - 5.0.0
         compatible:
         - 4.0.2
         - 4.0.3
@@ -3525,6 +3670,7 @@ m_PackageAssets:
         - 4.0.1
         - 5.0.0-pre.1
         - 5.0.0-pre.2
+        - 5.0.0
         compatible:
         - 4.0.1
         verified: 4.0.1
