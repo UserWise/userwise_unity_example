@@ -856,4 +856,5 @@
 /UserWiseSDKExample/Assets/Plugins/Android/com.google.firebase.firebase-messaging-21.1.0.aar filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Assets/Plugins/Android/com.google.firebase.firebase-messaging-unity-7.2.0.aar filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Assets/UserWiseSDK/UserWiseSDK.dll filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PackageManager/ProjectCache filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text

@@ -18,7 +18,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     public InputField playerIdInput;
     public Button changePlayerButton;
 
-    private string DEFAULT_USER_ID = "userwise-example-unity";
+    private string DEFAULT_USER_ID = "userwise-example-unity-new";
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
@@ -27,7 +27,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     private readonly IntegerVariable myIntVar = new IntegerVariable("my_int_var", 100);
     private readonly FloatVariable myFloatVar = new FloatVariable("my_float_var", 1.0f);
     private readonly StringVariable myStrVar = new StringVariable("my_str_var", "the default value");
-    private readonly DateTimeVariable myDatetimeVar = new DateTimeVariable("my_datetime_var", DateTime.Now.ToUniversalTime());
+    private readonly DateTimeVariable myDatetimeVar = new DateTimeVariable("my_datetime_var", DateTime.UtcNow);
     private readonly FileVariable myFileVar = new FileVariable("my_file_var", null);
 
     void Start()
@@ -44,14 +44,12 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        this.userwise = UserWise.INSTANCE;
-
-        string apiKey = "";
+        string apiKey = "e57656c13e8eb14e190203f92d75";
 
         this.userwise = UserWise.INSTANCE;
-        this.userwise.DebugMode = false;
-        this.userwise.UserId = DEFAULT_USER_ID;
-        this.userwise.HostOverride = "https://staging.userwise.io";
+        this.userwise.DebugMode = true;
+        this.userwise.UserId = DEFAULT_USER_ID.Trim();
+        this.userwise.HostOverride = "http://lvh.me:3000";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
@@ -130,7 +128,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         {
             string playerId = playerIdInput.text;
             this.userwise.Stop();
-            this.userwise.UserId = playerId;
+            this.userwise.UserId = playerId.Trim();
             this.userwise.Start();
         });
     }
@@ -182,7 +180,8 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwise.AssignEvent(
             new PlayerEvent("event_logged_in", new List<PlayerEventAttribute> {
                 new PlayerEventAttribute("new_player", false, AttributableDataType.BOOLEAN),
-            })
+            }),
+            null
         );
     }
 
@@ -195,7 +194,7 @@ public class UserWiseDemoComponent : MonoBehaviour
             new PlayerAttribute("login_datetime", DateTime.UtcNow.ToString("o"), AttributableDataType.DATETIME),
             new PlayerAttribute("season_spring_2021_passholder", true, AttributableDataType.BOOLEAN),
             new PlayerAttribute("guild_name", "My Guild", AttributableDataType.STRING)
-        });
+        }, null);
     }
 
     private void TransitionToRegion()
@@ -205,8 +204,9 @@ public class UserWiseDemoComponent : MonoBehaviour
             new Region("team_battle", new List<RegionMetadata> {
                 new RegionMetadata("team_one_power", 115, AttributableDataType.INTEGER),
                 new RegionMetadata("team_two_power", 258, AttributableDataType.INTEGER)
-            })
-        ); ;
+            }),
+            null
+        );
     }
 
     public void InitializeSurveyInvite(Survey survey)
