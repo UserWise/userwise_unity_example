@@ -8,6 +8,9 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v2.0.2
+- Included the new Triggered Campaigns feature; primarily introduced as background-only logic within the SDK
+
 ### v2.0.1
 - Bug fix. Session IDs were not being sent to the UserWise API
 
