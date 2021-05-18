@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoComponent.cs">
     <Files>
       <File FileName="Assets/Scripts/SurveyEventHandler.cs" Line="30" Column="26" />
-      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="179" Column="51" />
+      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="150" Column="17" />
       <File FileName="Assets/Scripts/OfferEventHandler.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SurveyInviteComponent.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MessageEventHandler.cs" Line="25" Column="18" />
@@ -10,15 +10,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="UserWiseSDKExample" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="UserWiseDemoComponent.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="UserWiseSDKExample" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
