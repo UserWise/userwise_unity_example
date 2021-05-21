@@ -15,7 +15,7 @@ public static class OfferEventHandler
     public static void OnOfferAvailable(object sender, OfferEventArgs args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine("An offer is ready for impression initialization!");
+        stringBuilder.AppendLine("Offer Available!");
         stringBuilder.AppendLine(String.Format("| ID: {0}", args.Offer.Id));
         stringBuilder.AppendLine(String.Format("| Title: {0}", args.Offer.Title));
         stringBuilder.AppendLine(String.Format("| Body: {0}", args.Offer.Body));
@@ -41,6 +41,36 @@ public static class OfferEventHandler
 
         Debug.Log(stringBuilder.ToString());
         UserWise.INSTANCE.OffersModule.InitializeOfferImpression(args.Offer);
+    }
+
+    public static void OnOfferUnavailable(object sender, OfferEventArgs args)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine("Offer Unavailable!");
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Offer.Id));
+        stringBuilder.AppendLine(String.Format("| Title: {0}", args.Offer.Title));
+        stringBuilder.AppendLine(String.Format("| Body: {0}", args.Offer.Body));
+        stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Offer.PortraitImageId));
+        stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Offer.LandscapeImageId));
+        stringBuilder.AppendLine(String.Format("| Cost: {0}", args.Offer.Cost));
+        stringBuilder.AppendLine(String.Format("| Android Product ID: {0}", args.Offer.AndroidProductId));
+        stringBuilder.AppendLine(String.Format("| iOS Product ID: {0}", args.Offer.IOSProductId));
+
+        StringBuilder itemString = new StringBuilder();
+        foreach (KeyValuePair<string, long> entry in args.Offer.Items)
+        {
+            itemString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
+        }
+        stringBuilder.AppendLine(String.Format("| {0} Items:\n{1}", args.Offer.Items.Count, itemString.ToString()));
+
+        StringBuilder currenciesString = new StringBuilder();
+        foreach (KeyValuePair<string, long> entry in args.Offer.Currencies)
+        {
+            currenciesString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
+        }
+        stringBuilder.AppendLine(String.Format("| {0} Currencies: \n{1}", args.Offer.Currencies.Count, currenciesString.ToString()));
+
+        Debug.Log(stringBuilder.ToString());
     }
 
     public static void OnOfferImpressionInitializationFailed(object sender, OfferEventArgs args)

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System;
 using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UserWiseSDK;
 using UserWiseSDK.Surveys;
@@ -11,15 +11,6 @@ using UserWiseSDK.Messages;
 using UserWiseSDK.Variables;
 using UserWiseSDK.Events;
 using UserWiseSDK.Variables.Types;
-using System.Collections;
-#if UNITY_IOS
-using Unity.Notifications.iOS;
-#endif
-#if UNITY_ANDROID
-using Unity.Notifications.Android;
-#endif
-
-using System.Linq;
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -27,19 +18,16 @@ public class UserWiseDemoComponent : MonoBehaviour
     public InputField playerIdInput;
     public Button changePlayerButton;
 
-    private string DEFAULT_USER_ID = "userwise-example-unity-something";
+    private string DEFAULT_USER_ID = "userwise-example-unity";
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
-#if UNITY_ANDROID
-    private Firebase.FirebaseApp app;
-#endif
 
     private readonly BooleanVariable myBoolVar = new BooleanVariable("my_bool_var", true);
     private readonly IntegerVariable myIntVar = new IntegerVariable("my_int_var", 100);
     private readonly FloatVariable myFloatVar = new FloatVariable("my_float_var", 1.0f);
     private readonly StringVariable myStrVar = new StringVariable("my_str_var", "the default value");
-    private readonly DateTimeVariable myDatetimeVar = new DateTimeVariable("my_datetime_var", DateTime.Now.ToUniversalTime());
+    private readonly DateTimeVariable myDatetimeVar = new DateTimeVariable("my_datetime_var", DateTime.UtcNow);
     private readonly FileVariable myFileVar = new FileVariable("my_file_var", null);
 
     void Start()
@@ -52,125 +40,16 @@ public class UserWiseDemoComponent : MonoBehaviour
         }
 
         userwise.Start();
-
-#if UNITY_ANDROID
-        var channel = new AndroidNotificationChannel()
-        {
-            Id = "Default",
-            Name = "Default Channel",
-            Importance = Importance.High,
-            Description = "Generic notifications",
-        };
-        AndroidNotificationCenter.RegisterNotificationChannel(channel);
-
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-            var dependencyStatus = task.Result;
-            if (dependencyStatus == Firebase.DependencyStatus.Available)
-            {
-                // Create and hold a reference to your FirebaseApp,
-                // where app is a Firebase.FirebaseApp property of your application class.
-                app = Firebase.FirebaseApp.DefaultInstance;
-
-                // Set a flag here to indicate whether Firebase is ready to use by your app.
-                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
-                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
-            }
-            else
-            {
-                Debug.LogError(System.String.Format(
-                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-                // Firebase Unity SDK is not safe to use here.
-            }
-        });
-#endif
-
-#if UNITY_IOS
-        StartCoroutine(RequestAuthorization());
-
-        iOSNotificationCenter.OnRemoteNotificationReceived += OnRemoteNotificationReceived;
-#endif
     }
-
-#if UNITY_IOS
-    public IEnumerator RequestAuthorization()
-    {
-        using (var req = new AuthorizationRequest(AuthorizationOption.Alert | AuthorizationOption.Badge, true))
-        {
-            while (!req.IsFinished)
-            {
-                yield return null;
-            };
-
-            string res = "\n RequestAuthorization: \n";
-            res += "\n finished: " + req.IsFinished;
-            res += "\n granted :  " + req.Granted;
-            res += "\n error:  " + req.Error;
-            res += "\n deviceToken:  " + req.DeviceToken;
-            Debug.Log(res);
-
-            if (req.DeviceToken != null)
-            {
-                userwise.RegisterDeviceToken(req.DeviceToken);
-            }
-        }
-    }
-
-    public void OnRemoteNotificationReceived(iOSNotification remoteNotification)
-    {
-        // When a remote notification is received, modify its contents and show it after 1 second.
-        var timeTrigger = new iOSNotificationTimeIntervalTrigger()
-        {
-            TimeInterval = new TimeSpan(0, 0, 0),
-            Repeats = false
-        };
-
-        Debug.Log("Notification Received");
-        Debug.Log(remoteNotification.ToString());
-
-        iOSNotification notification = new iOSNotification()
-        {
-            Title = "Remote: " + remoteNotification.Title,
-            Body = "Remote: " + remoteNotification.Body,
-            ShowInForeground = true,
-            ForegroundPresentationOption = PresentationOption.Sound | PresentationOption.Alert,
-            CategoryIdentifier = remoteNotification.CategoryIdentifier,
-            Trigger = timeTrigger,
-        };
-        iOSNotificationCenter.ScheduleNotification(notification);
-    }
-#endif
-
-#if UNITY_ANDROID
-    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
-    {
-        Debug.Log("Received Registration Token: " + token.Token);
-        userwise.RegisterDeviceToken(token.Token);
-    }
-
-    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)
-    {
-        Debug.Log("Received a new message: " + "{" + string.Join(",", e.Message.Data.Select(kv => kv.Key + "=" + kv.Value).ToArray()) + "}");
-
-        var notification = new AndroidNotification();
-        notification.Title = e.Message.Data["title"];
-        notification.Text = e.Message.Data["body"];
-        notification.FireTime = System.DateTime.Now;
-
-        AndroidNotificationCenter.SendNotification(notification, e.Message.Data["channelId"]);
-    }
-#endif
 
     private void ConfigureUserWiseSDK()
     {
-        this.userwise = UserWise.INSTANCE;
-
-        //string apiKey = "0abf3c41d9bf0d15b514870d9742";
-        string apiKey = "f1535363ad9ab340ebc9786337b0";
+        string apiKey = "e57656c13e8eb14e190203f92d75";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
-        this.userwise.UserId = DEFAULT_USER_ID;
-        this.userwise.HostOverride = "https://staging.userwise.io";
+        this.userwise.UserId = DEFAULT_USER_ID.Trim();
+        this.userwise.HostOverride = "http://lvh.me:3000";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
@@ -189,16 +68,19 @@ public class UserWiseDemoComponent : MonoBehaviour
         EventsModule eventsModule = this.userwise.EventsModule;
         eventsModule.OnEventsLoaded += GameEventHandler.OnEventsLoaded;
         eventsModule.OnEventActive += GameEventHandler.OnEventActive;
+        eventsModule.OnEventInactive += GameEventHandler.OnEventInactive;
 
         // Messages Configuration
         MessagesModule messagesModule = this.userwise.MessagesModule;
         messagesModule.OnMessageAvailable += MessageEventHandler.OnMessageAvailable;
+        messagesModule.OnMessageUnavailable += MessageEventHandler.OnMessageUnavailable;
         messagesModule.OnMessagesLoaded += MessageEventHandler.OnMessagesLoaded;
 
         // Offers Module Configuration
         OffersModule offersModule = this.userwise.OffersModule;
         offersModule.OnOffersLoaded += OfferEventHandler.OnOffersLoaded;
         offersModule.OnOfferAvailable += OfferEventHandler.OnOfferAvailable;
+        offersModule.OnOfferUnavailable += OfferEventHandler.OnOfferUnavailable;
         offersModule.OnOfferImpressionInitializationFailed += OfferEventHandler.OnOfferImpressionInitializationFailed;
         offersModule.OnOfferImpressionInitialized += OfferEventHandler.OnOfferImpressionInitialized;
 
@@ -206,6 +88,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         SurveysModule surveysModule = this.userwise.SurveysModule;
         surveysModule.OnSurveysLoaded += SurveyEventHandler.OnSurveysLoaded;
         surveysModule.OnSurveyAvailable += SurveyEventHandler.OnSurveyAvailable;
+        surveysModule.OnSurveyUnavailable += SurveyEventHandler.OnSurveyUnavailable;
         surveysModule.OnSurveyInviteInitialized += SurveyEventHandler.OnSurveyInviteInitialized;
         surveysModule.OnSurveyEntered += SurveyEventHandler.OnSurveyEntered;
         surveysModule.OnSurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
@@ -235,7 +118,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     }
 
     private void SetupScene()
-    {
+    { 
         surveyInviteComponent = surveyInviteDialog.GetComponent<SurveyInviteComponent>();
 
         GameObject playerIdFieldObject = GameObject.Find("player_id_input");
@@ -249,7 +132,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         {
             string playerId = playerIdInput.text;
             this.userwise.Stop();
-            this.userwise.UserId = playerId;
+            this.userwise.UserId = playerId.Trim();
             this.userwise.Start();
         });
     }
@@ -270,11 +153,11 @@ public class UserWiseDemoComponent : MonoBehaviour
         if (this.myFileVar.CurrentValue != null)
         {
             this.myFileVar.GetRawFileData((successful, bytes) =>
-            {
-                string numBytesStr = (successful) ? bytes.Length.ToString() : "unknown";
-                stringBuilder.AppendLine(String.Format("|  - {0} Bytes", numBytesStr));
-                Debug.Log(stringBuilder.ToString());
-            });
+                    {
+                        string numBytesStr = (successful) ? bytes.Length.ToString() : "unknown";
+                        stringBuilder.AppendLine(String.Format("|  - {0} Bytes", numBytesStr));
+                        Debug.Log(stringBuilder.ToString());
+                    });
         }
         else
         {
@@ -284,28 +167,50 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void Userwise_OnSessionInitialized(object sender, OnSessionInitializedEventArgs e)
     {
+        StartCoroutine(AssignLoginData());
+    }
+
+    private IEnumerator AssignLoginData()
+    {
+        yield return new WaitForSeconds(5);
         AssignEvent();
         AssignAttribute();
+        TransitionToRegion();
     }
 
     private void AssignEvent()
     {
+        Debug.Log("Assigning Events");
         this.userwise.AssignEvent(
-            new PlayerEvent("tutorial_completed", new List<PlayerAttribute> {
-                new PlayerAttribute("first_time", "false", PlayerAttribute.DataTypeType.Boolean)
-            })
+            new PlayerEvent("event_logged_in", new List<PlayerEventAttribute> {
+                new PlayerEventAttribute("new_player", false, AttributableDataType.BOOLEAN),
+            }),
+            null
         );
     }
 
     private void AssignAttribute()
     {
+        Debug.Log("Assigning Attributes");
         this.userwise.SetAttributes(new List<PlayerAttribute> {
-            new PlayerAttribute("unity_player_level", "100", PlayerAttribute.DataTypeType.Integer),
-            new PlayerAttribute("unity_player_coins", "25.50", PlayerAttribute.DataTypeType.Float),
-            new PlayerAttribute("unity_player_login_date", DateTime.UtcNow.ToString("o"), PlayerAttribute.DataTypeType.DateTime),
-            new PlayerAttribute("unity_player_is_whale", "true", PlayerAttribute.DataTypeType.Boolean),
-            new PlayerAttribute("unity_player_name", "awesome_hero_you", PlayerAttribute.DataTypeType.String)
-        });
+            new PlayerAttribute("coins", 1000, AttributableDataType.INTEGER),
+            new PlayerAttribute("ltv", 125.50, AttributableDataType.FLOAT),
+            new PlayerAttribute("login_datetime", DateTime.UtcNow.ToString("o"), AttributableDataType.DATETIME),
+            new PlayerAttribute("season_spring_2021_passholder", true, AttributableDataType.BOOLEAN),
+            new PlayerAttribute("guild_name", "My Guild", AttributableDataType.STRING)
+        }, null);
+    }
+
+    private void TransitionToRegion()
+    {
+        Debug.Log("Transitioning To Region");
+        this.userwise.TransitionToRegion(
+            new Region("team_battle", new List<RegionMetadata> {
+                new RegionMetadata("team_one_power", 115, AttributableDataType.INTEGER),
+                new RegionMetadata("team_two_power", 258, AttributableDataType.INTEGER)
+            }),
+            null
+        );
     }
 
     public void InitializeSurveyInvite(Survey survey)
