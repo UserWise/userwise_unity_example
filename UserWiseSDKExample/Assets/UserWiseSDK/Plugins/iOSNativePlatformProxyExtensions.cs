@@ -6,7 +6,7 @@ namespace UserWiseSDK.Internal.Platforms
 {
     static class iOSNativePlatformProxyExtensions
     {
-#if UNITY_IOS  &&  !UNITY_EDITOR
+#if UNITY_IOS && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern void _setSurveysNativeEventListener(string gameObjName);
         [DllImport("__Internal")]
