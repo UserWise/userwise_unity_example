@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "09281FDD4006B4",
         "name": "com.UserWise.UserWiseExample",
-        "processId": 30304,
+        "processId": 21465,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -85,6 +85,36 @@
             "name": "com.UserWise.UserWiseExample",
             "processId": 30304,
             "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 30888,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 1272,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 17826,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 20142,
+            "exited": false
+        },
+        {
+            "deviceId": "09281FDD4006B4",
+            "name": "com.UserWise.UserWiseExample",
+            "processId": 21465,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -137,7 +167,7 @@
         "MemoryGroup": 2,
         "Behavior": 0
     },
-    "m_Filter": "",
+    "m_Filter": "Token",
     "m_FilterIsRegularExpression": false,
     "m_SymbolPaths": []
 }

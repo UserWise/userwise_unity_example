@@ -19,42 +19,43 @@
       "DebugActionIndex": 0
     },
     {
-      "Annotation": "Il2Cpp /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput",
-      "Action": "\"/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
+      "Annotation": "Il2Cpp /Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Action": "\"/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.3.0f1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
       "Inputs": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Mono.Security.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Configuration.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Core.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Xml.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AndroidJNIModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.JSONSerializeModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UserWiseSDK.dll",
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/mscorlib.dll"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/System.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/Unity.Notifications.iOS.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AndroidJNIModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.JSONSerializeModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/UserWiseSDK.dll",
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Temp/StagingArea/Data/Managed/mscorlib.dll"
       ],
       "Outputs": [],
       "TargetDirectories": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput"
       ],
       "PassIndex": 0,
       "Deps": [],
@@ -65,13 +66,13 @@
       "DebugActionIndex": 1
     },
     {
-      "Annotation": "Copy Additional C++ File /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
-      "Action": "cp \"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File /Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "cp \"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
       "Inputs": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
       ],
       "Outputs": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,
@@ -85,13 +86,13 @@
       "DebugActionIndex": 2
     },
     {
-      "Annotation": "Copy Additional C++ File /Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
-      "Action": "cp \"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" \"/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File /Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
+      "Action": "cp \"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" \"/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp\" ",
       "Inputs": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
       ],
       "Outputs": [
-        "/Users/jenkinsdev/Code/userwise/mobile/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
+        "/Users/andykeller/Code/userwise_unity_example/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,
@@ -107,7 +108,7 @@
   ],
   "FileSignatures": [
     {
-      "File": "../../../../../../../../Library"
+      "File": "../../../../../../Library"
     },
     {
       "File": "../../../Temp/StagingArea/Data/Managed"

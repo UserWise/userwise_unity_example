@@ -11,6 +11,13 @@ using UserWiseSDK.Messages;
 using UserWiseSDK.Variables;
 using UserWiseSDK.Events;
 using UserWiseSDK.Variables.Types;
+using System.Linq;
+#if UNITY_IOS
+using Unity.Notifications.iOS;
+#endif
+#if UNITY_ANDROID
+using Unity.Notifications.Android;
+#endif
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -22,6 +29,10 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
+
+#if UNITY_ANDROID
+    private Firebase.FirebaseApp app;
+#endif
 
     private readonly BooleanVariable myBoolVar = new BooleanVariable("my_bool_var", true);
     private readonly IntegerVariable myIntVar = new IntegerVariable("my_int_var", 100);
@@ -40,16 +51,111 @@ public class UserWiseDemoComponent : MonoBehaviour
         }
 
         userwise.Start();
+#if UNITY_ANDROID
+        var channel = new AndroidNotificationChannel()
+        {
+            Id = "Default",
+            Name = "Default Channel",
+            Importance = Importance.High,
+            Description = "Generic notifications",
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(channel);
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                app = Firebase.FirebaseApp.DefaultInstance;
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+                Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+                Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+            }
+            else
+            {
+                Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+#endif
+
+#if UNITY_IOS
+        StartCoroutine(RequestAuthorization());
+        iOSNotificationCenter.OnRemoteNotificationReceived += OnRemoteNotificationReceived;
+#endif
     }
+
+#if UNITY_IOS
+    public IEnumerator RequestAuthorization()
+    {
+        using (var req = new AuthorizationRequest(AuthorizationOption.Alert | AuthorizationOption.Badge, true))
+        {
+            while (!req.IsFinished)
+            {
+                yield return null;
+            };
+            string res = "\n RequestAuthorization: \n";
+            res += "\n finished: " + req.IsFinished;
+            res += "\n granted :  " + req.Granted;
+            res += "\n error:  " + req.Error;
+            res += "\n deviceToken:  " + req.DeviceToken;
+            Debug.Log(res);
+            if (req.DeviceToken != null)
+            {
+                userwise.RegisterDeviceToken(req.DeviceToken);
+            }
+        }
+    }
+
+    public void OnRemoteNotificationReceived(iOSNotification remoteNotification)
+    {
+        Debug.Log("Notification Received");
+        Debug.Log(remoteNotification.ToString());
+        var timeTrigger = new iOSNotificationTimeIntervalTrigger()
+        {
+            TimeInterval = new TimeSpan(0, 0, 1),
+            Repeats = false
+        };
+        
+        iOSNotification notification = new iOSNotification()
+        {
+            Title = remoteNotification.Title,
+            Body = remoteNotification.Body,
+            ShowInForeground = true,
+            ForegroundPresentationOption = PresentationOption.Sound | PresentationOption.Alert,
+            CategoryIdentifier = remoteNotification.CategoryIdentifier,
+            Trigger = timeTrigger,
+        };
+        iOSNotificationCenter.ScheduleNotification(notification);
+    }
+#endif
+
+#if UNITY_ANDROID
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
+    {
+        Debug.Log("Received Registration Token: " + token.Token);
+        userwise.RegisterDeviceToken(token.Token);
+    }
+    public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)
+    {
+        Debug.Log("Received a new message: " + "{" + string.Join(",", e.Message.Data.Select(kv => kv.Key + "=" + kv.Value).ToArray()) + "}");
+        var notification = new AndroidNotification();
+        notification.Title = e.Message.Data["title"];
+        notification.Text = e.Message.Data["body"];
+        notification.FireTime = System.DateTime.Now;
+        AndroidNotificationCenter.SendNotification(notification, e.Message.Data["channelId"]);
+    }
+#endif
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "e57656c13e8eb14e190203f92d75";
+        string apiKey = "";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        this.userwise.HostOverride = "http://lvh.me:3000";
+        //this.userwise.HostOverride = "";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
