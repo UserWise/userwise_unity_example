@@ -44,12 +44,12 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "";
+        string apiKey = "e57656c13e8eb14e190203f92d75";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        //this.userwise.HostOverride = "http://lvh.me:3000";
+        this.userwise.HostOverride = "http://lvh.me:3000";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
@@ -68,16 +68,19 @@ public class UserWiseDemoComponent : MonoBehaviour
         EventsModule eventsModule = this.userwise.EventsModule;
         eventsModule.OnEventsLoaded += GameEventHandler.OnEventsLoaded;
         eventsModule.OnEventActive += GameEventHandler.OnEventActive;
+        eventsModule.OnEventInactive += GameEventHandler.OnEventInactive;
 
         // Messages Configuration
         MessagesModule messagesModule = this.userwise.MessagesModule;
         messagesModule.OnMessageAvailable += MessageEventHandler.OnMessageAvailable;
+        messagesModule.OnMessageUnavailable += MessageEventHandler.OnMessageUnavailable;
         messagesModule.OnMessagesLoaded += MessageEventHandler.OnMessagesLoaded;
 
         // Offers Module Configuration
         OffersModule offersModule = this.userwise.OffersModule;
         offersModule.OnOffersLoaded += OfferEventHandler.OnOffersLoaded;
         offersModule.OnOfferAvailable += OfferEventHandler.OnOfferAvailable;
+        offersModule.OnOfferUnavailable += OfferEventHandler.OnOfferUnavailable;
         offersModule.OnOfferImpressionInitializationFailed += OfferEventHandler.OnOfferImpressionInitializationFailed;
         offersModule.OnOfferImpressionInitialized += OfferEventHandler.OnOfferImpressionInitialized;
 
@@ -85,6 +88,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         SurveysModule surveysModule = this.userwise.SurveysModule;
         surveysModule.OnSurveysLoaded += SurveyEventHandler.OnSurveysLoaded;
         surveysModule.OnSurveyAvailable += SurveyEventHandler.OnSurveyAvailable;
+        surveysModule.OnSurveyUnavailable += SurveyEventHandler.OnSurveyUnavailable;
         surveysModule.OnSurveyInviteInitialized += SurveyEventHandler.OnSurveyInviteInitialized;
         surveysModule.OnSurveyEntered += SurveyEventHandler.OnSurveyEntered;
         surveysModule.OnSurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
