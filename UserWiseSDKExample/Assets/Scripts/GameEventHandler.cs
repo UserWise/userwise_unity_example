@@ -9,20 +9,39 @@ public static class GameEventHandler
 {
     public static void OnEventsLoaded(object sender, OnEventsLoadedEventArgs args)
     {
-        Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Game Events Available", UserWise.INSTANCE.EventsModule.ActiveEvents.Count));
+        EventsModule eventsModule = UserWise.INSTANCE.EventsModule;
+        Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Available | {1} Upcoming", eventsModule.ActiveEvents.Count, eventsModule.UpcomingEvents.Count));
     }
 
-    public static void OnEventActive(object sender, OnEventActiveEventArgs args)
+    public static void OnEventActive(object sender, GameEventEventArgs args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine("An Event Is Active!");
-        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Event.Id));
-        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Event.Name));
-        stringBuilder.AppendLine(String.Format("| External ID: {0}", args.Event.ExternalId));
-        stringBuilder.AppendLine(String.Format("| External Event Type: {0}", args.Event.ExternalEventType));
-        stringBuilder.AppendLine(String.Format("| Data: {0}", args.Event.Data));
+        stringBuilder.AppendLine("Event Active:");
+        stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Event.Id));
+        stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Event.Name));
+        stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Event.ExternalId));
+        stringBuilder.AppendLine(String.Format("|- External Event Type: {0}", args.Event.ExternalEventType));
+        stringBuilder.AppendLine(String.Format("|- Data: {0}", args.Event.Data));
         Debug.Log(stringBuilder.ToString());
 
+        // this.DeserializeExampleGameEventData(args.Event);
+    }
+
+    public static void OnEventInactive(object sender, GameEventEventArgs args)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine("Event Inactive:");
+        stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Event.Id));
+        stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Event.Name));
+        stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Event.ExternalId));
+        stringBuilder.AppendLine(String.Format("|- External Event Type: {0}", args.Event.ExternalEventType));
+        stringBuilder.AppendLine(String.Format("|- Data: {0}", args.Event.Data));
+        Debug.Log(stringBuilder.ToString());
+
+        // this.DeserializeExampleGameEventData(args.Event);
+    }
+
+    public static void DeserializeExampleGameEventData(GameEvent gameEvent) {
         try
         {
             // Data Deserialization Example 1: (manual)
@@ -40,7 +59,7 @@ public static class GameEventHandler
 
             /// Get our rewards list/array and do proper type conversions...
             object rawRewardsListObj;
-            args.Event.Data.TryGetValue("rewards", out rawRewardsListObj);
+            gameEvent.Data.TryGetValue("rewards", out rawRewardsListObj);
             List<object> rewardsList = (List<object>)rawRewardsListObj;
 
             List<Dictionary<string, object>> convertedRewardsList = new List<Dictionary<string, object>>();
@@ -56,19 +75,18 @@ public static class GameEventHandler
 
             /// ...same with item_ids
             object rawItemIdsListObj;
-            args.Event.Data.TryGetValue("item_ids", out rawItemIdsListObj);
+            gameEvent.Data.TryGetValue("item_ids", out rawItemIdsListObj);
             List<object> rawItemIdsList = (List<object>)rawItemIdsListObj;
 
             List<int> itemIdsList = new List<int>();
             rawItemIdsList.ForEach((itemId) => itemIdsList.Add((int)itemId));
 
 
-
             // Data Deserialization Example 2: (IDictSerializable)
             //
             // We will deserialize the same structure as above, just abstracted
             // a little through IDictSerializable.  You can see the classes below.
-            EventRewardsData rewards = args.Event.GetDataAs(new EventRewardsData());
+            EventRewardsData rewards = gameEvent.GetDataAs(new EventRewardsData());
         } catch {
             Debug.Log("Couldn't deserialize example data with received event.");
         }

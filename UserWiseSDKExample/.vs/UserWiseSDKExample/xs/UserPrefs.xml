@@ -1,19 +1,19 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{36924CEB-4911-4B7A-725A-C4088106DA13}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoComponent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameEventHandler.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameEventHandler.cs" Line="10" Column="25" />
-      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="175" Column="5" />
-      <File FileName="Assets/Scripts/SurveyEventHandler.cs" />
-      <File FileName="Assets/Scripts/OfferEventHandler.cs" />
-      <File FileName="Assets/Scripts/SurveyInviteComponent.cs" />
-      <File FileName="Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" />
+      <File FileName="Assets/Scripts/MessageEventHandler.cs" Line="12" Column="179" />
+      <File FileName="Assets/Scripts/UserWiseDemoComponent.cs" Line="52" Column="56" />
+      <File FileName="Assets/Scripts/OfferEventHandler.cs" Line="49" Column="43" />
+      <File FileName="Assets/Scripts/GameEventHandler.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="UserWiseSDKExample" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
-              <Node name="Scripts" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="GameEventHandler.cs" selected="True" />
+              </Node>
               <Node name="UserWiseSDK" expanded="True">
                 <Node name="Plugins" expanded="True" />
               </Node>
@@ -25,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2b2b3c68-1083-4b8e-9a1a-d9ea43007c25" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="40a0e1b5-b1d3-4b59-9612-1d820af95f36" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

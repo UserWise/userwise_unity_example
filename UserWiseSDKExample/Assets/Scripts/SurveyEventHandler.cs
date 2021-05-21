@@ -13,13 +13,24 @@ public static class SurveyEventHandler
     public static void OnSurveyAvailable(object sender, SurveyEventArgs args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine("A survey is ready for taking!");
+        stringBuilder.AppendLine("Survey Available!");
         stringBuilder.AppendLine(String.Format("| ID: {0}", args.Survey.Id));
+        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Survey.Name));
         stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Survey.QuestionsCount));
         Debug.Log(stringBuilder.ToString());
 
         UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
         component.InitializeSurveyInvite(args.Survey);
+    }
+
+    public static void OnSurveyUnavailable(object sender, SurveyEventArgs args)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine("Survey Unavailable!");
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Survey.Id));
+        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Survey.Name));
+        stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Survey.QuestionsCount));
+        Debug.Log(stringBuilder.ToString());
     }
 
     public static void OnSurveyInviteInitialized(object sender, SurveyInviteInitializedEventArgs args)
