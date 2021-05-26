@@ -859,4 +859,10 @@
 /UserWiseSDKExample/Library/PackageManager/ProjectCache filter=lfs diff=lfs merge=lfs -text
 /userwise-2.0.2.unitypackage filter=lfs diff=lfs merge=lfs -text
 /userwise-2.1.0.unitypackage filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/Generics7.cpp filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/Unity.Notifications.iOS.cpp filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/Il2cppBuildCache/iOS/il2cppOutput/UserWiseSDK1.cpp filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/Android/Data/Managed/UserWiseSDK.dll filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/Library/PlayerDataCache/iOS/Data/Managed/UserWiseSDK.dll filter=lfs diff=lfs merge=lfs -text
+/userwise-2.1.1.unitypackage filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
