@@ -15,6 +15,7 @@ class AndroidToUnitySurveyHandler implements SurveyEventListener {
     // and should not be used
     public void onSurveysLoaded(boolean fromCache) {}
     public void onSurveyAvailable(Survey survey) {}
+    public void onSurveyUnavailable(Survey survey) {}
     public void onSurveyInviteInitialized(Boolean wasInitialized, Survey survey, String surveyResponseId, String surveyInviteId) {}
 
     public void onSurveyEnterFailed(Survey survey, String responseId) {

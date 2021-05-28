@@ -21,9 +21,10 @@ UIColor* colorFromHexString(NSString *hexString) {
 
 /// MARK: UserWise Native Listeners
 @implementation iOSToUnitySurveyListener
--(void)onSurveyCompletedWithResponseId:(NSString *)responseId {
-}
+- (void)onSurveyCompletedWithResponseId:(NSString *)responseId {}
 - (void)onSurveyAvailableWithSurvey:(Survey * _Nonnull)survey {}
+- (void)onSurveyInviteInitializedWithSurvey:(Survey * _Nonnull)survey wasInitialized:(BOOL)wasInitialized responseId:(NSString * _Nullable)responseId inviteId:(NSString * _Nullable)inviteId {}
+- (void)onSurveysLoaded {}
 
 - (void)onSurveyClosedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyClosed", "");
@@ -31,7 +32,6 @@ UIColor* colorFromHexString(NSString *hexString) {
 
 - (void)onSurveyCompletedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyCompleted", "");
-
 }
 
 - (void)onSurveyEnterFailedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
@@ -41,14 +41,6 @@ UIColor* colorFromHexString(NSString *hexString) {
 - (void)onSurveyEnteredWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
     UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEntered", "");
 }
-
-- (void)onSurveyInviteInitializedWithSurvey:(Survey * _Nonnull)survey wasInitialized:(BOOL)wasInitialized responseId:(NSString * _Nullable)responseId inviteId:(NSString * _Nullable)inviteId {
-}
-
-- (void)onSurveysLoaded {
-
-}
-
 @end
 
 

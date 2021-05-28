@@ -11,6 +11,8 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -57,25 +59,25 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1606}
+      Script: {instanceID: 1634}
     - Class: 114
-      Script: {instanceID: 2234}
+      Script: {instanceID: 2284}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2680}
     - Class: 114
-      Script: {instanceID: 2786}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 3034}
     - Class: 114
-      Script: {instanceID: 3028}
+      Script: {instanceID: 3090}
     - Class: 114
-      Script: {instanceID: 3194}
+      Script: {instanceID: 3260}
     - Class: 114
-      Script: {instanceID: 3302}
+      Script: {instanceID: 3368}
     - Class: 114
-      Script: {instanceID: 3706}
+      Script: {instanceID: 3784}
     - Class: 114
-      Script: {instanceID: 3936}
+      Script: {instanceID: 4016}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -179,6 +181,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Notifications.Android.dll
+    namespaceName: Unity.Notifications.Android
+    className: AndroidReceivedNotificationMainThreadDispatcher
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -563,6 +571,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteSkinEntity
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.Notifications.iOS.dll
+    namespaceName: Unity.Notifications.iOS
+    className: iOSNotificationsWrapper
   - hash:
       serializedVersion: 2
       Hash: 28cfb4bd305dd11c6326cc3ee7c14138

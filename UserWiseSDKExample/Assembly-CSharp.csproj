@@ -63,6 +63,7 @@
     <Compile Include="Assets/Scripts/UserWiseDemoComponent.cs" />
     <Compile Include="Assets/Scripts/SurveyInviteComponent.cs" />
     <Compile Include="Assets/Scripts/SurveyEventHandler.cs" />
+    <Compile Include="Assets/Scripts/VariablesEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets/UserWiseSDK/UserWiseSDK.dll" />

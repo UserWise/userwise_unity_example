@@ -1103,6 +1103,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* TimeSpan_Negate_mD19FC9B8BCD075EFF67AE2AE9A
 IL2CPP_EXTERN_C const RuntimeMethod* TimeSpan_Subtract_mD042897A054B1B8E19C8635E799A7C42F37910FC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TimeSpan_TimeToTicks_m9387E044F9538B540C350194C1E6C5274206BF66_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TimeSpan__ctor_mFE30160F8A810C83375D9A98580BDD8CAE58BE14_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* TimeSpan_op_UnaryNegation_m0252CCD8175936D13B39AB571088F008153E6688_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TimeZoneInfo_BuildFromStream_mC62C55A93795817FD9D3A75AFCE45A574BD522D3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TimeZoneInfo_ConvertTimeFromUtc_m1CC27C7C9897560CCFC97DC18C336C0C66D9825F_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TimeZoneInfo_ConvertTimeFromUtc_m929048E1149E543A1DEF59DF80AF0215C3CDA94D_RuntimeMethod_var;
@@ -31845,6 +31846,44 @@ IL2CPP_EXTERN_C  String_t* TimeSpan_ToString_mF6AE9A46A7CA323D46792A62E1A06B61D8
 	String_t* _returnValue;
 	_returnValue = TimeSpan_ToString_mF6AE9A46A7CA323D46792A62E1A06B61D8E1A412(_thisAdjusted, ___format0, ___formatProvider1, method);
 	return _returnValue;
+}
+// System.TimeSpan System.TimeSpan::op_UnaryNegation(System.TimeSpan)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  TimeSpan_op_UnaryNegation_m0252CCD8175936D13B39AB571088F008153E6688 (TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  ___t0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  L_0 = ___t0;
+		int64_t L_1 = L_0.get__ticks_3();
+		IL2CPP_RUNTIME_CLASS_INIT(TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203_il2cpp_TypeInfo_var);
+		TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  L_2 = ((TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203_StaticFields*)il2cpp_codegen_static_fields_for(TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203_il2cpp_TypeInfo_var))->get_MinValue_2();
+		int64_t L_3 = L_2.get__ticks_3();
+		if ((!(((uint64_t)L_1) == ((uint64_t)L_3))))
+		{
+			goto IL_0022;
+		}
+	}
+	{
+		String_t* L_4;
+		L_4 = Environment_GetResourceString_m8DFF827596B5FD533D3FE56900FA095F7D674617(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralA98FA2FFC82D1846A700EF7EC63A1B429FD4F10C)), /*hidden argument*/NULL);
+		OverflowException_tD1FBF4E54D81EC98EEF386B69344D336D1EC1AB9 * L_5 = (OverflowException_tD1FBF4E54D81EC98EEF386B69344D336D1EC1AB9 *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&OverflowException_tD1FBF4E54D81EC98EEF386B69344D336D1EC1AB9_il2cpp_TypeInfo_var)));
+		OverflowException__ctor_m93384109E3514E1EB7F97A50893B1B617D21F91E(L_5, L_4, /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_5, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TimeSpan_op_UnaryNegation_m0252CCD8175936D13B39AB571088F008153E6688_RuntimeMethod_var)));
+	}
+
+IL_0022:
+	{
+		TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  L_6 = ___t0;
+		int64_t L_7 = L_6.get__ticks_3();
+		TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  L_8;
+		memset((&L_8), 0, sizeof(L_8));
+		TimeSpan__ctor_mC80FA729ECA3A7AF31D9F517A95E60FC23EB86B0_inline((&L_8), ((-L_7)), /*hidden argument*/NULL);
+		return L_8;
+	}
 }
 // System.TimeSpan System.TimeSpan::op_Subtraction(System.TimeSpan,System.TimeSpan)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  TimeSpan_op_Subtraction_mA4ACA1A4349FA026D9F3DE12E4E1DC180832CA62 (TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  ___t10, TimeSpan_t4F6A0E13E703B65365CFCAB58E05EE0AF3EE6203  ___t21, const RuntimeMethod* method)
