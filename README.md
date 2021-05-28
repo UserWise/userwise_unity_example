@@ -8,6 +8,12 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v2.1.2
+- Fixed survey entry bug on android
+- Fixed an on-device caching issue for new players
+- Fixed a bug that caused constantly running content (e.g. Scheduled without an end date) to be stopped immediately
+- Updated to v2.1.1 of the Android SDK
+
 ### v2.1.1
 - Fixed a bug that caused the survey screen to attempt to load (and fail) when the survey invite was declined
 
