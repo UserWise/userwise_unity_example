@@ -9,7 +9,8 @@ public static class OfferEventHandler
 {
     public static void OnOffersLoaded(object sender, EventArgs args)
     {
-        Debug.Log(String.Format("Offers have been loaded from the API!  {0} Offers Available", UserWise.INSTANCE.OffersModule.ActiveOffers.Count));
+        OffersModule offersModule = UserWise.INSTANCE.OffersModule;
+        Debug.Log(String.Format("Offers have been loaded!  {0} Available | {1} Upcoming", offersModule.ActiveOffers.Count, offersModule.UpcomingOffers.Count));
     }
 
     public static void OnOfferAvailable(object sender, OfferEventArgs args)

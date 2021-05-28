@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R52N607W0LK",
+    "m_SelectedDeviceId": "emulator-5554",
     "m_SelectedPackage": {
-        "deviceId": "R52N607W0LK",
-        "name": "com.DefaultCompany.UserWiseExample",
-        "processId": 21307,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,43 +11,61 @@
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 16742,
+            "processId": 28911,
             "exited": true
         },
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 17108,
+            "processId": 31127,
             "exited": true
         },
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 17817,
+            "processId": 31919,
             "exited": true
         },
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 18493,
+            "processId": 2230,
             "exited": true
         },
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 20203,
+            "processId": 4567,
             "exited": true
         },
         {
             "deviceId": "R52N607W0LK",
-            "name": "com.samsung.android.dialer",
-            "processId": 30876,
+            "name": "com.DefaultCompany.UserWiseExample",
+            "processId": 7167,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N607W0LK",
+            "name": "com.sec.android.app.launcher",
+            "processId": 2275,
             "exited": false
         },
         {
             "deviceId": "R52N607W0LK",
             "name": "com.DefaultCompany.UserWiseExample",
-            "processId": 21307,
+            "processId": 6034,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N607W0LK",
+            "name": "com.DefaultCompany.UserWiseExample",
+            "processId": 8279,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 1052,
             "exited": false
         }
     ],

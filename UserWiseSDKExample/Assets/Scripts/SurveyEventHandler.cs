@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Text;
 using UnityEngine;
+using UserWiseSDK;
 using UserWiseSDK.Surveys;
 
 public static class SurveyEventHandler
 {
     public static void OnSurveysLoaded(object sender, EventArgs args)
     {
-        Debug.Log(String.Format("Surveys have been loaded!  {0} Surveys Available", ((SurveysModule)sender).ActiveSurveys.Count));
+        SurveysModule surveysModule = UserWise.INSTANCE.SurveysModule;
+        Debug.Log(String.Format("Surveys have been loaded!  {0} Available | {1} Upcoming", surveysModule.ActiveSurveys.Count, surveysModule.UpcomingSurveys.Count));
     }
 
     public static void OnSurveyAvailable(object sender, SurveyEventArgs args)
@@ -59,9 +61,13 @@ public static class SurveyEventHandler
 
     public static void OnSurveyClosed(object sender, SurveyResponseIdEventArgs args)
     {
-        // This is called with or without completed. Use this + onSurveyEnterFailed
-        // to regain control of your game.
         Debug.Log("UserWise survey was exited.");
+
+        SurveysModule surveysModule = (SurveysModule)sender;
+        if (surveysModule.ActiveSurveys.Count > 0) {
+            UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
+            component.InitializeSurveyInvite(surveysModule.ActiveSurveys[0]);
+        }
     }
 
     public static void OnSurveyCompleted(object sender, SurveyResponseIdEventArgs args)
