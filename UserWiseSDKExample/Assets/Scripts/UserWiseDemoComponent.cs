@@ -44,12 +44,12 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "";
+        string apiKey = "f1535363ad9ab340ebc9786337b0";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        //this.userwise.HostOverride = "";
+        this.userwise.HostOverride = "http://127.0.0.1:3000/";
         this.userwise.SetApiKey(apiKey);
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;

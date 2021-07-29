@@ -1,22 +1,31 @@
-﻿using UnityEngine;
+﻿#if UNITY_IOS
+
+using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.IO;
 
-#if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 using UnityEditor.iOS.Xcode.Extensions;
 
 public class UserWisePostBuildProcessor
 {
+#if UNITY_CLOUD_BUILD
+    public static void OnPostprocessBuildiOS(string exportPath) {
+        OnPostprocessBuild(BuildTarget.iOS, exportPath);
+    }
+#endif
+
     [PostProcessBuildAttribute(1)]
     public static void OnPostprocessBuild(BuildTarget buildTarget, string buildPath)
     {
         if (buildTarget == BuildTarget.iOS)
         {
+#if !UNITY_CLOUD_BUILD
             Debug.Log("UserWise: OnPostprocessBuild");
             UpdateProject(buildTarget, buildPath + "/Unity-iPhone.xcodeproj/project.pbxproj");
             UpdateProjectPlist(buildTarget, buildPath + "/Info.plist");
+#endif
         }
     }
 
@@ -25,9 +34,9 @@ public class UserWisePostBuildProcessor
         PBXProject project = new PBXProject();
         project.ReadFromString(File.ReadAllText(projectPath));
 
-        string targetId = project.GetUnityFrameworkTargetGuid();
+        string targetId = project.GetUnityMainTargetGuid();
 
-        string sdkPath = "Frameworks/Plugins/iOS/";
+        string sdkPath = "Frameworks/Plugins/iOS";
         string frameworkName = "UserWiseSDK.framework";
 
         string frameworkGuid = project.AddFile(sdkPath + "/" + frameworkName, frameworkName);
