@@ -8,6 +8,9 @@ This repository hosts an example unity game running the latest UserWise SDK rele
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v2.1.4
+- Released tweak the the `UserWisePostBuildProcessor.cs` script for better iOS framework embedding & signing.
+
 ### v2.1.3
 - Fixed a Triggered Campaign issue causing triggering to occur event when event attribute or region metadata logic failed verification.
 
