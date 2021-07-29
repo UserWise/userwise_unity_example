@@ -17,8 +17,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
-    Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -61,23 +59,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1634}
     - Class: 114
-      Script: {instanceID: 2284}
+      Script: {instanceID: 2286}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2682}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2842}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3090}
+      Script: {instanceID: 3092}
     - Class: 114
-      Script: {instanceID: 3260}
+      Script: {instanceID: 3262}
     - Class: 114
-      Script: {instanceID: 3368}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3784}
+      Script: {instanceID: 3786}
     - Class: 114
-      Script: {instanceID: 4016}
+      Script: {instanceID: 4018}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -640,4 +638,4 @@ ScriptsOnlyBuild:
   platform: 9
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/jenkinsdev/Documents/UWUnityExampleiOS
+  playerPath: /Users/jenkinsdev/Documents/testt

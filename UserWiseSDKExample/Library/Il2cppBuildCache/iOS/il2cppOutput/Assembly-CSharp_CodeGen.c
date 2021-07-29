@@ -128,37 +128,31 @@ extern void U3CAssignLoginDataU3Ed__17_System_Collections_Generic_IEnumeratorU3C
 extern void U3CAssignLoginDataU3Ed__17_System_Collections_IEnumerator_Reset_m25CA308618D8BA921F4D5C9541F6755F050A8BE8 (void);
 // 0x0000003A System.Object UserWiseDemoComponent/<AssignLoginData>d__17::System.Collections.IEnumerator.get_Current()
 extern void U3CAssignLoginDataU3Ed__17_System_Collections_IEnumerator_get_Current_mA53FF3F2E74FA817B33A953C49E08D556E374070 (void);
-// 0x0000003B System.Void NewMonoBehaviour::Start()
-extern void NewMonoBehaviour_Start_m8E52FB78E604AAB804763638F3B40FB2E8FDE7F2 (void);
-// 0x0000003C System.Void NewMonoBehaviour::Update()
-extern void NewMonoBehaviour_Update_mF6E517187DEA63150DE5151AA7FF321D8F714E45 (void);
-// 0x0000003D System.Void NewMonoBehaviour::.ctor()
-extern void NewMonoBehaviour__ctor_mF62416E23283AFAF0EAD2479EFC763E256C02D0C (void);
-// 0x0000003E System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setSurveysNativeEventListener(System.String)
+// 0x0000003B System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setSurveysNativeEventListener(System.String)
 extern void iOSNativePlatformProxyExtensions__setSurveysNativeEventListener_mD393B04404DDB4B339F450BB74E6FD1927245001 (void);
-// 0x0000003F System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_unsetSurveysNativeEventListener()
+// 0x0000003C System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_unsetSurveysNativeEventListener()
 extern void iOSNativePlatformProxyExtensions__unsetSurveysNativeEventListener_m103AD5DF660B66944D3CD865CED8E6E290A2257C (void);
-// 0x00000040 System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_loadTakeSurveyPage(System.String,System.String)
+// 0x0000003D System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_loadTakeSurveyPage(System.String,System.String)
 extern void iOSNativePlatformProxyExtensions__loadTakeSurveyPage_mE7E14F30B6CA89A95FE064C7CC583FE9EAF914B9 (void);
-// 0x00000041 System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setColors(System.String,System.String)
+// 0x0000003E System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setColors(System.String,System.String)
 extern void iOSNativePlatformProxyExtensions__setColors_m9A1CE3897D464258B775F686052EA3E11921C851 (void);
-// 0x00000042 System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setSplashScreenLogo(System.String)
+// 0x0000003F System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_setSplashScreenLogo(System.String)
 extern void iOSNativePlatformProxyExtensions__setSplashScreenLogo_m630C84DBC4F0527E6CDE84C8287706EE79B3FB9D (void);
-// 0x00000043 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getCarrier()
+// 0x00000040 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getCarrier()
 extern void iOSNativePlatformProxyExtensions__getCarrier_mFB5AAED4CED216BE9AED7A878503C7E4120476EE (void);
-// 0x00000044 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getOsVersion()
+// 0x00000041 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getOsVersion()
 extern void iOSNativePlatformProxyExtensions__getOsVersion_mBA3D24E621BCE5A6AF336B7CBF66C17281E25465 (void);
-// 0x00000045 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getDeviceType()
+// 0x00000042 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getDeviceType()
 extern void iOSNativePlatformProxyExtensions__getDeviceType_mF522170E6376C1C9AF190F12CF1158EAB39B8339 (void);
-// 0x00000046 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getConnectionType()
+// 0x00000043 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getConnectionType()
 extern void iOSNativePlatformProxyExtensions__getConnectionType_mB5C6FED528C289EE96E8743324C10C510D53234E (void);
-// 0x00000047 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getLanguage()
+// 0x00000044 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getLanguage()
 extern void iOSNativePlatformProxyExtensions__getLanguage_m1EC9D916C3627DCDCC14F772469C2DABDD3C8874 (void);
-// 0x00000048 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getCountry()
+// 0x00000045 System.IntPtr UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::_getCountry()
 extern void iOSNativePlatformProxyExtensions__getCountry_m020E01B3F5C0F574BC6B60DBC502020CA771571A (void);
-// 0x00000049 System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::SetNativeiOSFunctions()
+// 0x00000046 System.Void UserWiseSDK.Internal.Platforms.iOSNativePlatformProxyExtensions::SetNativeiOSFunctions()
 extern void iOSNativePlatformProxyExtensions_SetNativeiOSFunctions_mEC52EF4FD6823FAE509CF7A91B6417CDEE8793E6 (void);
-static Il2CppMethodPointer s_methodPointers[73] = 
+static Il2CppMethodPointer s_methodPointers[70] = 
 {
 	GameEventHandler_OnEventsLoaded_m95D36ED7C66CA4D589ADB47F2BBDDA37B5F62E99,
 	GameEventHandler_OnEventActive_mF05A70B1031E8A19123595FCC3E157C5C1C6CE28,
@@ -218,9 +212,6 @@ static Il2CppMethodPointer s_methodPointers[73] =
 	U3CAssignLoginDataU3Ed__17_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m01D27D36125511357F5E0D02BB3D8C5756804428,
 	U3CAssignLoginDataU3Ed__17_System_Collections_IEnumerator_Reset_m25CA308618D8BA921F4D5C9541F6755F050A8BE8,
 	U3CAssignLoginDataU3Ed__17_System_Collections_IEnumerator_get_Current_mA53FF3F2E74FA817B33A953C49E08D556E374070,
-	NewMonoBehaviour_Start_m8E52FB78E604AAB804763638F3B40FB2E8FDE7F2,
-	NewMonoBehaviour_Update_mF6E517187DEA63150DE5151AA7FF321D8F714E45,
-	NewMonoBehaviour__ctor_mF62416E23283AFAF0EAD2479EFC763E256C02D0C,
 	iOSNativePlatformProxyExtensions__setSurveysNativeEventListener_mD393B04404DDB4B339F450BB74E6FD1927245001,
 	iOSNativePlatformProxyExtensions__unsetSurveysNativeEventListener_m103AD5DF660B66944D3CD865CED8E6E290A2257C,
 	iOSNativePlatformProxyExtensions__loadTakeSurveyPage_mE7E14F30B6CA89A95FE064C7CC583FE9EAF914B9,
@@ -234,7 +225,7 @@ static Il2CppMethodPointer s_methodPointers[73] =
 	iOSNativePlatformProxyExtensions__getCountry_m020E01B3F5C0F574BC6B60DBC502020CA771571A,
 	iOSNativePlatformProxyExtensions_SetNativeiOSFunctions_mEC52EF4FD6823FAE509CF7A91B6417CDEE8793E6,
 };
-static const int32_t s_InvokerIndices[73] = 
+static const int32_t s_InvokerIndices[70] = 
 {
 	1922,
 	1922,
@@ -294,9 +285,6 @@ static const int32_t s_InvokerIndices[73] =
 	1249,
 	1285,
 	1249,
-	1285,
-	1285,
-	1285,
 	2082,
 	2116,
 	1922,
@@ -315,7 +303,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	73,
+	70,
 	s_methodPointers,
 	0,
 	NULL,
