@@ -1223,4 +1223,5 @@
 /UserWiseSDKExample/Library/PackageCache/@ffc0fb6e08/UserWiseSDKExample/Library/Style.catalog filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Library/PackageCache/@ffc0fb6e08/dependencies.zip filter=lfs diff=lfs merge=lfs -text
 /UserWiseSDKExample/Library/PackageCache/@ffc0fb6e08/userwise-2.1.4.unitypackage filter=lfs diff=lfs merge=lfs -text
+/UserWiseSDKExample/obj/Assembly-CSharp.csprojAssemblyReference.cache filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
