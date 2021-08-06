@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{FF688162-2756-F96E-F51F-C65F22430A5B}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UserWiseDemoScript.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UserWiseDemoScript.cs" Line="34" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="UserWiseExample" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="UserWiseDemoScript.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="80a8256f-4695-46f3-9fca-a46f2b7ba74a" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
