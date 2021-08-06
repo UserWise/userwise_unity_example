@@ -30,7 +30,7 @@ then
         git checkout latest
         echo "Updated branch to 'latest'."
 
-        git checkout ${$initbranch}
+        git checkout ${initbranch}
 else
         echo "Must provide a valid .unitypackage to generate the new 'latest' branch from."
         exit 1
