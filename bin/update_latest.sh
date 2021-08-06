@@ -33,7 +33,7 @@ then
 
         ## remove files (DANGEROUS!)
         read -p "You are about to remove all files in the 'latest' branch. Confirm? (y/n) " -n 1 yn
-        if [[ ${yn} == ^[Yy]$ ]]
+        if [[ ${yn} =~ ^[Yy]$ ]]
         then
                 sudo rm -rf ./*
         else
