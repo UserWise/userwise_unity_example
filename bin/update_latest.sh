@@ -35,7 +35,7 @@ then
         read -p "You are about to remove all files in the 'latest' branch. Confirm? (y/n) " -n 1 -r
         if [[ $REPLY == ^[Yy]$ ]]
         then
-                rm -rf ./*
+                sudo rm -rf ./*
         else
                 echo
                 echo "You must remove all files from 'latest' in order to generate a new version. Exiting..."
