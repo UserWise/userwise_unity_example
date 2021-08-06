@@ -6,48 +6,39 @@ then
         exit 1
 fi
 
-initbranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-if [ ${initbranch} != "enhance/add_support_for_upm" ]
-then
-        echo "This script may only be ran from the master branch."
-        exit 1
-fi
-
 unity_sdk_dir="../userwise_unity_sdk"
 if [ -d ${unity_sdk_dir} ]
 then
-        tmp_dir_name="uw-unity-$(date '+%Y-%m-%d')"
-        tmp_dir=$(mktemp -d -t ${tmp_dir_name})
-        echo "Created temp directory ${tmp_dir}"
-
-        ## switch to our latest branch
-        git checkout latest
-        if [ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') != 'latest' ]
+        initbranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+        if [ ${initbranch} != "latest" ]
         then
-                echo "Failed to update to 'latest' git branch. Exiting..."
-                exit 1
+                git checkout latest
+                if [ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') != "latest" ];
+                then
+                        exit 1
+                fi
         fi
 
-        ## save our static README
-        cp "./README.md" ${tmp_dir}
+        ## update our changes
+        rm ./Editor/UserWisePostBuildProcessor.cs
+        rm ./Editor/UserWisePostBuildProcessor.cs.meta
+        rm ./Editor/UserWiseSDKDependencies.cs
+        rm ./Editor/UserWiseSDKDependencies.cs.meta
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Editor/*" ./Editor
 
-        ## remove files (DANGEROUS!)
-        read -p "You are about to remove all files in the 'latest' branch. Confirm? (y/n) " -n 1 yn
-        if [[ ${yn} =~ ^[Yy]$ ]]
-        then
-                sudo rm -rf ./*
-        else
-                echo
-                echo "You must remove all files from 'latest' in order to generate a new version. Exiting..."
-                git checkout ${initbranch}
-                exit 1
-        fi
+        rm -rf ./Runtime/Plugins/*
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/*" ./Runtime/Plugins/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/*" ./Runtime/Plugins/iOS/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/Android/*" ./Runtime/Plugins/Android/
 
-        ## copy README and unitypackage back
-        cp "${tmp_dir}/README.md" ./
-
-        ## copy our updated assets
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets" ./
+        rm ./Runtime/UserWiseSDK.dll
+        rm ./Runtime/UserWiseSDK.dll.meta
+        rm ./Runtime/iOSNativePlatformProxyExtensions.cs
+        rm ./Runtime/iOSNativePlatformProxyExtensions.cs.meta
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll" ./Runtime
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll.meta" ./Runtime
 
         echo "Successfully updated 'latest' branch."
         #git checkout ${initbranch}
