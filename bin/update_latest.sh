@@ -8,8 +8,8 @@ then
         exit 1
 fi
 
-branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-if [ "${branch}" != "enhance/add_support_for_upm" ]
+initbranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+if [ "${initbranch}" != "enhance/add_support_for_upm" ]
 then
         echo "This script may only be ran from the master branch."
         exit 1
@@ -26,6 +26,7 @@ then
         cp $unitypackage "${tmp_dir}/"
         echo "Copied ${unity_package_name} to the created temp directory."
 
+        ## switch to our latest branch
         git checkout latest
 else
         echo "Must provide a valid .unitypackage to generate the new 'latest' branch from."
