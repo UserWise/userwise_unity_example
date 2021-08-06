@@ -13,17 +13,12 @@ then
         exit 1
 fi
 
-unitypackage="$1"
-if [ -f ${unitypackage} ]
+unity_sdk_dir="../userwise_unity_sdk"
+if [ ! -d ${unity_sdk_dir} ]
 then
-        unity_package_name=(basename ${unitypackage})
         tmp_dir_name="uw-unity-$(date '+%Y-%m-%d')"
         tmp_dir=$(mktemp -d -t ${tmp_dir_name})
         echo "Created temp directory ${tmp_dir}"
-
-        ## copy our unitypackage to the tmp directory
-        cp ${unitypackage} ${tmp_dir}
-        echo "Copied ${unity_package_name} to the created temp directory."
 
         ## switch to our latest branch
         git checkout latest
@@ -48,8 +43,15 @@ then
                 exit 1
         fi
 
-        git checkout ${initbranch}
+        ## copy README and unitypackage back
+        cp "${tmp_dir}/README.md" ./
+
+        ## copy our updated assets
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets" ./
+
+        echo "Successfully updated 'latest' branch."
+        #git checkout ${initbranch}
 else
-        echo "Must provide a valid .unitypackage to generate the new 'latest' branch from."
+        echo "The example app and the unity sdk projects must be siblings within the same parent directory. '../userwise_unity_sdk/' was not found"
         exit 1
 fi
