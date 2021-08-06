@@ -1,0 +1,16 @@
+{
+  "name": "io.userwise.userwise_sdk",
+  "version": "2.1.4",
+  "displayName": "UserWise SDK",
+  "description": "",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://docs.userwise.io/",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "author": {
+    "name": "UserWise",
+    "email": "info@userwise.io",
+    "url": "https://userwise.io"
+  }
+}
