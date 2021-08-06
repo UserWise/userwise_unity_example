@@ -22,8 +22,8 @@ then
         ## update our changes
         rm ./Editor/UserWisePostBuildProcessor.cs
         rm ./Editor/UserWisePostBuildProcessor.cs.meta
-        rm ./Editor/UserWiseSDKDependencies.cs
-        rm ./Editor/UserWiseSDKDependencies.cs.meta
+        rm ./Editor/UserWiseSDKDependencies.xml
+        rm ./Editor/UserWiseSDKDependencies.xml.meta
         cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Editor/*" ./Editor
 
         rm -rf ./Runtime/Plugins/*
