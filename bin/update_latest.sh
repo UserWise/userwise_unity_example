@@ -33,7 +33,7 @@ then
 
         ## remove files (DANGEROUS!)
         read -p "You are about to remove all files in the 'latest' branch. Confirm? (y/n) " -n 1 -r
-        if [[ $REPLY = ^[Yy]$ ]]
+        if [[ $REPLY == ^[Yy]$ ]]
         then
                 rm -rf ./*
         else
