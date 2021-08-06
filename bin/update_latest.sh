@@ -36,21 +36,20 @@ then
         if [[ $REPLY = ^[Yy]$ ]]
         then
                 rm -rf ./*
+                ## copy README and unitypackage back
+                cp "${tmp_dir}/README.md" ./
+
+                ## copy our updated assets
+                cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets" ./
+
+                echo "Successfully updated 'latest' branch."
+                #git checkout ${initbranch}
         else
                 echo
                 echo "You must remove all files from 'latest' in order to generate a new version. Exiting..."
                 git checkout ${initbranch}
                 exit 1
         fi
-
-        ## copy README and unitypackage back
-        cp "${tmp_dir}/README.md" ./
-
-        ## copy our updated assets
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets" ./
-
-        echo "Successfully updated 'latest' branch."
-        #git checkout ${initbranch}
 else
         echo "The example app and the unity sdk projects must be siblings within the same parent directory."
         echo "The directory '../userwise_unity_sdk/' was not found... Exiting"
