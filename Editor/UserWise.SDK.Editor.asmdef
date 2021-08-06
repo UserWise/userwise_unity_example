@@ -1,7 +1,7 @@
 {
-    "name": "UserWise.SDK",
+    "name": "UserWise.SDK.Editor",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": ["Editor"],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
@@ -11,3 +11,4 @@
     "versionDefines": [],
     "noEngineReferences": false
 }
+
