@@ -14,7 +14,7 @@ then
 fi
 
 unity_sdk_dir="../userwise_unity_sdk"
-if [ ! -d ${unity_sdk_dir} ]
+if [ -d ${unity_sdk_dir} ]
 then
         tmp_dir_name="uw-unity-$(date '+%Y-%m-%d')"
         tmp_dir=$(mktemp -d -t ${tmp_dir_name})
@@ -52,6 +52,7 @@ then
         echo "Successfully updated 'latest' branch."
         #git checkout ${initbranch}
 else
-        echo "The example app and the unity sdk projects must be siblings within the same parent directory. '../userwise_unity_sdk/' was not found"
+        echo "The example app and the unity sdk projects must be siblings within the same parent directory."
+        echo "The directory '../userwise_unity_sdk/' was not found... Exiting"
         exit 1
 fi
