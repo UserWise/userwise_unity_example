@@ -7,10 +7,9 @@ then
 fi
 
 version=$1
-
-if [ $(test ${version} == "") ]
+if [ $(test ${version} = "") ]
 then
-        echo "You must provide a proper SEMVER. (example: './bin/update_latest 2.1.4')"
+        echo "You must provide a proper version. (example: './bin/update_latest 2.1.4')"
         exit 1
 fi
 
