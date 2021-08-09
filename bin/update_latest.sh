@@ -24,21 +24,21 @@ then
         rm ./Editor/UserWisePostBuildProcessor.cs.meta
         rm ./Editor/UserWiseSDKDependencies.xml
         rm ./Editor/UserWiseSDKDependencies.xml.meta
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Editor/*" ./Editor
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Editor/" ./Editor
 
         rm -rf ./Runtime/Plugins/*
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/*" ./Runtime/Plugins/
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/*" ./Runtime/Plugins/iOS/
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/Android/*" ./Runtime/Plugins/Android/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime/Plugins/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/" ./Runtime/Plugins/iOS/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/Android/" ./Runtime/Plugins/Android/
 
         rm ./Runtime/UserWiseSDK.dll
         rm ./Runtime/UserWiseSDK.dll.meta
         rm ./Runtime/iOSNativePlatformProxyExtensions.cs
         rm ./Runtime/iOSNativePlatformProxyExtensions.cs.meta
-        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
-        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll.meta" ./Runtime
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
+        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
 
         echo "Successfully updated 'latest' branch."
         #git checkout ${initbranch}
