@@ -35,17 +35,15 @@ then
 
         rm -rf ./Runtime/Plugins/*
         cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime/Plugins/
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/" ./Runtime/Plugins/iOS/
         cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/Android/" ./Runtime/Plugins/Android/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/" ./Runtime/Plugins/iOS/
+        mv ./Runtime/Plugins/iOSNativePlatformProxyExtensions.cs ./Runtime/Plugins/iOS/
+        mv ./Runtime/Plugins/iOSNativePlatformProxyExtensions.cs.meta ./Runtime/Plugins/iOS/
 
         rm ./Runtime/UserWiseSDK.dll
         rm ./Runtime/UserWiseSDK.dll.meta
-        rm ./Runtime/iOSNativePlatformProxyExtensions.cs
-        rm ./Runtime/iOSNativePlatformProxyExtensions.cs.meta
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll.meta" ./Runtime
-        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
-        cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
 
         git commit -a -m "${version}"
         git tag "${version}"
