@@ -6,6 +6,14 @@ then
         exit 1
 fi
 
+version=$1
+
+if [ $(test ${version} == "") ]
+then
+        echo "You must provide a proper SEMVER. (example: './bin/update_latest 2.1.4')"
+        exit 1
+fi
+
 unity_sdk_dir="../userwise_unity_sdk"
 if [ -d ${unity_sdk_dir} ]
 then
@@ -40,8 +48,11 @@ then
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
 
+        git commit -a -m ${version}
+        git tag -v ${version}
+        git push origin latest
+        git push origin --tags
         echo "Successfully updated 'latest' branch."
-        #git checkout ${initbranch}
 else
         echo "The example app and the unity sdk projects must be siblings within the same parent directory."
         echo "The directory '../userwise_unity_sdk/' was not found... Exiting"
