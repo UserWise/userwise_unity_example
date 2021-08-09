@@ -54,6 +54,6 @@ then
         echo "Successfully updated 'latest' branch."
 else
         echo "The example app and the unity sdk projects must be siblings within the same parent directory."
-        echo "The directory '../userwise_unity_sdk/' was not found... Exiting"
+        echo "The relative path '../userwise_unity_sdk/' was not found. Exiting..."
         exit 1
 fi
