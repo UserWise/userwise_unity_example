@@ -7,7 +7,7 @@ then
 fi
 
 version=$1
-if [ $(test ${version} = "") ]
+if [[ ${version} == "" ]]
 then
         echo "You must provide a proper version. (example: './bin/update_latest 2.1.4')"
         exit 1
@@ -17,10 +17,10 @@ unity_sdk_dir="../userwise_unity_sdk"
 if [ -d ${unity_sdk_dir} ]
 then
         initbranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-        if [ ${initbranch} != "latest" ]
+        if [[ ${initbranch} != "latest" ]]
         then
                 git checkout latest
-                if [ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') != "latest" ];
+                if [[ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') != "latest" ]];
                 then
                         exit 1
                 fi
