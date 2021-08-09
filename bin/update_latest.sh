@@ -6,7 +6,7 @@ then
         exit 1
 fi
 
-version=$1
+version="$1"
 if [[ ${version} == "" ]]
 then
         echo "You must provide a proper version. (example: './bin/update_latest 2.1.4')"
@@ -47,8 +47,8 @@ then
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
 
-        git commit -a -m ${version}
-        git tag -v ${version}
+        git commit -a -m "${version}"
+        git tag -v "${version}"
         git push origin latest
         git push origin --tags
         echo "Successfully updated 'latest' branch."
