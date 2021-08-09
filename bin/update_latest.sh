@@ -48,7 +48,7 @@ then
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/iOSNativePlatformProxyExtensions.cs.meta" ./Runtime
 
         git commit -a -m "${version}"
-        git tag -v "${version}"
+        git tag "${version}"
         git push origin latest
         git push origin --tags
         echo "Successfully updated 'latest' branch."
