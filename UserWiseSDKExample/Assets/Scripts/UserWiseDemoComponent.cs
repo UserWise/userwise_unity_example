@@ -17,6 +17,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     public GameObject surveyInviteDialog;
     public InputField playerIdInput;
     public Button changePlayerButton;
+    public Button refreshContentButton;
 
     private string DEFAULT_USER_ID = "userwise-example-unity";
 
@@ -44,7 +45,7 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "f1535363ad9ab340ebc9786337b0";
+        string apiKey = "815066332cb3927e3964e2e7538e";
 
         this.userwise = UserWise.INSTANCE;
         this.userwise.DebugMode = true;
@@ -127,13 +128,18 @@ public class UserWiseDemoComponent : MonoBehaviour
 
         GameObject changePlayerButtonObject = GameObject.Find("change_player_button");
         changePlayerButton = changePlayerButtonObject.GetComponent<Button>();
-
         changePlayerButton.onClick.AddListener(() =>
         {
             string playerId = playerIdInput.text;
             this.userwise.Stop();
             this.userwise.UserId = playerId.Trim();
             this.userwise.Start();
+        });
+
+        GameObject refreshContentButtonObject = GameObject.Find("refresh_content_button");
+        refreshContentButton.onClick.AddListener(() =>
+        {
+            this.userwise.RefreshContent();
         });
     }
 
