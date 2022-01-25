@@ -25,6 +25,9 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v2.2.1
+- Adds support for in-session segment and content refreshing.
+
 ### v2.1.4
 - Released tweak the the `UserWisePostBuildProcessor.cs` script for better iOS framework embedding & signing.
 

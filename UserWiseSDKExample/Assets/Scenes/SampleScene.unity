@@ -1148,7 +1148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Change Player ID
+  m_Text: Refresh Content
 --- !u!222 &1268520084
 CanvasRenderer:
   m_ObjectHideFlags: 0
