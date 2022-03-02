@@ -27,16 +27,8 @@ then
         fi
 
         ## update our changes
-        rm ./Editor/UserWisePostBuildProcessor.cs
-        rm ./Editor/UserWisePostBuildProcessor.cs.meta
-        rm ./Editor/UserWiseSDKDependencies.xml
-        rm ./Editor/UserWiseSDKDependencies.xml.meta
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Editor/" ./Editor
-
         rm -rf ./Runtime/Plugins/*
         cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime/Plugins/
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/Android/" ./Runtime/Plugins/Android/
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/Plugins/iOS/" ./Runtime/Plugins/iOS/
 
         rm ./Runtime/UserWiseSDK.dll
         rm ./Runtime/UserWiseSDK.dll.meta

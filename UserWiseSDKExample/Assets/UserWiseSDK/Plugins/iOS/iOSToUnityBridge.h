@@ -1,14 +1,15 @@
-#ifndef iOSToUnitySurveyListener_h
-#define iOSToUnitySurveyListener_h
+#ifndef iOSToUnityBridge_h
+#define iOSToUnityBridge_h
 
-#import <UserWiseSDK/UserWiseSDK-Swift.h>
+#import "./Utility.h"
+#import "./Surveys.h"
 
-@interface iOSToUnitySurveyListener : NSObject <UserWiseSurveyDelegate>
+@interface iOSToUnityBridge : NSObject
 @property (strong, nonatomic) NSString *gameObjectName;
-@end
 
-@interface iOSToUnityOfferListener : NSObject <UserWiseOfferDelegate>
-@property (strong, nonatomic) NSString *gameObjectName;
+- (void)onSurveyEnterFailedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId;
+- (void)onSurveyCompletedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId
+- (void)onSurveyClosedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId
 @end
 
 #endif

@@ -4,6 +4,14 @@ using System.Runtime.InteropServices;
 
 namespace UserWiseSDK.Internal.Platforms
 {
+
+    /// <summary>
+    /// Connects the Objective-C functions defined within <c>iOS/iOSToUnityBridge</c>
+    /// to the <see cref="iOSNativePlatformProxy"/>, as part of the <c>UserWiseSDK.Internal.Platforms</c>
+    /// namespace.
+    /// 
+    /// This code SHOULD NOT be altered, or removed.
+    /// </summary>
     static class iOSNativePlatformProxyExtensions
     {
 #if UNITY_IOS && !UNITY_EDITOR
@@ -14,19 +22,7 @@ namespace UserWiseSDK.Internal.Platforms
 
         [DllImport("__Internal")]
         private static extern void _loadTakeSurveyPage(string surveyUrl, string responseId);
-        [DllImport("__Internal")]
-        private static extern void _setColors(string primaryColorHex, string splashScreenBackgroundColorHex);
-        [DllImport("__Internal")]
-        private static extern void _setSplashScreenLogo(string logoPath);
 
-        [DllImport("__Internal")]
-        private static extern IntPtr _getCarrier();
-        [DllImport("__Internal")]
-        private static extern IntPtr _getOsVersion();
-        [DllImport("__Internal")]
-        private static extern IntPtr _getDeviceType();
-        [DllImport("__Internal")]
-        private static extern IntPtr _getConnectionType();
         [DllImport("__Internal")]
         private static extern IntPtr _getLanguage();
         [DllImport("__Internal")]
@@ -41,13 +37,7 @@ namespace UserWiseSDK.Internal.Platforms
             proxy.unsetEventListenerNativeFunction += _unsetSurveysNativeEventListener;
 
             proxy.loadTakeSurveyPageNativeFunction += _loadTakeSurveyPage;
-            proxy.setColorsNativeFunction += _setColors;
-            proxy.setSplashScreenLogoNativeFunction += _setSplashScreenLogo;
 
-            proxy.getCarrierNativeFunction += _getCarrier;
-            proxy.getOsVersionNativeFunction += _getOsVersion;
-            proxy.getDeviceTypeNativeFunction += _getDeviceType;
-            proxy.getConnectionTypeNativeFunction += _getConnectionType;
             proxy.getLanguageNativeFunction += _getLanguage;
             proxy.getCountryNativeFunction += _getCountry;
         }
