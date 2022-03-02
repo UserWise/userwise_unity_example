@@ -9,7 +9,7 @@ using UserWiseSDK.Surveys;
 using UserWiseSDK.Offers;
 using UserWiseSDK.Messages;
 using UserWiseSDK.Events;
-using UserWiseSDK.RemoteConfigs;\
+using UserWiseSDK.RemoteConfigs;
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -37,10 +37,9 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "";
+        string apiKey = "534d39141213a9ccfe2ab21e0343";
 
         this.userwise = UserWise.INSTANCE;
-        this.userwise.DebugMode = true;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
         //this.userwise.HostOverride = "";
         this.userwise.SetApiKey(apiKey);
@@ -70,7 +69,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         offersModule.OnOfferImpressionInitialized += OfferEventHandler.OnOfferImpressionInitialized;
 
         // RemoteConfigs Module Configuration
-        RemoteConfigsModule remoteConfigsModule = this.userWise.RemoteConfigsModule;
+        RemoteConfigsModule remoteConfigsModule = this.userwise.RemoteConfigsModule;
         remoteConfigsModule.OnLoaded += RemoteConfigEventHandler.OnLoaded;
         remoteConfigsModule.OnActive += RemoteConfigEventHandler.OnActive;
         remoteConfigsModule.OnInactive += RemoteConfigEventHandler.OnInactive;
@@ -78,8 +77,8 @@ public class UserWiseDemoComponent : MonoBehaviour
         // Surveys Module Configuration
         SurveysModule surveysModule = this.userwise.SurveysModule;
         surveysModule.OnLoaded += SurveyEventHandler.OnLoaded;
-        surveysModule.OnAvailable += SurveyEventHandler.OnAvailable;
-        surveysModule.OnUnavailable += SurveyEventHandler.OnUnavailable;
+        surveysModule.OnActive += SurveyEventHandler.OnActive;
+        surveysModule.OnInactive += SurveyEventHandler.OnInactive;
         surveysModule.OnSurveyInviteInitialized += SurveyEventHandler.OnSurveyInviteInitialized;
         surveysModule.OnSurveyEntered += SurveyEventHandler.OnSurveyEntered;
         surveysModule.OnSurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
@@ -129,8 +128,8 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         Debug.Log("Assigning Events");
         this.userwise.AssignEvent(
-            new PlayerEvent("event_logged_in", new List<PlayerEventAttribute> {
-                new PlayerEventAttribute("new_player", false, AttributableDataType.BOOLEAN),
+            new PlayerEvent("event_logged_in", new List<PlayerAttribute> {
+                new PlayerAttribute("new_player", false, AttributableDataType.BOOLEAN),
             }),
             null
         );

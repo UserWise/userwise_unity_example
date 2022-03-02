@@ -2,14 +2,15 @@
 using System.Text;
 using UnityEngine;
 using UserWiseSDK;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.Messages;
 
 public static class MessageEventHandler
 {
-    public static void OnLoaded(object sender, EventArgs args)
+    public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
         MessagesModule messagesModule = UserWise.INSTANCE.MessagesModule;
-        Debug.Log(String.Format("Messages have been loaded from the API!  {0} Available | {1} Upcoming", messagesModule.ActiveMessages.Count, messagesModule.UpcomingMessages.Count));
+        Debug.Log(String.Format("Messages have been loaded from the API!  {0} Available | {1} Upcoming", messagesModule.Active.Count, messagesModule.Upcoming.Count));
     }
 
     public static void OnActive(object sender, OnActiveEventArgs<Message> args)
@@ -30,17 +31,17 @@ public static class MessageEventHandler
         // UserWise.INSTANCE.MessagesModule.InitializeMessage(args.Record);
     }
 
-    public static void OnInactive(object sender, MessageEventArgs args)
+    public static void OnInactive(object sender, OnInactiveEventArgs<Message> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Message Unavailable!");
-        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Message.Id));
-        stringBuilder.AppendLine(String.Format("| Title: {0}", args.Message.Title));
-        stringBuilder.AppendLine(String.Format("| Body: {0}", args.Message.Body));
-        stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Message.PortraitImageId));
-        stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Message.LandscapeImageId));
-        stringBuilder.AppendLine(String.Format("| Message Type: {0}", args.Message.MessageType));
-        stringBuilder.AppendLine(String.Format("| Additional Fields: {0}", args.Message.AdditionalFields));
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Record.Id));
+        stringBuilder.AppendLine(String.Format("| Title: {0}", args.Record.Title));
+        stringBuilder.AppendLine(String.Format("| Body: {0}", args.Record.Body));
+        stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Record.PortraitImageId));
+        stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Record.LandscapeImageId));
+        stringBuilder.AppendLine(String.Format("| Message Type: {0}", args.Record.MessageType));
+        stringBuilder.AppendLine(String.Format("| Additional Fields: {0}", args.Record.AdditionalFields));
         Debug.Log(stringBuilder.ToString());
     }
 

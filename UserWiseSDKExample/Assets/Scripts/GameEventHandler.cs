@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UserWiseSDK;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.Events;
 
 public static class GameEventHandler
@@ -10,7 +11,7 @@ public static class GameEventHandler
     public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
         EventsModule eventsModule = UserWise.INSTANCE.EventsModule;
-        Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Available | {1} Upcoming", eventsModule.ActiveEvents.Count, eventsModule.UpcomingEvents.Count));
+        Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Available | {1} Upcoming", eventsModule.Active.Count, eventsModule.Upcoming.Count));
     }
 
     public static void OnActive(object sender, OnActiveEventArgs<GameEvent> args)
@@ -27,7 +28,7 @@ public static class GameEventHandler
         // this.DeserializeExampleGameEventData(args.Event);
     }
 
-    public static void OnInactive(object sender, OnActiveEventArgs<GameEvent> args)
+    public static void OnInactive(object sender, OnInactiveEventArgs<GameEvent> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Event Inactive:");

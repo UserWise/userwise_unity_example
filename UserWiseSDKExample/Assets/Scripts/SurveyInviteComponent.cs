@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.Surveys;
 
 public class SurveyInviteComponent : MonoBehaviour

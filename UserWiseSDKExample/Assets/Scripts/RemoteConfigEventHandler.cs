@@ -3,20 +3,21 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UserWiseSDK;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.RemoteConfigs;
 
 public static class RemoteConfigEventHandler
 {
     public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
-        EventsModule eventsModule = UserWise.INSTANCE.EventsModule;
-        Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Available | {1} Upcoming", eventsModule.ActiveEvents.Count, eventsModule.UpcomingEvents.Count));
+        RemoteConfigsModule remoteConfigsModule = UserWise.INSTANCE.RemoteConfigsModule;
+        Debug.Log(String.Format("Remote Configs have been loaded from the API!  {0} Available | {1} Upcoming", remoteConfigsModule.Active.Count, remoteConfigsModule.Upcoming.Count));
     }
 
     public static void OnActive(object sender, OnActiveEventArgs<RemoteConfig> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine("Event Active:");
+        stringBuilder.AppendLine("Remote Config Active:");
         stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Record.Id));
         stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Record.Name));
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
@@ -24,10 +25,10 @@ public static class RemoteConfigEventHandler
         Debug.Log(stringBuilder.ToString());
     }
 
-    public static void OnInactive(object sender, OnInactiveEventArgs<RemotConfig> args)
+    public static void OnInactive(object sender, OnInactiveEventArgs<RemoteConfig> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine("Event Inactive:");
+        stringBuilder.AppendLine("Remote Config Inactive:");
         stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Record.Id));
         stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Record.Name));
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
@@ -35,7 +36,7 @@ public static class RemoteConfigEventHandler
         Debug.Log(stringBuilder.ToString());
     }
 
-    public static void DeserializeExampleRemoteConfigData(GameEvent gameEvent)
+    public static void DeserializeExampleRemoteConfigData(RemoteConfig remoteConfig)
     {
         try
         {
@@ -54,7 +55,7 @@ public static class RemoteConfigEventHandler
 
             // We will deserialize the data structure above, just abstracted
             // a little through UserWise's IDictSerializable.  You can see the classes below.
-            RemoteConfigRewardsData rewards = gameEvent.GetJsonAsObject(new RemoteConfigRewardsData());
+            RemoteConfigRewardsData rewards = remoteConfig.GetJsonAsObject(new RemoteConfigRewardsData());
 
             // If you have a root-level array, you can follow the same steps above by
             // calling:
@@ -67,11 +68,11 @@ public static class RemoteConfigEventHandler
         }
     }
 
-    public class RemoteConfigRewardsData : IDictSerializable<EventRewardsData>
+    public class RemoteConfigRewardsData : IDictSerializable<RemoteConfigRewardsData>
     {
         List<Reward> Rewards;
 
-        EventRewardsData IDictSerializable<EventRewardsData>.Deserialize(Dictionary<string, object> data)
+        RemoteConfigRewardsData IDictSerializable<RemoteConfigRewardsData>.Deserialize(Dictionary<string, object> data)
         {
             this.Rewards = new List<Reward>();
 
@@ -90,7 +91,7 @@ public static class RemoteConfigEventHandler
         }
 
         // this is optional.
-        Dictionary<string, object> IDictSerializable<EventRewardsData>.Serialize() { throw new NotImplementedException(); }
+        Dictionary<string, object> IDictSerializable<RemoteConfigRewardsData>.Serialize() { throw new NotImplementedException(); }
     }
 
     public class Reward : IDictSerializable<Reward>
