@@ -2,36 +2,37 @@
 using System.Text;
 using UnityEngine;
 using UserWiseSDK;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.Surveys;
 
 public static class SurveyEventHandler
 {
-    public static void OnLoaded(object sender, EventArgs args)
+    public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
         SurveysModule surveysModule = UserWise.INSTANCE.SurveysModule;
-        Debug.Log(String.Format("Surveys have been loaded!  {0} Available | {1} Upcoming", surveysModule.ActiveSurveys.Count, surveysModule.UpcomingSurveys.Count));
+        Debug.Log(String.Format("Surveys have been loaded!  {0} Available | {1} Upcoming", surveysModule.Active.Count, surveysModule.Upcoming.Count));
     }
 
-    public static void OnActive(object sender, SurveyEventArgs args)
+    public static void OnActive(object sender, OnActiveEventArgs<Survey> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Survey Available!");
-        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Survey.Id));
-        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Survey.Name));
-        stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Survey.QuestionsCount));
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Record.Id));
+        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Record.Name));
+        stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Record.QuestionsCount));
         Debug.Log(stringBuilder.ToString());
 
         UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
-        component.InitializeSurveyInvite(args.Survey);
+        component.InitializeSurveyInvite(args.Record);
     }
 
-    public static void OnInactive(object sender, SurveyEventArgs args)
+    public static void OnInactive(object sender, OnInactiveEventArgs<Survey> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Survey Unavailable!");
-        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Survey.Id));
-        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Survey.Name));
-        stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Survey.QuestionsCount));
+        stringBuilder.AppendLine(String.Format("| ID: {0}", args.Record.Id));
+        stringBuilder.AppendLine(String.Format("| Name: {0}", args.Record.Name));
+        stringBuilder.AppendLine(String.Format("| Questions Count: {0}", args.Record.QuestionsCount));
         Debug.Log(stringBuilder.ToString());
     }
 
@@ -64,9 +65,9 @@ public static class SurveyEventHandler
         Debug.Log("UserWise survey was exited.");
 
         SurveysModule surveysModule = (SurveysModule)sender;
-        if (surveysModule.ActiveSurveys.Count > 0) {
+        if (surveysModule.Active.Count > 0) {
             UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
-            component.InitializeSurveyInvite(surveysModule.ActiveSurveys[0]);
+            component.InitializeSurveyInvite(surveysModule.Active[0]);
         }
     }
 

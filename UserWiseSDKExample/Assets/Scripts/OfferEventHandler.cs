@@ -3,14 +3,15 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UserWiseSDK;
+using UserWiseSDK.Common.Modules;
 using UserWiseSDK.Offers;
 
 public static class OfferEventHandler
 {
-    public static void OnLoaded(object sender, EventArgs args)
+    public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
         OffersModule offersModule = UserWise.INSTANCE.OffersModule;
-        Debug.Log(String.Format("Offers have been loaded!  {0} Available | {1} Upcoming", offersModule.ActiveOffers.Count, offersModule.UpcomingOffers.Count));
+        Debug.Log(String.Format("Offers have been loaded!  {0} Available | {1} Upcoming", offersModule.Active.Count, offersModule.Upcoming.Count));
     }
 
     public static void OnActive(object sender, OnActiveEventArgs<Offer> args)
@@ -62,7 +63,7 @@ public static class OfferEventHandler
         {
             itemString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
         }
-        stringBuilder.AppendLine(String.Format("| {0} Items:\n{1}", args.Offer.Record.Count, itemString.ToString()));
+        stringBuilder.AppendLine(String.Format("| {0} Items:\n{1}", args.Record.Items.Count, itemString.ToString()));
 
         StringBuilder currenciesString = new StringBuilder();
         foreach (KeyValuePair<string, long> entry in args.Record.Currencies)
@@ -95,6 +96,9 @@ public static class OfferEventHandler
         // UserWise.INSTANCE.OffersModule.UpdateOfferImpressionState(OfferImpression impression, OfferImpression.ImpressionState state);
 
         // Mark as "viewed" (previously, "initialized")
-        UserWise.INSTANCE.OffersModule.UpdateOfferImpressionState(args.OfferImpression, OfferImpression.ImpressionState.viewed);
+        UserWise.INSTANCE.OffersModule.UpdateOfferImpressionState(args.OfferImpression, OfferImpression.ImpressionState.viewed, (success) =>
+        {
+            Debug.Log(String.Format("Offer impression state changed successfully. offer_impression_id={0} new_state=viewed", args.OfferImpression.Id));
+        });
     }
 }
