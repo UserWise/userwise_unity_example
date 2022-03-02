@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UserWiseSDK;
-using UserWiseSDK.Events;
+using UserWiseSDK.RemoteConfigs;
 
-public static class GameEventHandler
+public static class RemoteConfigEventHandler
 {
     public static void OnLoaded(object sender, OnLoadedEventArgs args)
     {
@@ -13,35 +13,30 @@ public static class GameEventHandler
         Debug.Log(String.Format("Game Events have been loaded from the API!  {0} Available | {1} Upcoming", eventsModule.ActiveEvents.Count, eventsModule.UpcomingEvents.Count));
     }
 
-    public static void OnActive(object sender, OnActiveEventArgs<GameEvent> args)
+    public static void OnActive(object sender, OnActiveEventArgs<RemoteConfig> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Event Active:");
         stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Record.Id));
         stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Record.Name));
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
-        stringBuilder.AppendLine(String.Format("|- External Event Type: {0}", args.Record.ExternalEventType));
-        stringBuilder.AppendLine(String.Format("|- Data: {0}", args.Record.Data));
+        stringBuilder.AppendLine(String.Format("|- Json: {0}", args.Record.Json));
         Debug.Log(stringBuilder.ToString());
-
-        // this.DeserializeExampleGameEventData(args.Event);
     }
 
-    public static void OnInactive(object sender, OnActiveEventArgs<GameEvent> args)
+    public static void OnInactive(object sender, OnInactiveEventArgs<RemotConfig> args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Event Inactive:");
         stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Record.Id));
         stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Record.Name));
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
-        stringBuilder.AppendLine(String.Format("|- External Event Type: {0}", args.Record.ExternalEventType));
-        stringBuilder.AppendLine(String.Format("|- Data: {0}", args.Record.Data));
+        stringBuilder.AppendLine(String.Format("|- Json: {0}", args.Record.Json));
         Debug.Log(stringBuilder.ToString());
-
-        // this.DeserializeExampleGameEventData(args.Event);
     }
 
-    public static void DeserializeExampleGameEventData(GameEvent gameEvent) {
+    public static void DeserializeExampleRemoteConfigData(GameEvent gameEvent)
+    {
         try
         {
             // Data Deserialization Example 1: (manual)
@@ -59,13 +54,20 @@ public static class GameEventHandler
 
             // We will deserialize the data structure above, just abstracted
             // a little through UserWise's IDictSerializable.  You can see the classes below.
-            EventRewardsData rewards = gameEvent.GetDataAsObject(new EventRewardsData());
-        } catch {
+            RemoteConfigRewardsData rewards = gameEvent.GetJsonAsObject(new RemoteConfigRewardsData());
+
+            // If you have a root-level array, you can follow the same steps above by
+            // calling:
+            //
+            // List<RemoteConfigRewardsData> rewards = gameEvent.GetJsonAsList(new RemoteConfigRewardsData());
+        }
+        catch
+        {
             Debug.Log("Couldn't deserialize example data with received event.");
         }
     }
 
-    public class EventRewardsData : IDictSerializable<EventRewardsData>
+    public class RemoteConfigRewardsData : IDictSerializable<EventRewardsData>
     {
         List<Reward> Rewards;
 
@@ -91,7 +93,8 @@ public static class GameEventHandler
         Dictionary<string, object> IDictSerializable<EventRewardsData>.Serialize() { throw new NotImplementedException(); }
     }
 
-    public class Reward : IDictSerializable<Reward> {
+    public class Reward : IDictSerializable<Reward>
+    {
         int PointsRequired;
         List<int> ItemIds;
 

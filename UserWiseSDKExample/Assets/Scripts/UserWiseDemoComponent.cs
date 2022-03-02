@@ -8,9 +8,8 @@ using UserWiseSDK;
 using UserWiseSDK.Surveys;
 using UserWiseSDK.Offers;
 using UserWiseSDK.Messages;
-using UserWiseSDK.Variables;
 using UserWiseSDK.Events;
-using UserWiseSDK.Variables.Types;
+using UserWiseSDK.RemoteConfigs;\
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -23,13 +22,6 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private UserWise userwise;
     private SurveyInviteComponent surveyInviteComponent;
-
-    private readonly BooleanVariable myBoolVar = new BooleanVariable("my_bool_var", true);
-    private readonly IntegerVariable myIntVar = new IntegerVariable("my_int_var", 100);
-    private readonly FloatVariable myFloatVar = new FloatVariable("my_float_var", 1.0f);
-    private readonly StringVariable myStrVar = new StringVariable("my_str_var", "the default value");
-    private readonly DateTimeVariable myDatetimeVar = new DateTimeVariable("my_datetime_var", DateTime.UtcNow);
-    private readonly FileVariable myFileVar = new FileVariable("my_file_var", null);
 
     void Start()
     {
@@ -55,67 +47,44 @@ public class UserWiseDemoComponent : MonoBehaviour
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
 
-        // Variables Configuration (Definitions)
-        VariablesModule variablesModule = this.userwise.VariablesModule;
-        variablesModule.Define(this.myBoolVar);
-        variablesModule.Define(this.myIntVar);
-        variablesModule.Define(this.myFloatVar);
-        variablesModule.Define(this.myDatetimeVar);
-        variablesModule.Define(this.myFileVar);
-        variablesModule.Define(this.myStrVar);
-        variablesModule.OnVariablesLoaded += VariablesModule_OnVariablesLoaded;
-
         // Game Event Configuration
         EventsModule eventsModule = this.userwise.EventsModule;
-        eventsModule.OnEventsLoaded += GameEventHandler.OnEventsLoaded;
-        eventsModule.OnEventActive += GameEventHandler.OnEventActive;
-        eventsModule.OnEventInactive += GameEventHandler.OnEventInactive;
+        eventsModule.OnLoaded += GameEventHandler.OnLoaded;
+        eventsModule.OnActive += GameEventHandler.OnActive;
+        eventsModule.OnInactive += GameEventHandler.OnInactive;
 
         // Messages Configuration
         MessagesModule messagesModule = this.userwise.MessagesModule;
-        messagesModule.OnMessageAvailable += MessageEventHandler.OnMessageAvailable;
-        messagesModule.OnMessageUnavailable += MessageEventHandler.OnMessageUnavailable;
-        messagesModule.OnMessagesLoaded += MessageEventHandler.OnMessagesLoaded;
+        messagesModule.OnLoaded += MessageEventHandler.OnLoaded;
+        messagesModule.OnActive += MessageEventHandler.OnActive;
+        messagesModule.OnInactive += MessageEventHandler.OnInactive;
+        messagesModule.OnMessageInitialized += MessageEventHandler.OnMessageInitialized;
+        messagesModule.OnMessageInitializationFailed += MessageEventHandler.OnMessageInitializationFailed;
 
         // Offers Module Configuration
         OffersModule offersModule = this.userwise.OffersModule;
-        offersModule.OnOffersLoaded += OfferEventHandler.OnOffersLoaded;
-        offersModule.OnOfferAvailable += OfferEventHandler.OnOfferAvailable;
-        offersModule.OnOfferUnavailable += OfferEventHandler.OnOfferUnavailable;
+        offersModule.OnLoaded += OfferEventHandler.OnLoaded;
+        offersModule.OnActive += OfferEventHandler.OnActive;
+        offersModule.OnInactive += OfferEventHandler.OnInactive;
         offersModule.OnOfferImpressionInitializationFailed += OfferEventHandler.OnOfferImpressionInitializationFailed;
         offersModule.OnOfferImpressionInitialized += OfferEventHandler.OnOfferImpressionInitialized;
 
+        // RemoteConfigs Module Configuration
+        RemoteConfigsModule remoteConfigsModule = this.userWise.RemoteConfigsModule;
+        remoteConfigsModule.OnLoaded += RemoteConfigEventHandler.OnLoaded;
+        remoteConfigsModule.OnActive += RemoteConfigEventHandler.OnActive;
+        remoteConfigsModule.OnInactive += RemoteConfigEventHandler.OnInactive;
+
         // Surveys Module Configuration
         SurveysModule surveysModule = this.userwise.SurveysModule;
-        surveysModule.OnSurveysLoaded += SurveyEventHandler.OnSurveysLoaded;
-        surveysModule.OnSurveyAvailable += SurveyEventHandler.OnSurveyAvailable;
-        surveysModule.OnSurveyUnavailable += SurveyEventHandler.OnSurveyUnavailable;
+        surveysModule.OnLoaded += SurveyEventHandler.OnLoaded;
+        surveysModule.OnAvailable += SurveyEventHandler.OnAvailable;
+        surveysModule.OnUnavailable += SurveyEventHandler.OnUnavailable;
         surveysModule.OnSurveyInviteInitialized += SurveyEventHandler.OnSurveyInviteInitialized;
         surveysModule.OnSurveyEntered += SurveyEventHandler.OnSurveyEntered;
         surveysModule.OnSurveyEnterFailed += SurveyEventHandler.OnSurveyEnterFailed;
         surveysModule.OnSurveyClosed += SurveyEventHandler.OnSurveyClosed;
         surveysModule.OnSurveyCompleted += SurveyEventHandler.OnSurveyCompleted;
-        // The splash screen can be configured by setting a primary and background
-        // color, as well as the logo that displays (defaults to the UserWise logo).
-
-        // Update Splash Screen Colors
-        surveysModule.SetColors("#FFFFFF", "#361688");
-
-        // Update Splash Screen Logo
-        //string logoName = "userwise_hero_wars_logo.png";
-        //string logoPath = Path.Combine(Application.streamingAssetsPath, logoName);
-        //#if UNITY_ANDROID
-        //    UnityWebRequest www = UnityWebRequest.Get(logoPath);
-        //    UnityWebRequestAsyncOperation asyncOp = www.SendWebRequest();
-        //    asyncOp.completed += (_) =>
-        //    {
-        //        string androidLogoPath = Path.Combine(Application.persistentDataPath, logoName);
-        //        File.WriteAllBytes(androidLogoPath, www.downloadHandler.data);
-        //        surveysModule.SetSplashScreenLogo(androidLogoPath);
-        //    };
-        //#else
-        //    surveysModule.SetSplashScreenLogo(logoPath);
-        //#endif
     }
 
     private void SetupScene()
@@ -141,34 +110,6 @@ public class UserWiseDemoComponent : MonoBehaviour
         {
             this.userwise.RefreshContent();
         });
-    }
-
-    private void VariablesModule_OnVariablesLoaded(object sender, OnVariablesLoadedEventArgs e)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine(String.Format("UserWise variables have been loaded! Was from cache? {0}", e.FromCache));
-        stringBuilder.AppendLine(String.Format("| myBoolVar = {0}", this.myBoolVar.CurrentValue));
-        stringBuilder.AppendLine(String.Format("| myIntVar = {0}", this.myIntVar.CurrentValue));
-        stringBuilder.AppendLine(String.Format("| myFloatVar = {0}", this.myFloatVar.CurrentValue));
-        stringBuilder.AppendLine(String.Format("| myStrVar = {0}", this.myStrVar.CurrentValue));
-        stringBuilder.AppendLine(String.Format("| myDatetimeVar = {0}", this.myDatetimeVar.CurrentValue));
-        stringBuilder.AppendLine(String.Format("| myFileVar = {0}", this.myFileVar.CurrentValue));
-
-        // we can also load file data, which is just a shortcut for the
-        // media methods available on UserWise.INSTANCE.
-        if (this.myFileVar.CurrentValue != null)
-        {
-            this.myFileVar.GetRawFileData((successful, bytes) =>
-                    {
-                        string numBytesStr = (successful) ? bytes.Length.ToString() : "unknown";
-                        stringBuilder.AppendLine(String.Format("|  - {0} Bytes", numBytesStr));
-                        Debug.Log(stringBuilder.ToString());
-                    });
-        }
-        else
-        {
-            Debug.Log(stringBuilder.ToString());
-        }
     }
 
     private void Userwise_OnSessionInitialized(object sender, OnSessionInitializedEventArgs e)
@@ -222,14 +163,8 @@ public class UserWiseDemoComponent : MonoBehaviour
     public void InitializeSurveyInvite(Survey survey)
     {
         SurveysModule surveysModule = this.userwise.SurveysModule;
-        surveyInviteComponent.surveysModule = this.userwise.SurveysModule;
 
-        if (surveysModule.IsTakingSurvey())
-        {
-            Debug.Log("Can't initialize survey invite... Another survey is in progress.");
-            return;
-        }
-
+        surveyInviteComponent.surveysModule = surveysModule;
         surveysModule.InitializeSurveyInvite(survey);
     }
 }
