@@ -6,13 +6,13 @@ using UserWiseSDK.Surveys;
 
 public static class SurveyEventHandler
 {
-    public static void OnSurveysLoaded(object sender, EventArgs args)
+    public static void OnLoaded(object sender, EventArgs args)
     {
         SurveysModule surveysModule = UserWise.INSTANCE.SurveysModule;
         Debug.Log(String.Format("Surveys have been loaded!  {0} Available | {1} Upcoming", surveysModule.ActiveSurveys.Count, surveysModule.UpcomingSurveys.Count));
     }
 
-    public static void OnSurveyAvailable(object sender, SurveyEventArgs args)
+    public static void OnActive(object sender, SurveyEventArgs args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Survey Available!");
@@ -25,7 +25,7 @@ public static class SurveyEventHandler
         component.InitializeSurveyInvite(args.Survey);
     }
 
-    public static void OnSurveyUnavailable(object sender, SurveyEventArgs args)
+    public static void OnInactive(object sender, SurveyEventArgs args)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Survey Unavailable!");

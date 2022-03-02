@@ -25,6 +25,12 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
 
 ## SDK Version Changelog
+### v3.0.0
+- Temporarily suspends support for Push Notifications & Variables.
+- Major API refactor to streamline module integrations.
+- Removed requirements for any Android & iOS dependencies (all required native code is now inlined).
+- Adds root-level JSON array support for `CampaignEvent#Data`, `Message#AdditionalFields`, & `RemoteConfig#Json`.
+
 ### v2.2.1
 - Adds support for in-session segment and content refreshing.
 
