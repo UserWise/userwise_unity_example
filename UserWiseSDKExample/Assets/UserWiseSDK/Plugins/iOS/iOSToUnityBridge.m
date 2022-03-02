@@ -5,110 +5,45 @@ NSString* nsStringFromCString(const char *str) {
     else return [NSString stringWithUTF8String:""];
 }
 
-UIColor* colorFromHexString(NSString *hexString) {
-    unsigned rgbValue = 0;
-    NSScanner *scanner = [NSScanner scannerWithString:hexString];
-    [scanner setScanLocation:1]; // bypass '#' character
-    [scanner scanHexInt:&rgbValue];
-    return [UIColor
-            colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0
-            green:((rgbValue & 0xFF00) >> 8)/255.0
-            blue:(rgbValue & 0xFF)/255.0
-            alpha:1.0];
-}
-
-
 
 /// MARK: UserWise Native Listeners
-@implementation iOSToUnitySurveyListener
-- (void)onSurveyCompletedWithResponseId:(NSString *)responseId {}
-- (void)onSurveyAvailableWithSurvey:(Survey * _Nonnull)survey {}
-- (void)onSurveyInviteInitializedWithSurvey:(Survey * _Nonnull)survey wasInitialized:(BOOL)wasInitialized responseId:(NSString * _Nullable)responseId inviteId:(NSString * _Nullable)inviteId {}
-- (void)onSurveysLoaded {}
-
-- (void)onSurveyClosedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyClosed", "");
+@implementation iOSToUnityBridge
+- (void)onSurveyEnterFailedWithResponseId:(NSString * _Nonnull)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEnterFailed", [responseId UTF8String]);
 }
 
-- (void)onSurveyCompletedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyCompleted", "");
+- (void)onSurveyCompletedWithResponseId:(NSString * _Nonnull)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyCompleted", [responseId UTF8String]);
 }
 
-- (void)onSurveyEnterFailedWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEnterFailed", "");
-}
-
-- (void)onSurveyEnteredWithSurvey:(Survey * _Nonnull)survey responseId:(NSString * _Nonnull)responseId {
-    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyEntered", "");
+- (void)onSurveyClosedWithResponseId:(NSString * _Nonnull)responseId {
+    UnitySendMessage([self.gameObjectName UTF8String], "OnSurveyClosed", [responseId UTF8String]);
 }
 @end
 
 
-
-/// MARK: Surveys Native Control
-SurveysModule* getSurveysModule() {
-    UserWise *userWise = [UserWise sharedInstance];
-    return userWise.surveysModule;
-}
-
+/// MARK: Native Functions
+///
+/// The functions below are used directly, and are connected to the UserWise
+/// SDK through the use of the iOSNativePlatformProxyExtensions.cs file.
 void _setSurveysNativeEventListener(const char *gameObjectName) {
-    iOSToUnitySurveyListener *listener = [iOSToUnitySurveyListener alloc];
-    [listener setGameObjectName:nsStringFromCString(gameObjectName)];
-    [getSurveysModule() setSurveyDelegate:listener];
+    iOSToUnityBridge *bridgeDelegate = [iOSToUnityBridge alloc];
+    [bridgeDelegate setGameObjectName:nsStringFromCString(gameObjectName)];
+    
+    [SurveyController setBridgeDelegate:bridgeDelegate];
 }
 
 void _unsetSurveysNativeEventListener() {
-    [getSurveysModule() setSurveyDelegate:nil];
-}
-
-void _setColors(const char *primaryColorHex, const char *splashScreenBgColorHex) {
-    UIColor *primaryColor = colorFromHexString(nsStringFromCString(primaryColorHex));
-    UIColor *splashScreenBgColor = colorFromHexString(nsStringFromCString(splashScreenBgColorHex));
-    
-    [[UserWise sharedInstance].surveysModule
-      setColorsWithPrimaryColor:primaryColor
-      splashScreenBackgroundColor:splashScreenBgColor];
-}
-
-void _setSplashScreenLogo(const char *logoAppPath) {
-    if (!logoAppPath) return;
-    UIImage *logo = [UIImage imageWithContentsOfFile:nsStringFromCString(logoAppPath)];
-    [[UserWise sharedInstance].surveysModule setSplashScreenLogo:logo];
+    [SurveyController setBridgeDelegate:nil];
 }
 
 void _loadTakeSurveyPage(const char *surveyUrl, const char *responseId) {
     UserWise *userWise = [UserWise sharedInstance];
 
-    [SurveyWebViewController
-        loadControllerWithSurvey:[Survey alloc]
-        surveyUrl:nsStringFromCString(surveyUrl)
-        splashScreenStyles:[userWise.surveysModule styleConfiguration]
+    [SurveyController
+        loadControllerWithSurveyUrl:nsStringFromCString(surveyUrl)
         responseId:nsStringFromCString(responseId)];
 }
 
-
-
-/// MARK: Utility Native Functions
-const char* _getCarrier() {
-    return [[UserWiseUtility getPhoneCarrier] UTF8String];
-}
-
-const char* _getOsVersion() {
-    return [[UserWiseUtility getOsVersion] UTF8String];
-}
-
-const char* _getDeviceType() {
-    return [[UserWiseUtility getDeviceType] UTF8String];
-}
-
-const char* _getConnectionType() {
-    return [[UserWiseUtility getConnectionType] UTF8String];
-}
-
-const char* _getLanguage() {
-    return [[UserWiseUtility getLanguage] UTF8String];
-}
-
-const char* _getCountry() {
-    return [[UserWiseUtility getCountry] UTF8String];
-}
+const char* _getLanguage() { return [[UserWiseUtility getLanguage] UTF8String]; }
+const char* _getCountry() { return [[UserWiseUtility getCountry] UTF8String]; }
