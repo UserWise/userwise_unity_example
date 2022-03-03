@@ -23,9 +23,22 @@ public static class OfferEventHandler
         stringBuilder.AppendLine(String.Format("| Body: {0}", args.Record.Body));
         stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Record.PortraitImageId));
         stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Record.LandscapeImageId));
-        stringBuilder.AppendLine(String.Format("| Cost: {0}", args.Record.Cost));
-        stringBuilder.AppendLine(String.Format("| Android Product ID: {0}", args.Record.AndroidProductId));
-        stringBuilder.AppendLine(String.Format("| iOS Product ID: {0}", args.Record.IOSProductId));
+
+        OfferPaymentData paymentData = args.Record.PaymentData;
+
+        if (paymentData.Type == OfferPaymentType.iap)
+        {
+            stringBuilder.AppendLine(String.Format("| (IAP) Cost: {0}", paymentData.Cost));
+            stringBuilder.AppendLine(String.Format("| (IAP) Android Product ID: {0}", paymentData.AndroidProductId));
+            stringBuilder.AppendLine(String.Format("| (IAP) iOS Product ID: {0}", paymentData.IOSProductId));
+        }
+        else if (paymentData.Type == OfferPaymentType.currency)
+        {
+            stringBuilder.AppendLine(String.Format("| (CURRENCY) Name: {0}", paymentData.CurrencyName));
+            stringBuilder.AppendLine(String.Format("| (CURRENCY) External Id: {0}", paymentData.CurrencyExternalId));
+            stringBuilder.AppendLine(String.Format("| (CURRENCY) Amount: {0}", paymentData.CurrencyAmount));
+        }
+
 
         StringBuilder itemString = new StringBuilder();
         foreach (KeyValuePair<string, long> entry in args.Record.Items)
@@ -50,29 +63,6 @@ public static class OfferEventHandler
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("Offer Unavailable!");
         stringBuilder.AppendLine(String.Format("| ID: {0}", args.Record.Id));
-        stringBuilder.AppendLine(String.Format("| Title: {0}", args.Record.Title));
-        stringBuilder.AppendLine(String.Format("| Body: {0}", args.Record.Body));
-        stringBuilder.AppendLine(String.Format("| Portrait Image ID: {0}", args.Record.PortraitImageId));
-        stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Record.LandscapeImageId));
-        stringBuilder.AppendLine(String.Format("| Cost: {0}", args.Record.Cost));
-        stringBuilder.AppendLine(String.Format("| Android Product ID: {0}", args.Record.AndroidProductId));
-        stringBuilder.AppendLine(String.Format("| iOS Product ID: {0}", args.Record.IOSProductId));
-
-        StringBuilder itemString = new StringBuilder();
-        foreach (KeyValuePair<string, long> entry in args.Record.Items)
-        {
-            itemString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
-        }
-        stringBuilder.AppendLine(String.Format("| {0} Items:\n{1}", args.Record.Items.Count, itemString.ToString()));
-
-        StringBuilder currenciesString = new StringBuilder();
-        foreach (KeyValuePair<string, long> entry in args.Record.Currencies)
-        {
-            currenciesString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
-        }
-        stringBuilder.AppendLine(String.Format("| {0} Currencies: \n{1}", args.Record.Currencies.Count, currenciesString.ToString()));
-
-        Debug.Log(stringBuilder.ToString());
     }
 
     public static void OnOfferImpressionInitializationFailed(object sender, OfferEventArgs args)
