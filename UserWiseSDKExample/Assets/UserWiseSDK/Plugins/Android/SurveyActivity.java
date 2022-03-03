@@ -1,17 +1,23 @@
 package io.userwise.userwise_sdk;
 
 import android.annotation.SuppressLint;                                                                                  
-import android.app.Activity;                                                                                             
-import android.content.Intent;                                                                                           
-import android.os.Build;                                                                                                 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;                                                                                                
 import android.view.Gravity;                                                                                             
 import android.view.View;                                                                                                
 import android.view.ViewGroup;                                                                                           
 import android.webkit.*;                                                                                                 
 import android.widget.*;
+import com.unity3d.player.UnityPlayer;
 
-class SurveyActivity extends Activity {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class SurveyActivity extends Activity {
 
     public static String INTENT_SURVEY_URL = "survey_url";                                                               
     public static String INTENT_RESPONSE_ID = "survey_response_id";                                                      
@@ -40,22 +46,20 @@ class SurveyActivity extends Activity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);                            
         }
 
-        setContentView(this.rootLayout);                                                                                 
-    }                                                                                                                    
+        setContentView(this.rootLayout);
+    }
                                                                                                                          
     @Override protected void onStart() {                                                                                 
         super.onStart();
 
-        if (this.surveyUrl == null || this.surveyUrl.isEmpty()) {                                                        
+        if (this.webView == null || this.surveyUrl == null || this.surveyUrl.isEmpty()) {
             this.finish();                                                                                               
             return;                                                                                                      
-        }                                                                                                                
-                                                                                                                         
-        if (this.webView != null) {                                                                                      
-            this.webView.loadUrl(this.surveyUrl);                                                                        
-        }                                                                                                                
-    }                                                                                                                    
-                                                                                                                         
+        }
+
+        this.webView.loadUrl(this.surveyUrl);
+    }
+
     @Override protected void onStop() {                                                                                  
         super.onStop();                                                                                                  
         this.onSurveyClosed();                                                                                           
@@ -99,27 +103,30 @@ class SurveyActivity extends Activity {
     }                                                                                                                    
                                                                                                                          
     @SuppressLint("SetJavaScriptEnabled")                                                                                
-    private WebView buildWebView() {                                                                                     
-        WebView webView = new WebView(this);                                                                             
-        webView.setWebViewClient(new WebViewClient(this));
+    private WebView buildWebView() {
+        WebView webView = new WebView(this);
 
-        webView.setLayoutParams(new ViewGroup.LayoutParams(                                                              
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient(this));
+        webView.setLayoutParams(new ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,                                                                         
             ViewGroup.LayoutParams.MATCH_PARENT                                                                          
         ));
 
-        this.jsBridge = new JSBridge(this);                                                                              
-        webView.getSettings().setJavaScriptEnabled(true);                                                                
+        this.jsBridge = new JSBridge(this);
         webView.addJavascriptInterface(this.jsBridge, "UserWiseAndroidBridge");
 
         return webView;                                                                                                  
     }                                                                                                                    
                                                                                                                          
-    public static void newIntent(Activity context, String surveyResponseId, String surveyUrl) {                          
-        Intent intent = new Intent(context, SurveyActivity.class);                                                       
+    public static void newIntent(String surveyUrl, String surveyResponseId) {
+        Activity activityCtx = UnityPlayer.currentActivity;
+
+        Intent intent = new Intent(activityCtx, SurveyActivity.class);
         intent.putExtra(INTENT_RESPONSE_ID, surveyResponseId);                                                           
-        intent.putExtra(INTENT_SURVEY_URL, surveyUrl);                                                                   
-        context.startActivity(intent);                                                                                   
+        intent.putExtra(INTENT_SURVEY_URL, surveyUrl);
+        activityCtx.startActivity(intent);
     }                                                                                                                    
                                                                                                                          
     public static void setSurveyUnityBridge(AndroidToUnityBridge unityBridge) {                                          
@@ -134,8 +141,8 @@ class WebViewClient extends android.webkit.WebViewClient {
 
     WebViewClient(SurveyActivity activity) {                                                                             
         this.activity = activity;                                                                                        
-    }                                                                                                                    
-                                                                                                                         
+    }
+
     @Override public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse response) {  
         super.onReceivedHttpError(view, request, response);                                                              
         this.activity.onPageLoadFailed();                                                                                
