@@ -24,14 +24,13 @@ namespace UserWiseSDK.Internal.Platforms
         private static extern void _loadTakeSurveyPage(string surveyUrl, string responseId);
 
         [DllImport("__Internal")]
-        private static extern IntPtr _getLanguage();
+        private static extern string _getLanguage();
         [DllImport("__Internal")]
-        private static extern IntPtr _getCountry();
+        private static extern string _getCountry();
 
         [RuntimeInitializeOnLoadMethod]
         static void SetNativeiOSFunctions()
         {
-            Logger.Log("Setting Native iOS Functions");
             iOSNativePlatformProxy proxy = (iOSNativePlatformProxy)NativePlatformProxyFactory.GetNativePlatformProxy();
             proxy.setEventListenerNativeFunction += _setSurveysNativeEventListener;
             proxy.unsetEventListenerNativeFunction += _unsetSurveysNativeEventListener;
