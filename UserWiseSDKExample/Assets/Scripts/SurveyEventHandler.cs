@@ -64,7 +64,7 @@ public static class SurveyEventHandler
     {
         Debug.Log("UserWise survey was exited.");
 
-        SurveysModule surveysModule = (SurveysModule)sender;
+        SurveysModule surveysModule = UserWise.INSTANCE.SurveysModule;
         if (surveysModule.Active.Count > 0) {
             UserWiseDemoComponent component = GameObject.Find("GameControllerObject").GetComponent<UserWiseDemoComponent>();
             component.InitializeSurveyInvite(surveysModule.Active[0]);
