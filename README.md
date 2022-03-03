@@ -21,8 +21,7 @@ To install the old unitypackage style, just download the archive, open your Unit
 
 ## Links:
 - [UserWise Unity SDK Documentation](https://docs.userwise.io/#unity-sdk)
-- [UserWise Android SDK](https://github.com/UserWise/userwise_android_example)
-- [UserWise iOS SDK](https://github.com/UserWise/userwise_ios_example)
+- [UserWise Unity SDK API](https://docs.userwise.io/unity-api/)
 
 ## SDK Version Changelog
 ### v3.0.0
