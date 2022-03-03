@@ -38,12 +38,16 @@ void _unsetSurveysNativeEventListener() {
 }
 
 void _loadTakeSurveyPage(const char *surveyUrl, const char *responseId) {
-    UserWise *userWise = [UserWise sharedInstance];
-
     [SurveyController
         loadControllerWithSurveyUrl:nsStringFromCString(surveyUrl)
         responseId:nsStringFromCString(responseId)];
 }
 
-const char* _getLanguage() { return [[UserWiseUtility getLanguage] UTF8String]; }
-const char* _getCountry() { return [[UserWiseUtility getCountry] UTF8String]; }
+
+const char* _getLanguage() {
+    return strdup([[UserWiseUtility getLanguage] UTF8String]);
+}
+    
+const char* _getCountry() {
+    return strdup([[UserWiseUtility getCountry] UTF8String]);
+}

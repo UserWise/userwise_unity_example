@@ -1,53 +1,22 @@
-﻿#import "./Surveys.h"
-
-@implementation FullScreenWKWebView : NSObject, WKWebView, WKNavigationDelegate, WKScriptMessageHandler
-- (void)initWithSurveyController:(SurveyController *)surveyController {
-    WKPreferences *wkPreferences = [WKPreferences alloc];
-    [wkPreferences setJavaScriptEnabled:YES];
-    
-    WKUserContentController *wkContentController = [WKUserContentController alloc];
-    [wkContentController addScriptMessageHandler:self name:@"userWiseHandler"];
-    
-    WKWebViewConfiguration *wkWebConfig = [WKWebViewConfiguration alloc];
-    [wkWebConfig setPreferences:wkPreferences];
-    [wkWebConfig setUserContentController:wkContentController];
-    
-    CGRect frame = CGRectMake(0, 0, 0, 0);
-    [super initWithFrame:frame configuration:wkWebConfig];
-    
-    [self setIsUserInteractionEnabled:YES];
-    [[self scrollView] setBounces:YES];
-    [self setSurveyController:surveyController];
-    [self setNavigationDelegate:self];
-}
-
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSString *body = (NSString)[message body];
-    
-    if (body.isEqualToString(@"survey_force_closed")) {
-        [[self surveyController] onSurveyClosed];
-    } else if (body.isEqualToString(@"survey_completed")) {
-        [[self surveyController] onSurveyCompleted];
-    }
-}
-
-- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    [[self surveyController] onSurveyLoadFailed];
-}
-@end
+#import "./Surveys.h"
 
 @implementation SurveyController
++ (id <iOSToUnityBridgeProtocol>)bridgeDelegate {
+    return staticBridgeDelegate;
+}
+
++ (void)setBridgeDelegate:(id<iOSToUnityBridgeProtocol>)bridgeDelegate {
+    staticBridgeDelegate = bridgeDelegate;
+}
+
 + (void)loadControllerWithSurveyUrl:(NSString *)surveyUrl responseId:(NSString *)responseId {
     dispatch_async(dispatch_get_main_queue(), ^{
-        SurveyController *surveyController = [SurveyController alloc];
+        SurveyController *surveyController = [[SurveyController alloc] init];
         [surveyController setSurveyUrl:surveyUrl];
         [surveyController setResponseId:responseId];
         [surveyController setModalPresentationStyle:UIModalPresentationFullScreen];
         
         UIViewController *rootCtrl = [UIApplication sharedApplication].keyWindow.rootViewController;
-        while (rootCtrl.presentedViewController) {
-            rootCtrl = rootCtrl.presentedViewController;
-        }
         
         [rootCtrl presentViewController:surveyController animated:YES completion:nil];
     });
@@ -58,25 +27,38 @@
     
     [self setHidesBottomBarWhenPushed:YES];
     [self setModalPresentationCapturesStatusBarAppearance:YES];
-    
+
     [self setWebView];
     
-    NSUrl *url = [NSUrl initWithString:[self surveyUrl]];
+    NSURL *url = [NSURL URLWithString:[self surveyUrl]];
     if (url != nil) {
-        NSURLRequest *req = [NSURLRequest initWithURL:url];
+        NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [[self webView] loadRequest:req];
     }
 }
 
 - (void)closeView {
-    [self dismissWithAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setWebView {
-    FullScreenWKWebView *webView = [[FullScreenWKWebView alloc] initWithSurveyController:self];
+    WKPreferences *wkPreferences = [[WKPreferences alloc] init];
+    [wkPreferences setJavaScriptEnabled:YES];
     
-    [self setWebView:webView];
-    [[self view] addSubView:webView];
+    WKUserContentController *wkContentController = [[WKUserContentController alloc] init];
+    [wkContentController addScriptMessageHandler:self name:@"userWiseHandler"];
+    
+    WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
+    [wkWebConfig setPreferences:wkPreferences];
+    [wkWebConfig setUserContentController:wkContentController];
+    
+    self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) configuration:wkWebConfig];
+
+    [self.webView setUserInteractionEnabled:YES];
+    [[self.webView scrollView] setBounces:YES];
+    [self.webView setNavigationDelegate:self];
+    
+    [[self view] addSubview:self.webView];
     
     [self reconstrainWebView];
 }
@@ -85,27 +67,29 @@
     UILayoutGuide *layoutMarginsGuide = [[self view] layoutMarginsGuide];
     
     [NSLayoutConstraint activateConstraints:@[
-        [[[self webView] centerXAnchor] constraintEqualToAnchor: [[self view] centerXAnchors]],
-        [[[self webView] centerYAnchors] constraintEqualToAnchor: [[self view] centerYAnchors]],
+        [[[self webView] centerXAnchor] constraintEqualToAnchor: [[self view] centerXAnchor]],
+        [[[self webView] centerYAnchor] constraintEqualToAnchor: [[self view] centerYAnchor]],
         [[[self webView] bottomAnchor] constraintEqualToAnchor: [[self view] bottomAnchor]],
         [[[self webView] leadingAnchor] constraintEqualToAnchor: [[self view] leadingAnchor]],
         [[[self webView] trailingAnchor] constraintEqualToAnchor: [[self view] trailingAnchor]],
         [[[self webView] topAnchor] constraintEqualToAnchor: [layoutMarginsGuide topAnchor]]
     ]];
     
-    [[self webView] setTranslatesAutoresizingMaskIntoConstraintes:NO];
+    [[self webView] setTranslatesAutoresizingMaskIntoConstraints:NO];
 }
 
 - (void)onSurveyLoadFailed {
-    iOSToUnityBridge *bridgeDelegate = [self bridgeDelegate];
+    id <iOSToUnityBridgeProtocol>bridgeDelegate = [SurveyController bridgeDelegate];
     
     if (bridgeDelegate != nil) {
         [bridgeDelegate onSurveyEnterFailedWithResponseId:[self responseId]];
     }
+    
+    [self closeView];
 }
 
 - (void)onSurveyCompleted {
-    iOSToUnityBridge *bridgeDelegate = [self bridgeDelegate];
+    id <iOSToUnityBridgeProtocol>bridgeDelegate = [SurveyController bridgeDelegate];
     
     if (bridgeDelegate != nil) {
         [bridgeDelegate onSurveyCompletedWithResponseId:[self responseId]];
@@ -113,10 +97,26 @@
 }
 
 - (void)onSurveyClosed {
-    iOSToUnityBridge *bridgeDelegate = [self bridgeDelegate];
+    id <iOSToUnityBridgeProtocol>bridgeDelegate = [SurveyController bridgeDelegate];
     
     if (bridgeDelegate != nil) {
         [bridgeDelegate onSurveyClosedWithResponseId:[self responseId]];
     }
+    
+    [self closeView];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSString *body = [message body];
+    
+    if ([body isEqualToString:@"survey_force_closed"]) {
+        [self onSurveyClosed];
+    } else if ([body isEqualToString:@"survey_completed"]) {
+        [self onSurveyCompleted];
+    }
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    [self onSurveyLoadFailed];
 }
 @end
