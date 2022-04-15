@@ -24,6 +24,10 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.0.1
+- Fix issue where (depending on release access path; e.g. `*.unitypackage` vs `latest` vs `GH Releases`) you could retrieve an improper return type error for natively defined methods
+  * A future release will see a proper solution to accessing the release build from the minimal amount of locations we can support
+
 ### v3.0.0
 - Temporarily suspends support for Push Notifications & Variables.
 - Major API refactor to streamline module integrations.
