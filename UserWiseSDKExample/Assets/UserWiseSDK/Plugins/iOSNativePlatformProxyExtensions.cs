@@ -9,7 +9,7 @@ namespace UserWiseSDK.Internal.Platforms
     /// Connects the Objective-C functions defined within <c>iOS/iOSToUnityBridge</c>
     /// to the <see cref="iOSNativePlatformProxy"/>, as part of the <c>UserWiseSDK.Internal.Platforms</c>
     /// namespace.
-    /// 
+    ///
     /// This code SHOULD NOT be altered, or removed.
     /// </summary>
     static class iOSNativePlatformProxyExtensions
