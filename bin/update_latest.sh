@@ -28,7 +28,7 @@ then
 
         ## update our changes
         rm -rf ./Runtime/Plugins/*
-        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime/Plugins/
+        cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime
 
         rm ./Runtime/UserWiseSDK.dll
         rm ./Runtime/UserWiseSDK.dll.meta
