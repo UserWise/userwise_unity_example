@@ -37,12 +37,10 @@ public class UserWiseDemoComponent : MonoBehaviour
 
     private void ConfigureUserWiseSDK()
     {
-        string apiKey = "534d39141213a9ccfe2ab21e0343";
-
         this.userwise = UserWise.INSTANCE;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        //this.userwise.HostOverride = "";
-        this.userwise.SetApiKey(apiKey);
+        this.userwise.EnvironmentStage = EnvironmentStage.live; // EnvironmentStage.qa;
+        this.userwise.SetApiKey("b8aae6ed515c973f728850adef7c");
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
 
