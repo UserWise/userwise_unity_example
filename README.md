@@ -24,6 +24,12 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.1.0
+- Introduces a new `EnvironmentStage` enum and `UserWise.INSTANCE.EnvironmentStage` setter for setting a session's expected stage.
+  * (e.g. You can now create `EnvironmentStage.qa` and `EnvironmentStage.live` builds, which connect to UserWise QA & UserWise Live, respectively.
+  * By default, all sessions will default to `EnvironmentStage.live`.
+- Updated session initialization to properly send over local `timezone` information.
+
 ### v3.0.1
 - Fix issue where (depending on release access path; e.g. `*.unitypackage` vs `latest` vs `GH Releases`) you could retrieve an improper return type error for natively defined methods
   * A future release will see a proper solution to accessing the release build from the minimal amount of locations we can support
