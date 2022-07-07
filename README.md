@@ -11,7 +11,7 @@ You can quickly install the UserWise SDK without interferring with your project'
 1. Within your Unity Editor; click `Window > Package Manager`
 2. Click the "+" icon at the top-left of the window -- directly under the tab labelled "Package Manager"
 3. Click the "Add package from git URL"
-4. Type in: `git://github.com/UserWise/userwise_unity_example#latest`
+4. Type in: `https://github.com/UserWise/userwise_unity_example.git#latest`
 
 ### *.unitypackage (Old)
 
