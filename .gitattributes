@@ -1260,7 +1260,7 @@ UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/1.2.172/Google.JarRes
 UserWiseSDKExample/Assets/ExternalDependencyManager/Editor/1.2.172/Google.VersionHandlerImpl.dll
 UserWiseSDKExample/Assets/Firebase/Editor/generate_xml_from_google_services_json.exe
 UserWiseSDKExample/Assets/Firebase/Editor/network_request.exe
-UserWiseSDKExample/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_5_0.bundle
+UserWiseSDKExample/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
 UserWiseSDKExample/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_5_0.dll
 UserWiseSDKExample/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_5_0.so
 UserWiseSDKExample/Assets/Firebase/Plugins/x86_64/FirebaseCppMessaging.bundle
