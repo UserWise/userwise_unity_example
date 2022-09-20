@@ -1281,4 +1281,5 @@ UserWiseSDKExample/Assets/Plugins/Android/com.google.firebase.firebase-messaging
 UserWiseSDKExample/Assets/Plugins/iOS/Firebase/libFirebaseCppApp.a
 UserWiseSDKExample/Assets/Plugins/iOS/Firebase/libFirebaseCppMessaging.a
 UserWiseSDKExample/Assets/UserWiseSDK/UserWiseSDK.dll !text !filter !merge !diff
+FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
 **/FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
