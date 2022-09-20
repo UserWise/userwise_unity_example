@@ -5,11 +5,12 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UserWiseSDK;
-using UserWiseSDK.Surveys;
-using UserWiseSDK.Offers;
-using UserWiseSDK.Messages;
 using UserWiseSDK.Events;
+using UserWiseSDK.Messages;
+using UserWiseSDK.Offers;
+using UserWiseSDK.PushNotifications;
 using UserWiseSDK.RemoteConfigs;
+using UserWiseSDK.Surveys;
 
 public class UserWiseDemoComponent : MonoBehaviour
 {
@@ -39,8 +40,10 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         this.userwise = UserWise.INSTANCE;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
+        this.userwise.HostOverride = "https://9cb7-70-160-164-153.ngrok.io/";
         this.userwise.EnvironmentStage = EnvironmentStage.live; // EnvironmentStage.qa;
-        this.userwise.SetApiKey("b8aae6ed515c973f728850adef7c");
+        this.userwise.SetApiKey("86ec2f921ec76a33a0b4f4fe81e2");
+        //this.userwise.SetApiKey("b8aae6ed515c973f728850adef7c");
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
 
@@ -112,6 +115,12 @@ public class UserWiseDemoComponent : MonoBehaviour
     private void Userwise_OnSessionInitialized(object sender, OnSessionInitializedEventArgs e)
     {
         StartCoroutine(AssignLoginData());
+
+        // Push Notifications Module Configuration
+        //
+        // Generally, Firebase should be initialized after UserWise so that device token registration
+        // acts uninhibited.
+        PushNotificationsIntegration.Configure();
     }
 
     private IEnumerator AssignLoginData()
