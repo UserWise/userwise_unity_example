@@ -24,6 +24,9 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.2.0
+- Reintroduces a reworked **Push Notifications** integration and module. Now with no native methods and no swizzling. Use any plugin you'd like to receive messages and integrate directly with UserWise far easier.
+
 ### v3.1.0
 - Introduces a new `EnvironmentStage` enum and `UserWise.INSTANCE.EnvironmentStage` setter for setting a session's expected stage.
   * (e.g. You can now create `EnvironmentStage.qa` and `EnvironmentStage.live` builds, which connect to UserWise QA & UserWise Live, respectively.
