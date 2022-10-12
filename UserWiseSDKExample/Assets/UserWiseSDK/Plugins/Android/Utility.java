@@ -11,5 +11,9 @@ class UserWiseUtility {
     public static String getLanguage() {
         return UnityPlayer.currentActivity.getResources().getConfiguration().locale.getLanguage();
     }
+
+    public static String getTimeZone() {
+        return java.util.TimeZone.getDefault().getID();
+    }
 }
 
