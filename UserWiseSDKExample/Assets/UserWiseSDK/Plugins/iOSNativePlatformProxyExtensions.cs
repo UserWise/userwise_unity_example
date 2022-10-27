@@ -27,6 +27,8 @@ namespace UserWiseSDK.Internal.Platforms
         private static extern string _getLanguage();
         [DllImport("__Internal")]
         private static extern string _getCountry();
+        [DllImport("__Internal")]
+        private static extern string _getTimeZone();
 
         [RuntimeInitializeOnLoadMethod]
         static void SetNativeiOSFunctions()
@@ -39,6 +41,7 @@ namespace UserWiseSDK.Internal.Platforms
 
             proxy.getLanguageNativeFunction += _getLanguage;
             proxy.getCountryNativeFunction += _getCountry;
+            proxy.getTimeZoneNativeFunction += _getTimeZone;
         }
 #endif
     }

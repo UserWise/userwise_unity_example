@@ -29,7 +29,6 @@ NSString* nsStringFromCString(const char *str) {
 void _setSurveysNativeEventListener(const char *gameObjectName) {
     iOSToUnityBridge *bridgeDelegate = [iOSToUnityBridge alloc];
     [bridgeDelegate setGameObjectName:nsStringFromCString(gameObjectName)];
-    
     [SurveyController setBridgeDelegate:bridgeDelegate];
 }
 
@@ -47,7 +46,11 @@ void _loadTakeSurveyPage(const char *surveyUrl, const char *responseId) {
 const char* _getLanguage() {
     return strdup([[UserWiseUtility getLanguage] UTF8String]);
 }
-    
+
 const char* _getCountry() {
     return strdup([[UserWiseUtility getCountry] UTF8String]);
+}
+
+const char* _getTimeZone() {
+    return strdup([[UserWiseUtility getTimeZone] UTF8String]);
 }

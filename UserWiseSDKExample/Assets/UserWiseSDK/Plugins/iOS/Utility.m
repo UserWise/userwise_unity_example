@@ -8,4 +8,8 @@
 + (NSString * _Nonnull)getCountry {
     return [[NSLocale currentLocale] countryCode];
 }
+
++ (NSString * _Nonnull)getTimeZone {
+    return [[NSTimeZone localTimeZone] name];
+}
 @end
