@@ -41,6 +41,7 @@ namespace UserWiseSDK.Internal.Platforms
 
             proxy.getLanguageNativeFunction += _getLanguage;
             proxy.getCountryNativeFunction += _getCountry;
+            proxy.getTimeZoneNativeFunction += _getTimeZone;
         }
 #endif
     }
