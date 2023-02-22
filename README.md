@@ -24,8 +24,12 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.2.1
+- Fixes an issue halting offline caches from loading properly on all platforms.
+
 ### v3.2.0
-- Reintroduces a reworked **Push Notifications** integration and module. Now with no native methods and no swizzling. Use any plugin you'd like to receive messages and integrate directly with UserWise far easier.
+- Reintroduces a reworked **Push Notifications** integration and module.
+  * Now with no native methods and no swizzling! Use any plugin you'd like to receive messages and integrate directly with UserWise far easier.
 - Introduces `Offer` frameworks, similar to those present on `Events`, `Messages`, & `Push Notifications`.
 
 ### v3.1.0
