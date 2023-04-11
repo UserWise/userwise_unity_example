@@ -1,3 +1,6 @@
+// Below is an example of a push notification integration. To enable the integration please setup the Firebase
+// Unity package, and then flip the macro below to true, or delete it in its entirety.
+#if false
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -113,3 +116,4 @@ public static class PushNotificationsIntegration
     }
 
 }
+#endif

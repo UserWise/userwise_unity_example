@@ -8,7 +8,6 @@ using UserWiseSDK;
 using UserWiseSDK.Events;
 using UserWiseSDK.Messages;
 using UserWiseSDK.Offers;
-using UserWiseSDK.PushNotifications;
 using UserWiseSDK.RemoteConfigs;
 using UserWiseSDK.Surveys;
 
@@ -118,7 +117,9 @@ public class UserWiseDemoComponent : MonoBehaviour
         //
         // Generally, Firebase should be initialized after UserWise so that device token registration
         // acts uninhibited.
-        PushNotificationsIntegration.Configure(this);
+        // PushNotificationsIntegration.Configure(this);
+
+        this.userwise.EmailsModule.SetEmailAddress("test@test.com", (finished) => { });
     }
 
     private IEnumerator AssignLoginData()
