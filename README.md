@@ -24,6 +24,9 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.2.3
+- `OffersModule`, `MessagesModule`, `SurveysModules`, `EventsModule`, & `RemoteConfigsModule` now expose a public `DateTime? UpcomingStartsBefore`.
+  * This field can be used to configure the filter used when checking if a content piece should be considered upcoming or not.
 ### v3.2.2
 - Added the ability to fully manage a player's email address via the SDK
 - Updated the default native platform proxy providing better logic for retrieving the device's Language & Timezone, when in the Unity Editor.
