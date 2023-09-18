@@ -30,6 +30,7 @@ then
         rm -rf ./Runtime/Plugins/*
         cp -r "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/Plugins/" ./Runtime
 
+	rm README.txt # temporarily remove README.txt until next release, when we have README.txt.meta
         rm ./Runtime/UserWiseSDK.dll
         rm ./Runtime/UserWiseSDK.dll.meta
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll" ./Runtime
