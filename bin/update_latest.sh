@@ -14,10 +14,10 @@ then
 fi
 
 unity_sdk_dir="../userwise_unity_sdk"
-if [ -d ${unity_sdk_dir} ]
+if [ -d $unity_sdk_dir ]
 then
         initbranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-        if [[ ${initbranch} != "latest" ]]
+        if [[ $initbranch != "latest" ]]
         then
                 git checkout latest
                 if [[ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') != "latest" ]];
@@ -36,10 +36,11 @@ then
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll" ./Runtime
         cp "${unity_sdk_dir}/userwise_unity_sdk_packaging/UserWiseUnitySDK/Assets/UserWiseSDK/UserWiseSDK.dll.meta" ./Runtime
 
-        git commit -a -m "${version}"
-        git tag "${version}"
+        git commit -a -m $version
+        git tag $version
         git push origin latest
         git push origin --tags
+        git checkout $initbranch
         echo "Successfully updated 'latest' branch."
 else
         echo "The example app and the unity sdk projects must be siblings within the same parent directory."

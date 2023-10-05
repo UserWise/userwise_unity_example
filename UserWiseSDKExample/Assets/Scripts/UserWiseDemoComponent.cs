@@ -39,7 +39,7 @@ public class UserWiseDemoComponent : MonoBehaviour
     {
         this.userwise = UserWise.INSTANCE;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
-        this.userwise.EnvironmentStage = EnvironmentStage.live; // EnvironmentStage.qa;
+        this.userwise.EnvironmentStage = "live"; // "qa"
         this.userwise.SetApiKey("b8aae6ed515c973f728850adef7c");
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
