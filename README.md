@@ -24,6 +24,9 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.2.5
+- Fixed an issue where some UnityWebRequest requests were not being disposed of appropriately, which could cause a memory leak.
+
 ### v3.2.4
 - `enum EnvironmentStage` has been removed in favor of setting environment keys manually
 
