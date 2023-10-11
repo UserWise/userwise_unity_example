@@ -23,6 +23,7 @@ public static class GameEventHandler
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
         stringBuilder.AppendLine(String.Format("|- External Event Type: {0}", args.Record.ExternalEventType));
         stringBuilder.AppendLine(String.Format("|- Data: {0}", args.Record.Data));
+        stringBuilder.AppendLine(String.Format("|- Data Raw: {0}", args.Record.DataRaw));
         Debug.Log(stringBuilder.ToString());
 
         // this.DeserializeExampleGameEventData(args.Event);

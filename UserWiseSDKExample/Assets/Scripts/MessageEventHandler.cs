@@ -24,6 +24,7 @@ public static class MessageEventHandler
         stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Record.LandscapeImageId));
         stringBuilder.AppendLine(String.Format("| Message Type: {0}", args.Record.MessageType));
         stringBuilder.AppendLine(String.Format("| Additional Fields: {0}", args.Record.AdditionalFields));
+        stringBuilder.AppendLine(String.Format("| Additional Fields Raw: {0}", args.Record.AdditionalFieldsRaw));
         Debug.Log(stringBuilder.ToString());
 
         // Once a message is active, you should initialize it prior to displaying:

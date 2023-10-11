@@ -90,6 +90,7 @@ public static class PushNotificationsIntegration
             // pn.Body
             // pn.ImageId
             // pn.FrameworkData
+            // pn.FrameworkDataRaw
         });
 
         // load all of an impression's data:

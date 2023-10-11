@@ -21,7 +21,8 @@ public static class RemoteConfigEventHandler
         stringBuilder.AppendLine(String.Format("|- ID: {0}", args.Record.Id));
         stringBuilder.AppendLine(String.Format("|- Name: {0}", args.Record.Name));
         stringBuilder.AppendLine(String.Format("|- External ID: {0}", args.Record.ExternalId));
-        stringBuilder.AppendLine(String.Format("|- Json: {0}", args.Record.Json));
+        stringBuilder.AppendLine(String.Format("|- JSON: {0}", args.Record.Json));
+        stringBuilder.AppendLine(String.Format("|- JSON Raw: {0}", args.Record.JsonRaw));
         Debug.Log(stringBuilder.ToString());
     }
 

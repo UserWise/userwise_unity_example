@@ -105,7 +105,10 @@ public class UserWiseDemoComponent : MonoBehaviour
         GameObject refreshContentButtonObject = GameObject.Find("refresh_content_button");
         refreshContentButton.onClick.AddListener(() =>
         {
-            this.userwise.RefreshContent();
+            this.userwise.RefreshContent((bool completed) =>
+            {
+                Debug.Log("Refresh Content Completed. Was successful? " + completed);
+            });
         });
     }
 

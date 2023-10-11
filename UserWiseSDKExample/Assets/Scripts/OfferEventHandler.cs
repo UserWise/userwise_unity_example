@@ -25,7 +25,6 @@ public static class OfferEventHandler
         stringBuilder.AppendLine(String.Format("| Landscape Image ID: {0}", args.Record.LandscapeImageId));
 
         OfferPaymentData paymentData = args.Record.PaymentData;
-
         if (paymentData.Type == OfferPaymentType.iap)
         {
             stringBuilder.AppendLine(String.Format("| (IAP) Cost: {0}", paymentData.Cost));
@@ -53,6 +52,9 @@ public static class OfferEventHandler
             currenciesString.AppendLine(String.Format("| - {0}: {1}", entry.Key, entry.Value));
         }
         stringBuilder.AppendLine(String.Format("| {0} Currencies: \n{1}", args.Record.Currencies.Count, currenciesString.ToString()));
+
+        stringBuilder.AppendLine(string.Format("| Framework Data: {0}", args.Record.FrameworkData));
+        stringBuilder.AppendLine(string.Format("| Framework Data Raw: {0}", args.Record.FrameworkDataRaw));
 
         Debug.Log(stringBuilder.ToString());
         UserWise.INSTANCE.OffersModule.InitializeOfferImpression(args.Record);
