@@ -40,7 +40,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         this.userwise = UserWise.INSTANCE;
         this.userwise.UserId = DEFAULT_USER_ID.Trim();
         this.userwise.EnvironmentStage = "live"; // "qa"
-        this.userwise.SetApiKey("b8aae6ed515c973f728850adef7c");
+        this.userwise.SetApiKey("02ed0ec4df7fa6e2f44a687933f1");
 
         this.userwise.OnSessionInitialized += Userwise_OnSessionInitialized;
 
@@ -131,6 +131,7 @@ public class UserWiseDemoComponent : MonoBehaviour
         AssignEvent();
         AssignAttribute();
         TransitionToRegion();
+        SetEngagementOutcome();
     }
 
     private void AssignEvent()
@@ -166,6 +167,14 @@ public class UserWiseDemoComponent : MonoBehaviour
             }),
             null
         );
+    }
+
+    private void SetEngagementOutcome()
+    {
+        Debug.Log("Setting Engagement Outcome");
+        this.userwise.SetEngagementOutcome("email_opened", OutcomeType.email, (completed) => {
+            Debug.Log("Engagement Outcome Set. Was successful? " + completed);
+        });
     }
 
     public void InitializeSurveyInvite(Survey survey)

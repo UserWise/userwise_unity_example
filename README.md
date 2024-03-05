@@ -24,6 +24,9 @@ To install the old unitypackage style, just download the archive, open your Unit
 - [UserWise Unity SDK API](https://docs.userwise.io/unity-api/namespaces.html)
 
 ## SDK Version Changelog
+### v3.2.7
+- Added the ability to set engagement outcomes for a player.
+
 ### v3.2.6
 - Added optional `complete` and `timestamp` parameters for `RefreshContent`.
 - Added the ability to retrieve the raw JSON string for the various content types that support frameworks: `Offer`, `GameEvent`, `PushNotification`, `RemoteConfig`, & `Message`.
